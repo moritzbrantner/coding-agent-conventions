@@ -130,6 +130,7 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | TEST-001 | [Test location follows dependency scope](conventions/testing/TEST-001-test-location-follows-scope.md) | Accepted |
 | TEST-002 | [Validate tests bottom-up](conventions/testing/TEST-002-bottom-up-validation.md) | Accepted |
 | TEST-003 | [Keep test scope separate from test kind](conventions/testing/TEST-003-scope-vs-kind.md) | Accepted |
+| TEST-004 | [Test authorization as a decision matrix](conventions/testing/TEST-004-authorization-decision-matrices.md) | Proposed |
 
 ### Git
 
@@ -152,6 +153,23 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | ENV-001 | [Keep irreplaceable development state outside disposable containers](conventions/environment/ENV-001-persistent-state-outside-containers.md) | Accepted |
 | ENV-002 | [Use Docker Compose as the canonical local development and test topology](conventions/environment/ENV-002-docker-compose-for-development-and-testing.md) | Accepted |
 | ENV-003 | [`.env.example` is the committed environment contract](conventions/environment/ENV-003-env-example-is-environment-contract.md) | Accepted |
+
+### Authentication
+
+Canonical account, profile, space, membership, role, and session terms are defined in [`CONTEXT.md`](CONTEXT.md).
+
+| ID | Convention | Status |
+|---|---|---|
+| AUTHN-001 | [A session identifies an account, not an authorization context](conventions/authentication/AUTHN-001-session-identifies-account.md) | Proposed |
+| AUTHN-002 | [One-time authentication secrets are non-recoverable credentials](conventions/authentication/AUTHN-002-one-time-secrets.md) | Proposed |
+
+### Authorization
+
+| ID | Convention | Status |
+|---|---|---|
+| AUTHZ-001 | [Every role assignment has an explicit authority scope](conventions/authorization/AUTHZ-001-scope-role-assignments.md) | Proposed |
+| AUTHZ-002 | [Authorize every protected operation at the server boundary](conventions/authorization/AUTHZ-002-authorize-protected-operations.md) | Proposed |
+| AUTHZ-003 | [Personal profiles and spaces are authorization resources](conventions/authorization/AUTHZ-003-profiles-and-spaces-are-resources.md) | Proposed |
 
 ## Technology convention families
 
