@@ -1,19 +1,8 @@
 # Next.js conventions
 
-Next.js is treated as a specialization of the React + TypeScript stack in this repository.
+Next.js inherits React and TypeScript conventions.
 
-Rules in this directory use the `NEXT-*` prefix and apply to Next.js-specific routing, rendering, server/client boundaries, data access, caching, framework entry points, and deployment behavior.
+## Accepted conventions
 
-Do not repeat TypeScript or React rules here. A Next.js rule should exist only when the framework adds or changes a constraint.
-
-Applicable technology scope is mechanically derived from the path:
-
-```text
-technologies/typescript/react/nextjs/
-        -> technologies/typescript/react/
-        -> technologies/typescript/
-        -> general conventions
-        -> principles
-```
-
-When Next.js imposes a framework requirement that conflicts with a broader convention, the more specific rule wins according to `REPO-002`.
+- [NEXT-001 — Prefer the donut pattern](NEXT-001-prefer-donut-pattern.md)
+- [NEXT-002 — Keep page-specific code local](NEXT-002.md)
