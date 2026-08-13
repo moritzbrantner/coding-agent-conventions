@@ -2,31 +2,49 @@
 
 Technology conventions contain stack-specific coding rules that are too narrow for the general `conventions/` catalog.
 
-They still follow the same design goals: rules should be explicit, normative, mechanically discoverable, and automatable where practical.
+They follow the same design goals: rules should be explicit, normative, mechanically discoverable, and automatable where practical.
 
-## Structure
+## Structure and inheritance
+
+Directory nesting encodes convention inheritance when this repository intentionally treats one technology scope as a specialization of another:
 
 ```text
 technologies/
-  typescript/
-  react/
-  nextjs/
-  rust/
+  typescript/                 # TS-*
+    react/                    # REACT-*
+      nextjs/                 # NEXT-*
+
+  rust/                       # RUST-*
+
+  databases/                  # DB-*
+    postgres/                 # POSTGRES-*
+
+  docker/                     # DOCKER-*
+    dockerfile/               # DOCKERFILE-*
 ```
 
-Each technology owns a stable ID prefix:
+For example, a Next.js project in this convention stack inherits rules by walking its path upward:
 
-- TypeScript: `TS-*`
-- React: `REACT-*`
-- Next.js: `NEXT-*`
-- Rust: `RUST-*`
+```text
+Next.js -> React -> TypeScript -> general conventions -> principles
+```
 
-Use [`../templates/technology-convention.md`](../templates/technology-convention.md) for new rules.
+PostgreSQL similarly inherits database-wide conventions, and Dockerfile conventions inherit Docker-wide conventions.
 
-## Inheritance
+This tree represents the engineering stack documented by this repository; it is not intended as a universal taxonomy of what each ecosystem technically supports.
 
-Do not duplicate a broader rule in a more specific technology.
+## Placement rule
 
-For example, a TypeScript rule used by React and Next.js belongs under `typescript/`, not in all three directories. React rules add React-specific behavior. Next.js rules add framework-specific behavior on top of the relevant TypeScript and React rules.
+Put a rule at the highest scope where it is true. Do not duplicate a broader rule in a child directory.
 
-When rules conflict, use the specificity order defined by `REPO-002`.
+- TypeScript rules stay under `typescript/`.
+- React adds only React-specific rules.
+- Next.js adds only Next.js-specific rules.
+- General database rules stay under `databases/`; PostgreSQL adds only engine-specific rules.
+- Docker-wide rules stay under `docker/`; Dockerfile authoring rules go under `docker/dockerfile/`.
+
+Orthogonal technologies should remain separate branches and be composed with profiles rather than forced into an artificial parent/child relationship.
+
+Docker Compose development/test orchestration remains a general environment concern under `ENV-002`, while Dockerfile authoring belongs in the Docker technology tree.
+
+Use [`../templates/technology-convention.md`](../templates/technology-convention.md) for new rules. When rules conflict, use the specificity order defined by `REPO-002`.
