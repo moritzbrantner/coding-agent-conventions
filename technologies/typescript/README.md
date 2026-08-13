@@ -1,17 +1,14 @@
 # TypeScript conventions
 
-Rules in this directory use the `TS-*` prefix and apply to TypeScript code in this convention stack.
+TypeScript is a parent scope for the React stack documented in this repository. Rules here apply to all descendant TypeScript technology scopes unless a more specific rule overrides the conflicting part.
 
-Put a rule here when it is fundamentally about TypeScript types, modules, language constructs, compiler behavior, or TypeScript-level API design.
+## Accepted conventions
 
-## Child scopes
+| ID | Convention |
+|---|---|
+| TS-001 | [Keep TypeScript strict and do not use `any` to bypass uncertainty](TS-001-strict-types-no-any.md) |
+| TS-002 | [Model invalid states out of the type system](TS-002-model-invalid-states-out.md) |
+| TS-003 | [Prefer `type` over `interface`](TS-003-prefer-type-over-interface.md) |
+| TS-004 | [Use semicolons](TS-004-semicolons.md) |
 
-```text
-typescript/
-  react/
-    nextjs/
-```
-
-In this repository, directory nesting encodes convention inheritance: React inherits the TypeScript conventions, and Next.js inherits both React and TypeScript conventions.
-
-Do not duplicate TypeScript rules in child framework directories. A child scope contains only additional or overriding rules specific to that framework.
+React-specific rules inherit these conventions under [`react/`](react/).
