@@ -1,7 +1,7 @@
 # React Hook Form conventions
 
-React Hook Form is treated as a React-specific specialization in this convention stack.
+React Hook Form inherits React and TypeScript conventions.
 
-Rules in this directory use the `RHF-*` prefix and apply to form state, validation integration, field registration, controlled versus uncontrolled inputs, submission flows, and form composition.
+## Accepted conventions
 
-Rules here inherit TypeScript and React conventions through the directory hierarchy.
+- [RHF-001 — Use React Hook Form for non-trivial forms](RHF-001.md)
