@@ -1,7 +1,8 @@
 # <ID> — <Title>
 
 **Status:** Proposed  
-**Category:** <category>
+**Category:** <category>  
+**Derived from:** `<PRINCIPLE-ID>` (when applicable)
 
 ## Rule
 
