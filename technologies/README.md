@@ -13,6 +13,10 @@ technologies/
   typescript/                 # TS-*
     react/                    # REACT-*
       nextjs/                 # NEXT-*
+      tanstack-query/         # QUERY-*
+      react-hook-form/        # RHF-*
+      zustand/                # ZUSTAND-*
+      testing-library/        # RTL-*
 
   rust/                       # RUST-*
 
@@ -21,6 +25,9 @@ technologies/
 
   docker/                     # DOCKER-*
     dockerfile/               # DOCKERFILE-*
+
+  tooling/
+    vite/                     # VITE-*
 ```
 
 For example, a Next.js project in this convention stack inherits rules by walking its path upward:
@@ -28,6 +35,8 @@ For example, a Next.js project in this convention stack inherits rules by walkin
 ```text
 Next.js -> React -> TypeScript -> general conventions -> principles
 ```
+
+TanStack Query, React Hook Form, Zustand, React Testing Library, and Next.js are sibling specializations of the React scope. A project may apply several sibling branches at once.
 
 PostgreSQL similarly inherits database-wide conventions, and Dockerfile conventions inherit Docker-wide conventions.
 
@@ -39,9 +48,10 @@ Put a rule at the highest scope where it is true. Do not duplicate a broader rul
 
 - TypeScript rules stay under `typescript/`.
 - React adds only React-specific rules.
-- Next.js adds only Next.js-specific rules.
+- React libraries/frameworks add only rules specific to that library/framework.
 - General database rules stay under `databases/`; PostgreSQL adds only engine-specific rules.
 - Docker-wide rules stay under `docker/`; Dockerfile authoring rules go under `docker/dockerfile/`.
+- Orthogonal tooling such as Vite stays outside the React inheritance path.
 
 Orthogonal technologies should remain separate branches and be composed with profiles rather than forced into an artificial parent/child relationship.
 
