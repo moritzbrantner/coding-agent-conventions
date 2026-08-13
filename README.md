@@ -6,23 +6,19 @@ The goal is to make important project rules **explicit, local, deterministic, me
 
 ## Model
 
-The repository distinguishes between several levels:
-
 ```text
 Principles
     ↓
-General conventions + technology conventions
+General conventions + technology convention trees
     ↓
-Profiles that compose convention families
+Profiles that compose independent technology branches
     ↓
 Repository-specific implementations and overrides
 ```
 
 ### Principles
 
-Principles describe durable design goals for agentic development. They explain **why** a family of conventions exists and should remain broadly applicable across languages, frameworks, and orchestration systems.
-
-They live in:
+Principles describe durable design goals for agentic development and live in:
 
 ```text
 principles/PRINCIPLE-<NNN>-<slug>.md
@@ -32,9 +28,7 @@ Use [`templates/principle.md`](templates/principle.md) for new principles.
 
 ### General conventions
 
-General conventions are concrete normative rules for repositories, agents, harnesses, CI, Git, tests, or development environments.
-
-They live in:
+General conventions are concrete normative rules for repositories, agents, harnesses, CI, Git, tests, or development environments:
 
 ```text
 conventions/<category>/<ID>-<slug>.md
@@ -44,42 +38,45 @@ Use [`templates/convention.md`](templates/convention.md) for new general convent
 
 ### Technology conventions
 
-Technology conventions capture coding rules that are specific to a language, library, or framework.
-
-They live in:
-
-```text
-technologies/<technology>/<ID>-<slug>.md
-```
-
-Current technology families are:
+Technology conventions capture rules specific to languages, libraries, frameworks, databases, or build technologies. Their **directory hierarchy encodes inheritance** when one scope is intentionally treated as a specialization of another in this convention stack.
 
 ```text
 technologies/
-  typescript/   # TS-*
-  react/        # REACT-*
-  nextjs/       # NEXT-*
-  rust/         # RUST-*
+  typescript/                 # TS-*
+    react/                    # REACT-*
+      nextjs/                 # NEXT-*
+
+  rust/                       # RUST-*
+
+  databases/                  # DB-*
+    postgres/                 # POSTGRES-*
+
+  docker/                     # DOCKER-*
+    dockerfile/               # DOCKERFILE-*
 ```
 
-Use [`templates/technology-convention.md`](templates/technology-convention.md) for these rules. Put a rule at the broadest technology level where it is actually true: a TypeScript rule should not be copied into React and Next.js simply because both use TypeScript.
+A Next.js rule therefore inherits React and TypeScript rules by path. PostgreSQL inherits database-wide rules. Dockerfile rules inherit Docker-wide rules.
+
+Put each rule at the highest technology node where it is actually true and do not copy inherited rules into child scopes. The tree represents the engineering stack documented here, not a universal taxonomy of what each ecosystem supports.
+
+Use [`templates/technology-convention.md`](templates/technology-convention.md) for new technology rules.
 
 ### Profiles
 
-Profiles compose existing convention families for common stacks without copying their rule text. A future Next.js + TypeScript profile can, for example, reference general conventions plus TypeScript, React, and Next.js conventions.
+Profiles compose **independent technology branches** without copying their rule text. Nested inheritance such as TypeScript → React → Next.js does not need a profile because the path already expresses it. A profile becomes useful for combinations such as Next.js + PostgreSQL or Next.js + Rust.
 
 Profiles live under [`profiles/`](profiles/README.md).
 
 ### Precedence
 
-When applicable rules conflict, use the specificity ordering in `REPO-002`:
+When applicable rules conflict, use `REPO-002`:
 
 ```text
 repository-specific rule
         ↓
-framework-specific rule
+deepest applicable technology scope
         ↓
-language-specific rule
+parent technology scopes, nearest first
         ↓
 general convention
         ↓
@@ -100,8 +97,6 @@ A convention should normally contain:
 6. **Consequences** — what the convention enables elsewhere in the toolchain.
 
 Technology conventions additionally make preferred patterns, anti-patterns, and automatable checks explicit where useful.
-
-Where useful, conventions reference the principles they operationalize.
 
 ## Core principles
 
@@ -159,14 +154,18 @@ Where useful, conventions reference the principles they operationalize.
 
 ## Technology convention families
 
-| Technology | Prefix | Purpose |
+| Scope | Prefix | Purpose |
 |---|---|---|
-| [TypeScript](technologies/typescript/) | `TS-*` | Types, modules, language constructs, compiler behavior, TypeScript API design |
-| [React](technologies/react/) | `REACT-*` | Components, rendering, state, hooks, effects, composition |
-| [Next.js](technologies/nextjs/) | `NEXT-*` | Routing, server/client boundaries, data access, caching, framework entry points |
-| [Rust](technologies/rust/) | `RUST-*` | Types, ownership, borrowing, errors, traits, modules, Rust tooling |
+| [TypeScript](technologies/typescript/) | `TS-*` | Types, modules, compiler behavior, TypeScript API design |
+| [React](technologies/typescript/react/) | `REACT-*` | Components, rendering, state, hooks, effects, composition |
+| [Next.js](technologies/typescript/react/nextjs/) | `NEXT-*` | Routing, server/client boundaries, data access, caching, framework entry points |
+| [Rust](technologies/rust/) | `RUST-*` | Types, ownership, borrowing, errors, traits, modules, tooling |
+| [Databases](technologies/databases/) | `DB-*` | Cross-database schema, query, transaction, and persistence conventions |
+| [PostgreSQL](technologies/databases/postgres/) | `POSTGRES-*` | PostgreSQL-specific SQL, schema, indexes, types, extensions, and behavior |
+| [Docker](technologies/docker/) | `DOCKER-*` | Docker-wide image and build conventions |
+| [Dockerfile](technologies/docker/dockerfile/) | `DOCKERFILE-*` | Dockerfile authoring and image construction |
 
-Concrete coding rules will be added to these families as they are defined rather than pre-populating them with generic "best practices".
+Concrete coding rules will be added as they are actually defined rather than pre-populating generic "best practices".
 
 ## How the conventions fit together
 
@@ -177,7 +176,7 @@ explicit baseline
       ↓
 isolated task worktree
       ↓
-read repository + technology conventions
+derive applicable convention stack from repository + technology paths
       ↓
 read .env.example as the local configuration contract
       ↓
@@ -198,17 +197,15 @@ final harness-owned completion gates
 explicit publish step
 ```
 
-The test hierarchy is one concrete application of the same model. A changed source file starts with its smallest relevant tests and climbs through broader ancestor scopes. A production-code edit made while repairing a broader failure invalidates affected lower results and causes validation to restart downward.
+The same structural principle appears in the test hierarchy: a changed source file starts with its smallest relevant tests and climbs through broader ancestor scopes.
 
 ## Adding new ideas
 
-Before adding a new document, decide whether the idea is:
+Before adding a document, decide whether the idea is:
 
 - a **principle**: a durable design goal that explains multiple rules,
 - a **general convention**: a concrete cross-stack rule for repositories or workflows,
-- a **technology convention**: a coding rule that exists because of a particular language/library/framework, or
-- a **profile**: a composition of already-defined convention families.
+- a **technology convention**: a rule tied to a language, framework, database, or build technology, or
+- a **profile**: a composition of independent convention branches.
 
-Avoid duplication. A principle should justify several concrete choices; a technology-specific rule should live only at the broadest technology scope where it is true; profiles should reference rules rather than copy them.
-
-Categories should emerge from actual rules rather than being populated with speculative boilerplate.
+Avoid duplication. Nest a technology under another only when inheritance is intentional in this engineering stack; otherwise keep it as an independent branch and compose it through a profile.
