@@ -1,5 +1,8 @@
 # Rust conventions
 
-Rules in this directory use the `RUST-*` prefix and apply to Rust-specific type modeling, ownership, borrowing, error handling, module structure, traits, APIs, and tooling.
+## Accepted conventions
 
-Keep general repository, testing, Git, and agent workflow rules in the general convention catalog. Rust rules should capture choices that arise specifically from the Rust language and ecosystem.
+- [RUST-001 — Encode invariants in types](RUST-001-encode-invariants-in-types.md)
+- [RUST-002 — Avoid unwrap/expect in normal production flow](RUST-002-no-unwrap-expect-in-production-flow.md)
+- [RUST-003 — Do not clone merely to satisfy the borrow checker](RUST-003-no-clone-to-silence-borrow-checker.md)
+- [RUST-004 — fmt and Clippy are completion gates](RUST-004-fmt-clippy-are-gates.md)
