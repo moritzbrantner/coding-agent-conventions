@@ -106,6 +106,7 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | PRINCIPLE-002 | [Structure should encode agent-relevant information](principles/PRINCIPLE-002-structure-encodes-agent-information.md) | Accepted |
 | PRINCIPLE-003 | [Validate progressively](principles/PRINCIPLE-003-progressive-validation.md) | Accepted |
 | PRINCIPLE-004 | [Make completion observable](principles/PRINCIPLE-004-observable-completion.md) | Accepted |
+| PRINCIPLE-005 | [Document decisions, not defaults](principles/PRINCIPLE-005-document-decisions-not-defaults.md) | Accepted |
 
 ## Convention catalog
 
@@ -165,7 +166,7 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | [Docker](technologies/docker/) | `DOCKER-*` | Docker-wide image and build conventions |
 | [Dockerfile](technologies/docker/dockerfile/) | `DOCKERFILE-*` | Dockerfile authoring and image construction |
 
-Concrete coding rules will be added as they are actually defined rather than pre-populating generic "best practices".
+Concrete coding rules will be added as they are actually defined rather than pre-populating generic "best practices". Following `PRINCIPLE-005`, mechanically visible or enforceable defaults should remain in tooling/configuration rather than being duplicated here.
 
 ## How the conventions fit together
 
@@ -207,5 +208,7 @@ Before adding a document, decide whether the idea is:
 - a **general convention**: a concrete cross-stack rule for repositories or workflows,
 - a **technology convention**: a rule tied to a language, framework, database, or build technology, or
 - a **profile**: a composition of independent convention branches.
+
+Before adding it, also apply `PRINCIPLE-005`: if the rule is already obvious from configuration or fully enforced by deterministic tooling, keep it there instead of duplicating it as prose.
 
 Avoid duplication. Nest a technology under another only when inheritance is intentional in this engineering stack; otherwise keep it as an independent branch and compose it through a profile.
