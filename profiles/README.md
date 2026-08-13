@@ -1,17 +1,22 @@
 # Convention profiles
 
-Profiles compose existing convention families for common project stacks. They do not copy rule text.
+Profiles compose independent convention branches without copying their rule text.
 
-A profile should answer which convention sets apply to a project, for example:
+True inheritance stays encoded in the technology tree. Profiles are for combinations that span independent branches or define a reusable project stack.
+
+## Template profiles
 
 ```text
-Next.js + TypeScript
-  -> general conventions
-  -> TypeScript conventions
-  -> React conventions
-  -> Next.js conventions
+template-base
+   |
+   +-- next-template
+   +-- expo-template
+   +-- tauri-template
 ```
 
-Repository-specific rules may then refine or override the profile according to `REPO-002`.
+- [template-base](template-base.md) — common conventions for template repositories.
+- [next-template](next-template.md) — TypeScript, React, Next.js, Bun, and Tailwind CSS where practical.
+- [expo-template](expo-template.md) — TypeScript, React, Expo, and Bun.
+- [tauri-template](tauri-template.md) — TypeScript/React plus Rust/Tauri, Bun, and Tailwind CSS for the web UI where practical.
 
-Create concrete profiles only when the referenced technology convention sets contain real rules. Until then, technology directories act as the canonical place to collect those rules.
+Repository-specific rules may refine a profile according to `REPO-002`.
