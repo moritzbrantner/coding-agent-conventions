@@ -1,7 +1,7 @@
 # Zustand conventions
 
-Zustand is treated as a React-specific state-management specialization in this convention stack.
+Zustand inherits React and TypeScript conventions.
 
-Rules in this directory use the `ZUSTAND-*` prefix and apply to store boundaries, selectors, actions, state shape, derived state, subscriptions, and interaction between local React state and shared Zustand state.
+## Accepted conventions
 
-Rules here inherit TypeScript and React conventions through the directory hierarchy.
+- [ZUSTAND-001 — Use Zustand for shared client values](ZUSTAND-001.md)
