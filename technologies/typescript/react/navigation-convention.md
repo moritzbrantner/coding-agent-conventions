@@ -1,5 +1,5 @@
-# REACT-003 — Persist important navigational state in the browser address
+# REACT-003 — Put important navigational state in URL query parameters
 
 **Status:** Accepted
 
-Important view choices that should survive reload, sharing, bookmarks, or backward and forward navigation belong in the browser address. Examples include filters, search, sorting, pagination, and meaningful selections. Ephemeral UI details and sensitive values do not belong there.
+Important view state that should survive reload, sharing, bookmarking, or backward and forward navigation should be represented with URL query parameters. Typical examples are filters, search, sorting, pagination, and meaningful selections. Ephemeral UI details and sensitive values do not belong in the URL.
