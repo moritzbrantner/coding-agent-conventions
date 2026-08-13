@@ -13,6 +13,19 @@ Before adding a document, decide whether it is a **principle**, **general conven
 
 Do not create multiple documents that merely repeat the same statement at different levels.
 
+## Signal-to-noise gate
+
+Before documenting any convention, apply `PRINCIPLE-005 — Document decisions, not defaults`.
+
+A convention should normally be added only when:
+
+1. a competent engineer could reasonably choose differently,
+2. the repository does not already make the decision mechanically obvious,
+3. deterministic tooling does not already fully express and enforce it, and
+4. knowing the decision materially changes implementation, architecture, validation, or tool choice.
+
+Prefer formatter, compiler, linter, test, or executable configuration over prose when those mechanisms completely express the rule.
+
 ## When adding a principle
 
 1. Start from `templates/principle.md`.
@@ -44,7 +57,7 @@ Do not create multiple documents that merely repeat the same statement at differ
 7. Do not repeat a parent rule in child scopes merely because it remains applicable.
 8. State preferred and anti-pattern examples when they clarify the rule.
 9. Identify a formatter, linter, compiler option, static analysis check, test, or repository script that can enforce the rule when one exists.
-10. If the rule cannot be enforced reliably, say so explicitly instead of pretending it is deterministic.
+10. If deterministic tooling fully expresses the decision, prefer that tooling over a prose convention unless the underlying engineering choice itself still needs explanation.
 11. Respect `REPO-002`: deeper applicable scopes override only conflicting portions of inherited rules.
 
 ## When adding a profile
@@ -58,6 +71,7 @@ Do not create multiple documents that merely repeat the same statement at differ
 ## Editing principles
 
 - Prefer precise rules over general advice.
+- Document decisions, not defaults or mechanically visible configuration.
 - Prefer deterministic checks and mappings over semantic guesswork.
 - Use repository structure to encode real scope, ownership, dependency, and convention-inheritance relationships when practical.
 - Separate repository structure from runtime semantics.
