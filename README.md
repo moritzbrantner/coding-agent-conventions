@@ -45,6 +45,7 @@ technologies/
   typescript/                 # TS-*
     react/                    # REACT-*
       nextjs/                 # NEXT-*
+      moritzbrantner-ui/       # MORITZUI-*
 
   rust/                       # RUST-*
 
@@ -129,6 +130,13 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | AGENT-007 | [Run cheap validation before expensive validation](conventions/agents/AGENT-007-cheap-validation-first.md) | Accepted |
 | AGENT-008 | [Revalidate downward after broader-scope fixes](conventions/agents/AGENT-008-revalidate-downward-after-broad-failure.md) | Accepted |
 
+### Interface design
+
+| ID | Convention | Status |
+|---|---|---|
+| UI-001 | [Use surfaces to communicate structure, not to decorate every section](conventions/interface-design/UI-001-surfaces-communicate-structure.md) | Accepted |
+| UI-002 | [Show information where it changes a decision](conventions/interface-design/UI-002-information-supports-decisions.md) | Accepted |
+
 ### Testing
 
 | ID | Convention | Status |
@@ -191,9 +199,10 @@ Canonical account, profile, space, membership, role, and session terms are defin
 |---|---|---|
 | [TypeScript](technologies/typescript/) | `TS-*` | Types, modules, compiler behavior, TypeScript API design |
 | [React](technologies/typescript/react/) | `REACT-*` | Components, rendering, state, hooks, effects, composition |
+| [@moritzbrantner/ui](technologies/typescript/react/moritzbrantner-ui/) | `MORITZUI-*` | Shared component tiers, page-pattern selection, and theme contracts |
 | [Next.js](technologies/typescript/react/nextjs/) | `NEXT-*` | Routing, server/client boundaries, data access, caching, framework entry points |
 | [Rust](technologies/rust/) | `RUST-*` | Types, ownership, borrowing, errors, traits, modules, tooling |
-| [Tooling](technologies/tooling/) | `BUN-*`, `STORYBOOK-*`, `PLAYWRIGHT-*`, `LIGHTHOUSE-*`, `VITEST-*` | Cross-stack toolchain, UI workbench, browser, audit, and test-runner conventions |
+| [Tooling](technologies/tooling/) | `BUN-*`, `TAILWIND-*`, `STORYBOOK-*`, `PLAYWRIGHT-*`, `LIGHTHOUSE-*`, `VITEST-*` | Cross-stack toolchain, UI workbench, browser, audit, and test-runner conventions |
 | [Databases](technologies/databases/) | `DB-*` | Cross-database schema, query, transaction, and persistence conventions |
 | [PostgreSQL](technologies/databases/postgres/) | `POSTGRES-*` | PostgreSQL-specific SQL, schema, indexes, types, extensions, and behavior |
 | [Docker](technologies/docker/) | `DOCKER-*` | Docker-wide image and build conventions |
