@@ -24,6 +24,7 @@ Tooling decisions:
 
 Testing and quality tooling included by this template:
 
+- `technologies/typescript/react/testing-library/`
 - `technologies/tooling/vitest/`
 - `technologies/tooling/storybook/`
 - `technologies/tooling/playwright/`
@@ -38,7 +39,6 @@ Apply these only if the template actually includes the library:
 - `technologies/typescript/react/tanstack-query/`
 - `technologies/typescript/react/react-hook-form/`
 - `technologies/typescript/react/zustand/`
-- `technologies/typescript/react/testing-library/`
 
 Do not add a dependency merely because a convention branch exists.
 
