@@ -10,3 +10,7 @@ Tooling that is orthogonal to a specific language/framework inheritance branch l
 ## Child scopes
 
 - [`vite/`](vite/)
+- [`storybook/`](storybook/)
+- [`playwright/`](playwright/)
+- [`lighthouse/`](lighthouse/)
+- [`vitest/`](vitest/)

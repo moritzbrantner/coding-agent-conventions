@@ -22,6 +22,15 @@ Tooling decisions:
 - `BUN-001`
 - `TAILWIND-001`
 
+Testing and quality tooling included by this template:
+
+- `technologies/tooling/vitest/`
+- `technologies/tooling/storybook/`
+- `technologies/tooling/playwright/`
+- `technologies/tooling/lighthouse/`
+
+The Lighthouse branch also applies to the template's compatible Unlighthouse runner.
+
 ## Optional branches
 
 Apply these only if the template actually includes the library:

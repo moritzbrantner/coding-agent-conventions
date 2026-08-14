@@ -48,6 +48,12 @@ technologies/
 
   rust/                       # RUST-*
 
+  tooling/
+    storybook/                # STORYBOOK-*
+    playwright/               # PLAYWRIGHT-*
+    lighthouse/               # LIGHTHOUSE-*
+    vitest/                   # VITEST-*
+
   databases/                  # DB-*
     postgres/                 # POSTGRES-*
 
@@ -131,6 +137,14 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | TEST-002 | [Validate tests bottom-up](conventions/testing/TEST-002-bottom-up-validation.md) | Accepted |
 | TEST-003 | [Keep test scope separate from test kind](conventions/testing/TEST-003-scope-vs-kind.md) | Accepted |
 | TEST-004 | [Test authorization as a decision matrix](conventions/testing/TEST-004-authorization-decision-matrices.md) | Proposed |
+| TEST-005 | [Behavior changes require executable evidence](conventions/testing/TEST-005-behavior-changes-require-executable-evidence.md) | Accepted |
+
+### Benchmarking
+
+| ID | Convention | Status |
+|---|---|---|
+| BENCH-001 | [Benchmark named representative scenarios](conventions/benchmarking/BENCH-001-representative-scenarios.md) | Accepted |
+| BENCH-002 | [Compare candidates against versioned baselines](conventions/benchmarking/BENCH-002-versioned-baselines.md) | Accepted |
 
 ### Git
 
@@ -179,6 +193,7 @@ Canonical account, profile, space, membership, role, and session terms are defin
 | [React](technologies/typescript/react/) | `REACT-*` | Components, rendering, state, hooks, effects, composition |
 | [Next.js](technologies/typescript/react/nextjs/) | `NEXT-*` | Routing, server/client boundaries, data access, caching, framework entry points |
 | [Rust](technologies/rust/) | `RUST-*` | Types, ownership, borrowing, errors, traits, modules, tooling |
+| [Tooling](technologies/tooling/) | `BUN-*`, `STORYBOOK-*`, `PLAYWRIGHT-*`, `LIGHTHOUSE-*`, `VITEST-*` | Cross-stack toolchain, UI workbench, browser, audit, and test-runner conventions |
 | [Databases](technologies/databases/) | `DB-*` | Cross-database schema, query, transaction, and persistence conventions |
 | [PostgreSQL](technologies/databases/postgres/) | `POSTGRES-*` | PostgreSQL-specific SQL, schema, indexes, types, extensions, and behavior |
 | [Docker](technologies/docker/) | `DOCKER-*` | Docker-wide image and build conventions |

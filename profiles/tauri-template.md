@@ -28,6 +28,13 @@ Tooling decisions:
 - `BUN-001`
 - `TAILWIND-001` for the web UI where practical
 
+Testing and quality tooling included by this template:
+
+- `technologies/typescript/react/testing-library/`
+- `technologies/tooling/vitest/`
+- `technologies/tooling/storybook/`
+- `technologies/tooling/playwright/`
+
 React and Rust are independent branches composed by this profile. Neither is nested under the other.
 
 ## Tauri-specific conventions
