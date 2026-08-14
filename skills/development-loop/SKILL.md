@@ -1,6 +1,6 @@
 ---
 name: development-loop
-description: Use for implementation, bug-fix, and refactoring tasks that modify code and require progressive validation. Apply agent judgment to the change itself and delegate deterministic repository operations to coding-tooling when available.
+description: Use for implementation, bug-fix, refactoring, or a delegated capability-slice run that modifies code and requires progressive validation. Apply agent judgment to the assigned change, preserve bounded ownership, and delegate deterministic repository operations to coding-tooling when available.
 ---
 
 # Development Loop
@@ -19,12 +19,15 @@ It does not own outer orchestration. Creating or deleting worktrees, spawning ag
 
 Use `coding-tooling` for deterministic inspection, affected-scope calculation, validation, and environment diagnostics whenever the required capability exists. Do not replace an available deterministic operation with repeated LLM inference.
 
+When a delegated invocation includes a capability task packet, this skill represents exactly one implementation worker. Treat its baseline, primary convention, target surfaces, behavioral scope, write scope, protected behavior, exclusions, dependencies, acceptance evidence, and expected capability state as immutable inputs. Return undeclared prerequisites, overlap, or baseline drift to the outer orchestrator instead of widening the slice or creating another writer.
+
 ## Inputs
 
 - The implementation, bug-fix, or refactoring task.
 - Repository-local instructions and conventions.
 - The current repository/worktree state.
 - An explicit baseline when the surrounding harness provides one.
+- A bounded capability task packet when the run is delegated.
 
 ## Workflow
 
@@ -33,6 +36,8 @@ Use `coding-tooling` for deterministic inspection, affected-scope calculation, v
 Determine the required behavior, relevant constraints, and observable completion criteria. Separate requirements from implementation ideas.
 
 Do not modify code until the intended behavior is sufficiently clear to choose a coherent first change.
+
+For a delegated capability slice, verify before editing that the packet names one slice ID, one primary convention, its stage and target surfaces, owned behavioral and write scopes, protected behavior, non-goals, dependencies, acceptance checks, handoff, and expected capability state. Stop and report the missing field rather than filling a contract gap with inference.
 
 ### 2. Inspect mechanically first
 
@@ -56,11 +61,21 @@ Identify:
 
 Do not begin with repository-wide validation unless the repository is too small for narrower scopes or no narrower deterministic check exists.
 
+For a delegated slice, also compare the mechanically discovered affected scope with the packet:
+
+- write only inside the exclusive write scope,
+- preserve the named protected behavior,
+- do not adopt excluded capabilities,
+- stop on an undeclared prerequisite or overlap,
+- distinguish completion of this slice from satisfaction of the broader convention.
+
 ### 4. Implement the smallest coherent change
 
 Make the smallest change that can satisfy the requirement without knowingly leaving the local design inconsistent.
 
 Avoid unrelated cleanup. If a prerequisite refactor is necessary, keep it scoped to what enables the requested change.
+
+A delegated worker must not silently absorb a prerequisite refactor that falls outside its packet. Return it for replanning as an earlier slice.
 
 ### 5. Determine affected validation
 
@@ -161,7 +176,17 @@ The final report should state:
 - any validation that could not be run and why,
 - remaining risks or follow-up work that is genuinely outside the task.
 
-Do not claim completion when required validation is failing or was silently skipped.
+For a delegated capability slice, also report:
+
+- the baseline, slice ID, primary convention, stage, and expected capability-state transition,
+- every changed path,
+- scope deviations or newly discovered prerequisites,
+- the candidate ref or commit,
+- each acceptance command and result,
+- evidence artifact paths,
+- unresolved dependencies for the outer orchestrator.
+
+Do not claim the broader convention is satisfied when only a foundation or adoption slice completed. Do not claim completion when required validation is failing or was silently skipped.
 
 ## Failure loop
 
@@ -191,6 +216,7 @@ done
 - `AGENT-006` — Prefer mechanical discovery before semantic search.
 - `AGENT-007` — Run cheap validation before expensive validation.
 - `AGENT-008` — Revalidate downward after broader-scope fixes.
+- `AGENT-009` — Delegate one bounded capability per implementation run.
 - `TEST-002` — Validate tests bottom-up.
 - `TEST-005` — Behavior changes require executable evidence.
 - `BENCH-001` — Benchmark named representative scenarios.

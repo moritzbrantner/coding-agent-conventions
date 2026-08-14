@@ -129,6 +129,7 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | AGENT-006 | [Prefer mechanical discovery before semantic search](conventions/agents/AGENT-006-mechanical-discovery-first.md) | Accepted |
 | AGENT-007 | [Run cheap validation before expensive validation](conventions/agents/AGENT-007-cheap-validation-first.md) | Accepted |
 | AGENT-008 | [Revalidate downward after broader-scope fixes](conventions/agents/AGENT-008-revalidate-downward-after-broad-failure.md) | Accepted |
+| AGENT-009 | [Delegate one bounded capability per implementation run](conventions/agents/AGENT-009-delegate-one-bounded-capability-per-run.md) | Accepted |
 
 ### Interface design
 
