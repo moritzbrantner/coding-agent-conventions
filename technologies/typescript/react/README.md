@@ -12,10 +12,12 @@ React is treated as a specialization of TypeScript in this repository and inheri
 | REACT-004 | [Use effects for external synchronization](REACT-004-effects-for-external-synchronization.md) |
 | REACT-005 | [Prefer composition over highly configurable mega-components](REACT-005-prefer-composition-over-mega-components.md) |
 | REACT-006 | [Keep component boundaries structurally clear](component-boundaries.md) |
+| REACT-007 | [Reuse shared UI before creating local primitives](REACT-007-reuse-shared-ui-before-local-primitives.md) |
 
 ## Child scopes
 
 - [`nextjs/`](nextjs/)
+- [`moritzbrantner-ui/`](moritzbrantner-ui/)
 - [`tanstack-query/`](tanstack-query/)
 - [`react-hook-form/`](react-hook-form/)
 - [`zustand/`](zustand/)

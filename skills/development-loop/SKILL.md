@@ -120,6 +120,20 @@ final repository gate
 
 Skip a level only when it does not exist or is not relevant to the changed dependency scope.
 
+For user-interface changes, continue through the applicable declared capabilities:
+
+```text
+focused component behavior
+    ↓
+Storybook static build + accessibility
+    ↓
+Playwright browser workflow
+    ↓
+Lighthouse-compatible production audit
+```
+
+Run focused benchmarks after functional correctness is green. Benchmark comparison requires an explicit baseline, equivalent runners, machine-readable results, and committed relative plus absolute regression thresholds. Expensive benchmarks remain opt-in unless repository policy promotes them.
+
 ### 9. Revalidate downward after broader-scope fixes
 
 If a broader validation step exposes a defect and the fix changes code already covered by a narrower scope, return to the smallest affected validation and climb again.
@@ -178,4 +192,10 @@ done
 - `AGENT-007` — Run cheap validation before expensive validation.
 - `AGENT-008` — Revalidate downward after broader-scope fixes.
 - `TEST-002` — Validate tests bottom-up.
+- `TEST-005` — Behavior changes require executable evidence.
+- `BENCH-001` — Benchmark named representative scenarios.
+- `BENCH-002` — Compare candidates against versioned baselines.
+- `STORYBOOK-002` — Build and audit Storybook in automation.
+- `PLAYWRIGHT-002` — Own the environment and preserve failure evidence.
+- `LIGHTHOUSE-002` — Stabilize baselines before blocking.
 - `AGENT-004` — The harness defines completion.

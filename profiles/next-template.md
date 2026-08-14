@@ -15,12 +15,24 @@
 
 - `technologies/typescript/`
 - `technologies/typescript/react/`
+- `technologies/typescript/react/moritzbrantner-ui/`
 - `technologies/typescript/react/nextjs/`
 
 Tooling decisions:
 
 - `BUN-001`
 - `TAILWIND-001`
+- `TAILWIND-002`
+
+Testing and quality tooling included by this template:
+
+- `technologies/typescript/react/testing-library/`
+- `technologies/tooling/vitest/`
+- `technologies/tooling/storybook/`
+- `technologies/tooling/playwright/`
+- `technologies/tooling/lighthouse/`
+
+The Lighthouse branch also applies to the template's compatible Unlighthouse runner.
 
 ## Optional branches
 
@@ -29,7 +41,6 @@ Apply these only if the template actually includes the library:
 - `technologies/typescript/react/tanstack-query/`
 - `technologies/typescript/react/react-hook-form/`
 - `technologies/typescript/react/zustand/`
-- `technologies/typescript/react/testing-library/`
 
 Do not add a dependency merely because a convention branch exists.
 

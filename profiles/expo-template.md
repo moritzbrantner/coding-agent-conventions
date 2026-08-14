@@ -15,9 +15,10 @@
 - `technologies/typescript/`
 - `technologies/typescript/react/`
 
-Tooling decision:
+Tooling decisions:
 
 - `BUN-001`
+- `technologies/tooling/playwright/` for the declared web E2E workflow
 
 ## Expo-specific conventions
 

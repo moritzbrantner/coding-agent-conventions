@@ -45,8 +45,15 @@ technologies/
   typescript/                 # TS-*
     react/                    # REACT-*
       nextjs/                 # NEXT-*
+      moritzbrantner-ui/       # MORITZUI-*
 
   rust/                       # RUST-*
+
+  tooling/
+    storybook/                # STORYBOOK-*
+    playwright/               # PLAYWRIGHT-*
+    lighthouse/               # LIGHTHOUSE-*
+    vitest/                   # VITEST-*
 
   databases/                  # DB-*
     postgres/                 # POSTGRES-*
@@ -123,6 +130,18 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | AGENT-007 | [Run cheap validation before expensive validation](conventions/agents/AGENT-007-cheap-validation-first.md) | Accepted |
 | AGENT-008 | [Revalidate downward after broader-scope fixes](conventions/agents/AGENT-008-revalidate-downward-after-broad-failure.md) | Accepted |
 
+### Interface design
+
+| ID | Convention | Status |
+|---|---|---|
+| UI-001 | [Use surfaces to communicate structure, not to decorate every section](conventions/interface-design/UI-001-surfaces-communicate-structure.md) | Accepted |
+| UI-002 | [Show information where it changes a decision](conventions/interface-design/UI-002-information-supports-decisions.md) | Accepted |
+| UI-003 | [Treat theme preference as a product contract](conventions/interface-design/UI-003-theme-preference-is-a-product-contract.md) | Accepted |
+| UI-004 | [Treat localization as an application contract](conventions/interface-design/UI-004-localization-is-an-application-contract.md) | Accepted |
+| UI-005 | [Make primary workflows keyboard-first and commands discoverable](conventions/interface-design/UI-005-primary-workflows-are-keyboard-first.md) | Accepted |
+| UI-006 | [Make interactive data views accessible and shareable](conventions/interface-design/UI-006-data-views-are-accessible-and-shareable.md) | Accepted |
+| UI-007 | [Make primary workflows work on touch and mobile](conventions/interface-design/UI-007-primary-workflows-support-touch-and-mobile.md) | Accepted |
+
 ### Testing
 
 | ID | Convention | Status |
@@ -131,6 +150,14 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | TEST-002 | [Validate tests bottom-up](conventions/testing/TEST-002-bottom-up-validation.md) | Accepted |
 | TEST-003 | [Keep test scope separate from test kind](conventions/testing/TEST-003-scope-vs-kind.md) | Accepted |
 | TEST-004 | [Test authorization as a decision matrix](conventions/testing/TEST-004-authorization-decision-matrices.md) | Proposed |
+| TEST-005 | [Behavior changes require executable evidence](conventions/testing/TEST-005-behavior-changes-require-executable-evidence.md) | Accepted |
+
+### Benchmarking
+
+| ID | Convention | Status |
+|---|---|---|
+| BENCH-001 | [Benchmark named representative scenarios](conventions/benchmarking/BENCH-001-representative-scenarios.md) | Accepted |
+| BENCH-002 | [Compare candidates against versioned baselines](conventions/benchmarking/BENCH-002-versioned-baselines.md) | Accepted |
 
 ### Git
 
@@ -177,8 +204,10 @@ Canonical account, profile, space, membership, role, and session terms are defin
 |---|---|---|
 | [TypeScript](technologies/typescript/) | `TS-*` | Types, modules, compiler behavior, TypeScript API design |
 | [React](technologies/typescript/react/) | `REACT-*` | Components, rendering, state, hooks, effects, composition |
+| [@moritzbrantner/ui](technologies/typescript/react/moritzbrantner-ui/) | `MORITZUI-*` | Shared component tiers, page-pattern selection, and theme contracts |
 | [Next.js](technologies/typescript/react/nextjs/) | `NEXT-*` | Routing, server/client boundaries, data access, caching, framework entry points |
 | [Rust](technologies/rust/) | `RUST-*` | Types, ownership, borrowing, errors, traits, modules, tooling |
+| [Tooling](technologies/tooling/) | `BUN-*`, `TAILWIND-*`, `STORYBOOK-*`, `PLAYWRIGHT-*`, `LIGHTHOUSE-*`, `VITEST-*` | Cross-stack toolchain, UI workbench, browser, audit, and test-runner conventions |
 | [Databases](technologies/databases/) | `DB-*` | Cross-database schema, query, transaction, and persistence conventions |
 | [PostgreSQL](technologies/databases/postgres/) | `POSTGRES-*` | PostgreSQL-specific SQL, schema, indexes, types, extensions, and behavior |
 | [Docker](technologies/docker/) | `DOCKER-*` | Docker-wide image and build conventions |

@@ -18,6 +18,7 @@ Frontend:
 
 - `technologies/typescript/`
 - `technologies/typescript/react/`
+- `technologies/typescript/react/moritzbrantner-ui/`
 
 Native/backend:
 
@@ -27,6 +28,14 @@ Tooling decisions:
 
 - `BUN-001`
 - `TAILWIND-001` for the web UI where practical
+- `TAILWIND-002` for the web UI where practical
+
+Testing and quality tooling included by this template:
+
+- `technologies/typescript/react/testing-library/`
+- `technologies/tooling/vitest/`
+- `technologies/tooling/storybook/`
+- `technologies/tooling/playwright/`
 
 React and Rust are independent branches composed by this profile. Neither is nested under the other.
 
