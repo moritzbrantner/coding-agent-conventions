@@ -136,6 +136,11 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 |---|---|---|
 | UI-001 | [Use surfaces to communicate structure, not to decorate every section](conventions/interface-design/UI-001-surfaces-communicate-structure.md) | Accepted |
 | UI-002 | [Show information where it changes a decision](conventions/interface-design/UI-002-information-supports-decisions.md) | Accepted |
+| UI-003 | [Treat theme preference as a product contract](conventions/interface-design/UI-003-theme-preference-is-a-product-contract.md) | Accepted |
+| UI-004 | [Treat localization as an application contract](conventions/interface-design/UI-004-localization-is-an-application-contract.md) | Accepted |
+| UI-005 | [Make primary workflows keyboard-first and commands discoverable](conventions/interface-design/UI-005-primary-workflows-are-keyboard-first.md) | Accepted |
+| UI-006 | [Make interactive data views accessible and shareable](conventions/interface-design/UI-006-data-views-are-accessible-and-shareable.md) | Accepted |
+| UI-007 | [Make primary workflows work on touch and mobile](conventions/interface-design/UI-007-primary-workflows-support-touch-and-mobile.md) | Accepted |
 
 ### Testing
 
