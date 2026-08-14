@@ -6,8 +6,8 @@
 
 ## Principles
 
-- \`PRINCIPLE-001\` — Prefer determinism over inference.
-- \`PRINCIPLE-004\` — Make completion observable.
+- `PRINCIPLE-001` — Prefer determinism over inference.
+- `PRINCIPLE-004` — Make completion observable.
 
 ## Rule
 
@@ -19,13 +19,13 @@ Reusing an unknown local server or mutable shared data makes results order-depen
 
 ## Agent behavior
 
-1. Use a declared \`webServer\`, global setup/teardown, or explicit service scripts.
+1. Use a declared `webServer`, global setup/teardown, or explicit service scripts.
 2. Bind test-only configuration and ports explicitly.
 3. Disable reuse of existing servers in CI.
 4. Use isolated, seeded test identities and data.
 5. Keep CI concurrency explicit when the backend or fixtures are not parallel-safe.
 6. Capture traces on first retry or failure and screenshots on failure.
-7. Upload \`test-results\` and \`playwright-report\` when CI fails or is cancelled after execution.
+7. Upload `test-results` and `playwright-report` when CI fails or is cancelled after execution.
 
 ## Preferred pattern
 
@@ -37,7 +37,7 @@ Do not depend on a developer's running server, production accounts, arbitrary sl
 
 ## Automatable check
 
-\`coding-tooling\` exposes the stable \`test:e2e\` capability only from a repository-declared script and reports artifact paths from its capability catalog.
+`coding-tooling` exposes the stable `test:e2e` capability only from a repository-declared script and reports artifact paths from its capability catalog.
 
 ## Exceptions and trade-offs
 

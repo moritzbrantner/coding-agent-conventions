@@ -6,8 +6,8 @@
 
 ## Principles
 
-- \`PRINCIPLE-001\` — Prefer determinism over inference.
-- \`PRINCIPLE-004\` — Make completion observable.
+- `PRINCIPLE-001` — Prefer determinism over inference.
+- `PRINCIPLE-004` — Make completion observable.
 
 ## Rule
 
@@ -28,7 +28,7 @@ Auditing a development server or a single convenient page produces misleading re
 
 ## Preferred pattern
 
-Expose \`audit:lighthouse\`. A repository using Unlighthouse may map \`test:unlighthouse\` or \`bench:unlighthouse\` to the same semantic capability.
+Expose `audit:lighthouse`. A repository using Unlighthouse may map `test:unlighthouse` or `bench:unlighthouse` to the same semantic capability.
 
 ## Anti-pattern
 
@@ -36,7 +36,7 @@ Do not audit a hot development server, discover routes nondeterministically duri
 
 ## Automatable check
 
-\`coding-tooling\` validates the committed performance-budget document and maps declared Lighthouse or Unlighthouse scripts to \`audit:lighthouse\`.
+`coding-tooling` validates the committed performance-budget document and maps declared Lighthouse or Unlighthouse scripts to `audit:lighthouse`.
 
 ## Exceptions and trade-offs
 

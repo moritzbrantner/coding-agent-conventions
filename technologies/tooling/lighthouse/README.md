@@ -2,7 +2,7 @@
 
 Lighthouse and compatible multi-route runners such as Unlighthouse are the web-performance audit specialization in this convention stack.
 
-Rules in this directory use the \`LIGHTHOUSE-*\` prefix. They govern production-shaped audits, route budgets, baseline stabilization, and regression gates.
+Rules in this directory use the `LIGHTHOUSE-*` prefix. They govern production-shaped audits, route budgets, baseline stabilization, and regression gates.
 
 ## Accepted conventions
 

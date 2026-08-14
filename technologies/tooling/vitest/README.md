@@ -2,7 +2,7 @@
 
 Vitest is the focused TypeScript/JavaScript test and benchmark runner in this convention stack.
 
-Rules in this directory use the \`VITEST-*\` prefix and inherit the general testing and benchmarking conventions.
+Rules in this directory use the `VITEST-*` prefix and inherit the general testing and benchmarking conventions.
 
 ## Accepted conventions
 

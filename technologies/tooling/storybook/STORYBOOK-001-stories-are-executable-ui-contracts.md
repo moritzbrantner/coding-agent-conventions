@@ -6,8 +6,8 @@
 
 ## Principles
 
-- \`PRINCIPLE-002\` — Structure should encode agent-relevant information.
-- \`PRINCIPLE-004\` — Make completion observable.
+- `PRINCIPLE-002` — Structure should encode agent-relevant information.
+- `PRINCIPLE-004` — Make completion observable.
 
 ## Rule
 
@@ -21,7 +21,7 @@ A story provides a mechanically discoverable rendering contract for humans, brow
 
 ## Agent behavior
 
-1. When changing a reusable or stateful component, discover colocated \`*.stories.tsx\` files.
+1. When changing a reusable or stateful component, discover colocated `*.stories.tsx` files.
 2. Add or update stories for changed user-visible states.
 3. Prefer named fixtures for loading, empty, error, permission, and representative populated states.
 4. Mock platform and network boundaries at the story boundary.
@@ -29,7 +29,7 @@ A story provides a mechanically discoverable rendering contract for humans, brow
 
 ## Preferred pattern
 
-Keep \`Component.tsx\`, \`Component.stories.tsx\`, and focused component tests at the component's owning scope. Use deterministic data and accessible story names.
+Keep `Component.tsx`, `Component.stories.tsx`, and focused component tests at the component's owning scope. Use deterministic data and accessible story names.
 
 ## Anti-pattern
 
@@ -37,7 +37,7 @@ Do not create a showcase-only gallery, fetch production data from stories, or sn
 
 ## Automatable check
 
-The repository should expose \`storybook:build\` or an equivalent declared script. \`coding-tooling\` maps it to the stable \`storybook:build\` capability.
+The repository should expose `storybook:build` or an equivalent declared script. `coding-tooling` maps it to the stable `storybook:build` capability.
 
 ## Exceptions and trade-offs
 

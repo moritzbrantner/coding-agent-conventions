@@ -6,8 +6,8 @@
 
 ## Principles
 
-- \`PRINCIPLE-003\` — Validate progressively.
-- \`PRINCIPLE-004\` — Make completion observable.
+- `PRINCIPLE-003` — Validate progressively.
+- `PRINCIPLE-004` — Make completion observable.
 
 ## Rule
 
@@ -20,14 +20,14 @@ Browser tests are expensive and broad. They provide the most value when they ver
 ## Agent behavior
 
 1. Cover the happy path and materially different permission, failure, or recovery paths.
-2. Prefer \`getByRole\`, \`getByLabel\`, and visible text over CSS or implementation selectors.
+2. Prefer `getByRole`, `getByLabel`, and visible text over CSS or implementation selectors.
 3. Assert the resulting user-visible state, persisted effect, navigation, or API boundary.
 4. Keep detailed combinatorics in unit or integration tests.
-5. Run affected focused tests before \`test:e2e\`.
+5. Run affected focused tests before `test:e2e`.
 
 ## Preferred pattern
 
-Name tests by the behavior they prove. Keep browser specs at the lowest deterministic scope supported by the framework, using suffixes such as \`*.e2e.spec.ts\` or \`*.playwright.test.ts\`.
+Name tests by the behavior they prove. Keep browser specs at the lowest deterministic scope supported by the framework, using suffixes such as `*.e2e.spec.ts` or `*.playwright.test.ts`.
 
 ## Anti-pattern
 
@@ -35,7 +35,7 @@ Do not use Playwright as a replacement for component or domain tests, assert int
 
 ## Automatable check
 
-Expose \`test:e2e\` as the canonical non-interactive script. An optional \`playwright\` script may open UI mode for humans but is not the CI gate.
+Expose `test:e2e` as the canonical non-interactive script. An optional `playwright` script may open UI mode for humans but is not the CI gate.
 
 ## Exceptions and trade-offs
 

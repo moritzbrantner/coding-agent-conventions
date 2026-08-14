@@ -6,14 +6,14 @@
 
 ## Principles
 
-- \`PRINCIPLE-001\` — Prefer determinism over inference.
-- \`TAILWIND-002\` — Use semantic tokens and named variants.
+- `PRINCIPLE-001` — Prefer determinism over inference.
+- `TAILWIND-002` — Use semantic tokens and named variants.
 
 ## Rule
 
-Import exactly one concrete \`@moritzbrantner/ui\` theme stylesheet for an application surface. When the app renders package components, also import \`@moritzbrantner/ui/component-sources.css\`.
+Import exactly one concrete `@moritzbrantner/ui` theme stylesheet for an application surface. When the app renders package components, also import `@moritzbrantner/ui/component-sources.css`.
 
-Use \`theme-scopes.css\` only when multiple built-in themes intentionally coexist in one document.
+Use `theme-scopes.css` only when multiple built-in themes intentionally coexist in one document.
 
 ## Rationale
 
@@ -23,10 +23,10 @@ A concrete stylesheet is a product-surface contract, not a casual skin. Selectin
 
 1. Determine the product surface before selecting a theme.
 2. Import its one concrete stylesheet at the application boundary.
-3. Add \`component-sources.css\` for package component rendering.
+3. Add `component-sources.css` for package component rendering.
 4. Use semantic utilities and component variants inside pages.
 5. Do not combine concrete theme stylesheets to cherry-pick appearances.
-6. Do not import only \`base.css\` for an ordinary app.
+6. Do not import only `base.css` for an ordinary app.
 
 ## Preferred pattern
 

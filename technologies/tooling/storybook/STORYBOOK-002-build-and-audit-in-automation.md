@@ -6,8 +6,8 @@
 
 ## Principles
 
-- \`PRINCIPLE-003\` — Validate progressively.
-- \`PRINCIPLE-004\` — Make completion observable.
+- `PRINCIPLE-003` — Validate progressively.
+- `PRINCIPLE-004` — Make completion observable.
 
 ## Rule
 
@@ -28,7 +28,7 @@ The development server proves little about reproducibility. A static build catch
 
 ## Preferred pattern
 
-Expose a single \`test:storybook\` script that builds Storybook and runs its accessibility audit. Use \`test:storybook:a11y\` when the audit is independently runnable.
+Expose a single `test:storybook` script that builds Storybook and runs its accessibility audit. Use `test:storybook:a11y` when the audit is independently runnable.
 
 ## Anti-pattern
 
@@ -36,7 +36,7 @@ Do not treat a successfully started development server, a manually opened story,
 
 ## Automatable check
 
-\`coding-tooling\` discovers \`storybook:build\`, \`test:storybook\`, and \`test:storybook:a11y\`. CI uploads \`storybook-static\` and audit output when the check fails.
+`coding-tooling` discovers `storybook:build`, `test:storybook`, and `test:storybook:a11y`. CI uploads `storybook-static` and audit output when the check fails.
 
 ## Exceptions and trade-offs
 

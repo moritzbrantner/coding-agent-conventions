@@ -2,7 +2,7 @@
 
 Playwright is the browser-workflow specialization in this convention stack.
 
-Rules in this directory use the \`PLAYWRIGHT-*\` prefix. They govern observable workflow coverage, environment ownership, selectors, isolation, and failure artifacts.
+Rules in this directory use the `PLAYWRIGHT-*` prefix. They govern observable workflow coverage, environment ownership, selectors, isolation, and failure artifacts.
 
 ## Accepted conventions
 

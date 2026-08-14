@@ -14,10 +14,10 @@ Implementation completion must be observable independently of agent confidence. 
 ## Agent behavior
 
 1. Translate the changed acceptance criterion or reported defect into an observable assertion.
-2. Place the test at the lowest owning dependency scope under \`TEST-001\`.
+2. Place the test at the lowest owning dependency scope under `TEST-001`.
 3. Confirm the test detects the missing or defective behavior when practical.
 4. Implement until the focused test passes.
-5. Climb the validation ladder under \`TEST-002\`.
+5. Climb the validation ladder under `TEST-002`.
 6. If automation is impossible, record the exact manual or external evidence and the missing capability.
 
 ## Example

@@ -27,7 +27,7 @@ Native/backend:
 Tooling decisions:
 
 - `BUN-001`
-- `TAILWIND-001`
+- `TAILWIND-001` for the web UI where practical
 - `TAILWIND-002` for the web UI where practical
 
 Testing and quality tooling included by this template:

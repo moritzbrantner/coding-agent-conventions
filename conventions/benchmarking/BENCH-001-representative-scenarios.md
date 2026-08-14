@@ -13,7 +13,7 @@ A number without a stable scenario cannot be compared or used as an engineering 
 
 ## Agent behavior
 
-1. Place focused benchmark code at the lowest owning scope, for example \`*.bench.ts\` or a Rust Criterion bench target.
+1. Place focused benchmark code at the lowest owning scope, for example `*.bench.ts` or a Rust Criterion bench target.
 2. Keep fixtures deterministic and representative of expected production scale.
 3. Record unit and whether lower or higher is better.
 4. Use harness-controlled warm-up and multiple samples.

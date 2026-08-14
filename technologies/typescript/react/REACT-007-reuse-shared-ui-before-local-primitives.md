@@ -6,8 +6,8 @@
 
 ## Principles
 
-- \`PRINCIPLE-001\` — Prefer determinism over inference.
-- \`PRINCIPLE-002\` — Structure should encode agent-relevant information.
+- `PRINCIPLE-001` — Prefer determinism over inference.
+- `PRINCIPLE-002` — Structure should encode agent-relevant information.
 
 ## Rule
 
@@ -30,11 +30,11 @@ Local look-alikes drift in accessibility, tokens, behavior, responsive layout, a
 
 ## Preferred pattern
 
-Compose an app-owned data page from shared \`ViewHeader\`, \`FilterBar\`, \`ResourceList\`, \`DataGrid\`, and state components while the app owns queries and URL state.
+Compose an app-owned data page from shared `ViewHeader`, `FilterBar`, `ResourceList`, `DataGrid`, and state components while the app owns queries and URL state.
 
 ## Anti-pattern
 
-Add \`StatCard\`, \`SectionCard\`, \`PageCard\`, and a local \`Button\` even though the shared package already exposes the relevant primitives and denser patterns.
+Add `StatCard`, `SectionCard`, `PageCard`, and a local `Button` even though the shared package already exposes the relevant primitives and denser patterns.
 
 ## Automatable check
 

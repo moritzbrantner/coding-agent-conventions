@@ -6,8 +6,8 @@
 
 ## Principles
 
-- \`PRINCIPLE-003\` — Validate progressively.
-- \`PRINCIPLE-004\` — Make completion observable.
+- `PRINCIPLE-003` — Validate progressively.
+- `PRINCIPLE-004` — Make completion observable.
 
 ## Rule
 
@@ -36,7 +36,7 @@ Do not block on the first observed score, compare unrelated CI machines, or auto
 
 ## Automatable check
 
-\`coding-tooling\` validates budget and report schemas and exposes \`audit:lighthouse\`; higher-level CI decides whether the result is report-only or blocking.
+`coding-tooling` validates budget and report schemas and exposes `audit:lighthouse`; higher-level CI decides whether the result is report-only or blocking.
 
 ## Exceptions and trade-offs
 

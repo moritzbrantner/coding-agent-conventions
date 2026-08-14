@@ -6,8 +6,8 @@
 
 ## Principles
 
-- \`PRINCIPLE-001\` — Prefer determinism over inference.
-- \`UI-001\` — Use surfaces to communicate structure.
+- `PRINCIPLE-001` — Prefer determinism over inference.
+- `UI-001` — Use surfaces to communicate structure.
 
 ## Rule
 
@@ -20,19 +20,19 @@ Utilities colocate styling, but unconstrained utilities let every component inve
 ## Agent behavior
 
 1. Reuse the project's component or pattern before writing a new styled primitive.
-2. Prefer semantic utilities such as \`bg-background\`, \`bg-card\`, \`text-foreground\`, \`text-muted-foreground\`, and \`border-border\`.
+2. Prefer semantic utilities such as `bg-background`, `bg-card`, `text-foreground`, `text-muted-foreground`, and `border-border`.
 3. Use the design system's radius, shadow, spacing, and motion variables.
-4. Use \`cn\` for class composition and \`class-variance-authority\` for meaningful reusable variants.
+4. Use `cn` for class composition and `class-variance-authority` for meaningful reusable variants.
 5. Add a named variant when a visual choice represents a recurring semantic state.
 6. Keep one-off utilities for product-specific layout and content, not for forking shared primitives.
 
 ## Preferred pattern
 
-Use an existing \`Card\`, \`Item\`, \`Badge\`, or \`Surface\` variant with semantic tokens and a small layout \`className\`.
+Use an existing `Card`, `Item`, `Badge`, or `Surface` variant with semantic tokens and a small layout `className`.
 
 ## Anti-pattern
 
-Copy a local wrapper using \`rounded-3xl\`, a raw zinc background, a bespoke gradient, backdrop blur, and a custom shadow merely to make basic text look designed.
+Copy a local wrapper using `rounded-3xl`, a raw zinc background, a bespoke gradient, backdrop blur, and a custom shadow merely to make basic text look designed.
 
 ## Automatable check
 
