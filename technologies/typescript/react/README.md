@@ -16,6 +16,7 @@ React is treated as a specialization of TypeScript in this repository and inheri
 ## Child scopes
 
 - [`nextjs/`](nextjs/)
+- [`react-three-fiber/`](react-three-fiber/)
 - [`tanstack-query/`](tanstack-query/)
 - [`react-hook-form/`](react-hook-form/)
 - [`zustand/`](zustand/)
