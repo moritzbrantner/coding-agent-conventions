@@ -30,7 +30,7 @@ Choose by semantic job and information shape before reaching for `Card`.
 |---|---|
 | Structured form | `FormSection`, `Field`, `FormActions` |
 | Validation feedback | `FieldError`, `ValidationSummary` |
-| Loading, empty, error, or offline | `LoadingState`, `EmptyState`, `ErrorState`, `OfflineState` |
+| Loading, empty, error, or offline | `StateView` composed with `LoadingState`, `EmptyState`, `ErrorState`, or `OfflineState` |
 | Destructive confirmation | `ConfirmAction` or `AlertDialog` |
 
 ## Actions
