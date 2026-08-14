@@ -123,6 +123,13 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 | AGENT-007 | [Run cheap validation before expensive validation](conventions/agents/AGENT-007-cheap-validation-first.md) | Accepted |
 | AGENT-008 | [Revalidate downward after broader-scope fixes](conventions/agents/AGENT-008-revalidate-downward-after-broad-failure.md) | Accepted |
 
+### CI
+
+| ID | Convention | Status |
+|---|---|---|
+| CI-001 | [CI uses the same deterministic entrypoint as local development](conventions/ci/CI-001-same-deterministic-entrypoint.md) | Accepted |
+| CI-002 | [Automation dependencies respect repository visibility](conventions/ci/CI-002-action-visibility-boundaries.md) | Accepted |
+
 ### Testing
 
 | ID | Convention | Status |
