@@ -45,6 +45,8 @@ technologies/
   typescript/                 # TS-*
     react/                    # REACT-*
       nextjs/                 # NEXT-*
+      react-three-fiber/      # R3F-*
+    threejs/                  # THREE-*
 
   rust/                       # RUST-*
 
@@ -178,6 +180,8 @@ Canonical account, profile, space, membership, role, and session terms are defin
 | [TypeScript](technologies/typescript/) | `TS-*` | Types, modules, compiler behavior, TypeScript API design |
 | [React](technologies/typescript/react/) | `REACT-*` | Components, rendering, state, hooks, effects, composition |
 | [Next.js](technologies/typescript/react/nextjs/) | `NEXT-*` | Routing, server/client boundaries, data access, caching, framework entry points |
+| [React Three Fiber](technologies/typescript/react/react-three-fiber/) | `R3F-*` | Declarative scene adapters, frame-local state, React/Three boundaries |
+| [Three.js](technologies/typescript/threejs/) | `THREE-*` | Scene architecture, GPU resource ownership, render cadence, rendering validation |
 | [Rust](technologies/rust/) | `RUST-*` | Types, ownership, borrowing, errors, traits, modules, tooling |
 | [Databases](technologies/databases/) | `DB-*` | Cross-database schema, query, transaction, and persistence conventions |
 | [PostgreSQL](technologies/databases/postgres/) | `POSTGRES-*` | PostgreSQL-specific SQL, schema, indexes, types, extensions, and behavior |
