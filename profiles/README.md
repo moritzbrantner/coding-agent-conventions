@@ -19,4 +19,8 @@ template-base
 - [expo-template](expo-template.md) — TypeScript, React, Expo, and Bun.
 - [tauri-template](tauri-template.md) — TypeScript/React plus Rust/Tauri, Bun, and Tailwind CSS for the web UI where practical.
 
+## Technology composition profiles
+
+- [React Three Fiber](react-three-fiber.md) — composes the React, Three.js, and R3F convention branches without mandating optional 3D dependencies.
+
 Repository-specific rules may refine a profile according to `REPO-002`.
