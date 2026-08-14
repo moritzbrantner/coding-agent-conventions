@@ -129,6 +129,7 @@ Technology conventions additionally make preferred patterns, anti-patterns, and 
 |---|---|---|
 | CI-001 | [CI uses the same deterministic entrypoint as local development](conventions/ci/CI-001-same-deterministic-entrypoint.md) | Accepted |
 | CI-002 | [Automation dependencies respect repository visibility](conventions/ci/CI-002-action-visibility-boundaries.md) | Accepted |
+| CI-003 | [Automated dependency updates are qualified by repository evidence](conventions/ci/CI-003-qualify-automated-dependency-updates.md) | Accepted |
 
 ### Testing
 
