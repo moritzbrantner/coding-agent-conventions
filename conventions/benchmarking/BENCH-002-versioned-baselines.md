@@ -21,6 +21,8 @@ Absolute timings vary between machines, while relative-only thresholds overreact
 6. Never replace the baseline automatically after a failure.
 7. Change thresholds only with reviewed evidence.
 
+Collection and evaluation remain separate responsibilities. A collector such as `runtime-profiler` may produce the baseline and candidate evidence, while Moonlight or another evaluator applies comparison policy. The orchestrator should retain neutral evidence and evaluation references rather than requiring either implementation's private data model.
+
 ## Example
 
 A benchmark with a 10% regression threshold and a 2 ms noise floor fails when the candidate is 14% and 5 ms slower, but not when it is 14% and 0.2 ms slower.
@@ -31,4 +33,4 @@ Exact deterministic measures such as bundle bytes may use a single absolute budg
 
 ## Consequences
 
-Benchmarks become stable regression controls and can be used by CI, coding agents, and Moonlight without conflating noise with product regressions.
+Benchmarks become stable regression controls and can be used by CI, coding agents, and Moonlight without conflating noise with product regressions. `agent-contracts` provides the neutral cross-repository evidence/evaluation envelopes; it does not own benchmark thresholds or comparison algorithms.
