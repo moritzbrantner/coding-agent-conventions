@@ -20,6 +20,8 @@ A number without a stable scenario cannot be compared or used as an engineering 
 5. Emit machine-readable results for automation.
 6. Keep expensive benchmarks opt-in unless the repository explicitly promotes them to a gate.
 
+A repository may delegate capture to a deterministic collector such as `runtime-profiler`. The collector owns measurement mechanics and its native evidence bundle; this convention owns the policy requirement that the scenario be explicit and reproducible.
+
 ## Example
 
 A route resolver benchmark names the route-set size and reports operations per second. A parser benchmark names input size and reports time per operation.
@@ -30,4 +32,4 @@ End-to-end latency and Lighthouse audits may live in dedicated tool folders but 
 
 ## Consequences
 
-Benchmark results can be reproduced, compared, and interpreted by humans and agents.
+Benchmark results can be reproduced, compared, and interpreted by humans and agents. Evidence collectors can expose their native artifacts through neutral `agent-contracts` evidence references without moving benchmark policy into the collector.
