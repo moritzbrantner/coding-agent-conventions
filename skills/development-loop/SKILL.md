@@ -19,7 +19,9 @@ It does not own outer orchestration. Creating or deleting worktrees, spawning ag
 
 Use `coding-tooling` for deterministic inspection, affected-scope calculation, validation, and environment diagnostics whenever the required capability exists. Do not replace an available deterministic operation with repeated LLM inference.
 
-When a delegated invocation includes a capability task packet, this skill represents exactly one implementation worker. Treat its baseline, primary convention, target surfaces, behavioral scope, write scope, protected behavior, exclusions, dependencies, acceptance evidence, and expected capability state as immutable inputs. Return undeclared prerequisites, overlap, or baseline drift to the outer orchestrator instead of widening the slice or creating another writer.
+When a delegated invocation includes a bounded capability packet, it should arrive as a validated, pinned `agent-contracts` task-packet contract (`agent.task-packet/v1` or an explicitly compatible successor). This skill then represents exactly one implementation worker. The outer orchestrator or deterministic tooling owns schema validation and contract compatibility; the worker must not invent missing contract data or silently repair an invalid packet.
+
+Treat the packet's baseline, primary convention, target surfaces, behavioral scope, write scope, protected behavior, exclusions, dependencies, acceptance requirements, expected capability state, handoff requirements, and granted authority as immutable inputs. Return undeclared prerequisites, overlap, baseline drift, or semantic inconsistency to the outer orchestrator instead of widening the slice or creating another writer.
 
 ## Inputs
 
@@ -27,7 +29,7 @@ When a delegated invocation includes a capability task packet, this skill repres
 - Repository-local instructions and conventions.
 - The current repository/worktree state.
 - An explicit baseline when the surrounding harness provides one.
-- A bounded capability task packet when the run is delegated.
+- A validated, versioned bounded-capability task packet when the run is delegated.
 
 ## Workflow
 
@@ -37,7 +39,7 @@ Determine the required behavior, relevant constraints, and observable completion
 
 Do not modify code until the intended behavior is sufficiently clear to choose a coherent first change.
 
-For a delegated capability slice, verify before editing that the packet names one slice ID, one primary convention, its stage and target surfaces, owned behavioral and write scopes, protected behavior, non-goals, dependencies, acceptance checks, handoff, and expected capability state. Stop and report the missing field rather than filling a contract gap with inference.
+For a delegated capability slice, confirm before editing that the packet identifies its pinned task-packet contract version and has already passed contract validation. Then check that its declared baseline, ownership, dependencies, acceptance requirements, expected capability state, handoff requirements, and authority are semantically usable for this run. Stop and return the packet to the outer orchestrator if validation is absent, the packet is internally inconsistent, or a required semantic input is unusable; do not fill contract gaps with inference.
 
 ### 2. Inspect mechanically first
 
@@ -176,15 +178,7 @@ The final report should state:
 - any validation that could not be run and why,
 - remaining risks or follow-up work that is genuinely outside the task.
 
-For a delegated capability slice, also report:
-
-- the baseline, slice ID, primary convention, stage, and expected capability-state transition,
-- every changed path,
-- scope deviations or newly discovered prerequisites,
-- the candidate ref or commit,
-- each acceptance command and result,
-- evidence artifact paths,
-- unresolved dependencies for the outer orchestrator.
+For a delegated capability slice, return the handoff required by the validated task packet, including the candidate identity, changed paths, acceptance results, evidence references, unresolved dependencies, and any scope deviation or newly discovered prerequisite. Include the baseline, slice identity, primary convention, stage, and expected capability-state transition needed for the outer orchestrator to bind the handoff to the delegated work.
 
 Do not claim the broader convention is satisfied when only a foundation or adoption slice completed. Do not claim completion when required validation is failing or was silently skipped.
 
