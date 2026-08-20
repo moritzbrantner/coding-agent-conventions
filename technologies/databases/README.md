@@ -12,3 +12,8 @@ databases/
 ```
 
 Do not place application ORM conventions here unless the rule is fundamentally a database rule. ORM- or framework-specific behavior should live at its own appropriate technology scope.
+
+## Rules
+
+- let complex records have a createdAt (date), updatedAt (date) and version (int) entry, so that changes and migrations can be modeled easier.
+- if needed, create a history table, where old revisions can be put in.

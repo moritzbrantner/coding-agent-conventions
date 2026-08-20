@@ -1,37 +1,8 @@
-# <ID> — <Title>
+# <Scope> conventions
 
-**Status:** Proposed  
-**Category:** <category>  
-**Derived from:** `<PRINCIPLE-ID>` (when applicable)
+## <ID> — <Title>
 
-## Rule
+- State the rule as a short normative bullet.
+- Add an explicit exception, enforcement note, or reference only when needed.
 
-State the convention as a short normative rule.
-
-## Rationale
-
-Explain the problem this solves, especially for coding agents.
-
-## Agent behavior
-
-Describe the deterministic procedure an agent should follow.
-
-```text
-1. ...
-2. ...
-3. ...
-```
-
-## Example
-
-```text
-...
-```
-
-## Exceptions and trade-offs
-
-Document cases where the convention should not be applied mechanically.
-
-## Consequences
-
-Describe what this convention enables for agent loops, CI, repository tooling, or human maintainers.
+Add this section to the README in the narrowest applicable convention scope. Do not create a separate file for one rule.

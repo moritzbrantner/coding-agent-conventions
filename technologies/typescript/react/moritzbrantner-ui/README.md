@@ -1,14 +1,16 @@
 # @moritzbrantner/ui conventions
 
-`@moritzbrantner/ui` is the preferred shared React/Tailwind design system for Moritz-owned projects when its public surface fits.
+## MORITZUI-001 — Compose applications from public component tiers
 
-Rules in this directory use the `MORITZUI-*` prefix and inherit TypeScript, React, the general interface-design conventions, and applicable Tailwind conventions.
+- Select public exports by semantic responsibility: stable primitives, patterns compositions, data collections, and shell chrome.
+- Keep routing, server state, authorization, copy, and side effects in the app; use labs only with explicit upgrade ownership.
 
-## Accepted conventions
+## MORITZUI-002 — Select one concrete theme contract
 
-- [MORITZUI-001 — Compose applications from public component tiers](MORITZUI-001-compose-public-component-tiers.md)
-- [MORITZUI-002 — Select one concrete theme contract](MORITZUI-002-one-concrete-theme.md)
+- Import exactly one concrete theme stylesheet per application surface.
+- Import component-sources.css when rendering package components; use scoped themes only for intentional coexistence.
 
-## Reference
+## Component selection
 
-- [Component and page-pattern selection](component-selection.md)
+- Use ViewHeader for page identity/actions, DescriptionList for facts, ResourceList or ItemGroup for collections, DataGrid for comparison, and StateView for loading, empty, error, or offline states.
+- Use Card only for a genuinely independent bounded object; otherwise prefer spacing, headings, separators, or a shared surface.

@@ -1,19 +1,7 @@
-# PRINCIPLE-<NNN> — <Title>
+# Principles
 
-**Status:** Proposed
+## PRINCIPLE-<NNN> — <Title>
 
-## Principle
+- State the durable, cross-cutting idea as a short normative bullet.
 
-State the durable design principle in one normative paragraph.
-
-## Why
-
-Explain why this principle improves agentic software development across tools and stacks.
-
-## Implications
-
-List the kinds of concrete conventions that should follow from the principle.
-
-## Related conventions
-
-Reference convention IDs that operationalize this principle.
+Add this section to principles/README.md. Do not create a separate file for one principle.

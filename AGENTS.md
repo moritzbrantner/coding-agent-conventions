@@ -1,82 +1,127 @@
 # AGENTS.md
 
-This repository documents principles and conventions for coding-agent-friendly software development.
+This repository contains conventions for coding agents.
 
-## First classify the idea
+Keep it small, precise, and mechanically navigable.
 
-Before adding a document, decide whether it is a **principle**, **general convention**, **technology convention**, or **profile**.
+## Before adding a rule
 
-- A **principle** is a durable design goal that can justify several concrete rules.
-- A **general convention** is a normative cross-stack rule for agents, repositories, Git, testing, environments, CI, or orchestration.
-- A **technology convention** is a normative coding rule that exists because of a particular language, library, framework, database, or build technology.
-- A **profile** composes independent convention branches for a stack and must not copy their rule text.
+Ask:
 
-Do not create multiple documents that merely repeat the same statement at different levels.
+1. Is this a real engineering decision?
+2. Could a competent engineer reasonably choose differently?
+3. Does an agent need to know this decision?
+4. Is it already completely expressed by configuration or deterministic tooling?
+5. Does an existing rule already cover it?
 
-## Signal-to-noise gate
+If tooling already expresses the rule completely, prefer tooling over prose.
 
-Before documenting any convention, apply `PRINCIPLE-005 — Document decisions, not defaults`.
+Do not add generic best practices merely to make the catalog more complete.
 
-A convention should normally be added only when:
+## Choose the narrowest correct scope
 
-1. a competent engineer could reasonably choose differently,
-2. the repository does not already make the decision mechanically obvious,
-3. deterministic tooling does not already fully express and enforce it, and
-4. knowing the decision materially changes implementation, architecture, validation, or tool choice.
+Put rules under:
 
-Prefer formatter, compiler, linter, test, or executable configuration over prose when those mechanisms completely express the rule.
+```text
+principles/
+```
 
-## When adding a principle
+for durable ideas that explain multiple conventions.
 
-1. Start from `templates/principle.md`.
-2. Give it the next stable `PRINCIPLE-<NNN>` ID.
-3. State the principle independently of a specific stack when possible.
-4. Explain implications rather than duplicating detailed convention procedures.
-5. Link conventions that operationalize the principle.
-6. Add it to the catalog in `README.md`.
+Put technology-independent rules under:
 
-## When adding a general convention
+```text
+conventions/<category>/README.md
+```
 
-1. Start from `templates/convention.md`.
-2. Give the convention a stable category ID such as `TEST-004`, `AGENT-009`, or `ENV-004`.
-3. State the rule normatively and unambiguously.
-4. Link the principle it derives from when one exists.
-5. Describe deterministic agent behavior where possible.
-6. Include at least one concrete example.
-7. Document exceptions instead of weakening the main rule with vague language.
-8. Add the convention to the catalog in `README.md`.
+Put technology-specific rules under:
 
-## When adding a technology convention
+```text
+technologies/<technology>/README.md
+```
 
-1. Start from `templates/technology-convention.md`.
-2. Find the deepest existing technology scope that necessarily applies to the rule.
-3. If a technology is intentionally a specialization of another technology in this convention stack, nest it under that parent so the path encodes inheritance.
-4. Keep orthogonal technologies as separate branches; compose them through profiles instead of arbitrary nesting.
-5. Put the rule at the highest applicable node where it is actually true.
-6. Use the stable prefix for that node, such as `TS-*`, `REACT-*`, `NEXT-*`, `RUST-*`, `DB-*`, `POSTGRES-*`, `DOCKER-*`, or `DOCKERFILE-*`.
-7. Do not repeat a parent rule in child scopes merely because it remains applicable.
-8. State preferred and anti-pattern examples when they clarify the rule.
-9. Identify a formatter, linter, compiler option, static analysis check, test, or repository script that can enforce the rule when one exists.
-10. If deterministic tooling fully expresses the decision, prefer that tooling over a prose convention unless the underlying engineering choice itself still needs explanation.
-11. Respect `REPO-002`: deeper applicable scopes override only conflicting portions of inherited rules.
+Nest technologies only when inheritance is intentional.
 
-## When adding a profile
+For example:
 
-1. Reference existing general and technology convention branches.
-2. Do not copy convention text into the profile.
-3. Do not use a profile merely to restate inheritance already encoded by a nested technology path.
-4. Use profiles to compose independent branches, for example Next.js plus PostgreSQL or Next.js plus Rust.
-5. Keep precedence explicit and rely on `REPO-002` for conflicts.
+```text
+typescript/
+  react/
+    nextjs/
+```
 
-## Editing principles
+Keep independent technologies separate and compose them through profiles.
 
-- Prefer precise rules over general advice.
-- Document decisions, not defaults or mechanically visible configuration.
-- Prefer deterministic checks and mappings over semantic guesswork.
-- Use repository structure to encode real scope, ownership, dependency, and convention-inheritance relationships when practical.
-- Separate repository structure from runtime semantics.
-- Keep orchestration-specific concerns out of general agent workflow rules where possible.
-- Do not introduce stack-specific requirements unless the rule itself is stack-specific.
-- Preserve existing principle and convention IDs when changing wording.
-- When a new rule overlaps an existing one, extend or reference the existing rule instead of creating near-duplicates.
-- Prefer documenting the developer's actual convention over importing generic industry "best practices" without an explicit decision.
+## Writing rules
+
+Prefer short normative bullets.
+
+Good:
+
+```md
+## RUST-002 — Avoid unwrap in normal production control flow
+
+- Handle or propagate recoverable errors explicitly.
+- `unwrap()` and `expect()` require a proven invariant or intentionally fatal condition.
+- Exceptions: tests and examples.
+```
+
+Avoid mandatory sections such as:
+
+```text
+Rationale
+Agent behavior
+Example
+Consequences
+Trade-offs
+```
+
+unless that information is necessary to understand or apply the rule.
+
+A convention should normally be understandable in a few bullets.
+
+## IDs
+
+Preserve existing IDs.
+
+Do not renumber rules after deletion or reorganization.
+
+Use the prefix associated with the rule's scope.
+
+## Avoid duplication
+
+Do not:
+
+* repeat parent rules in child technology scopes;
+* copy convention text into profiles;
+* restate executable configuration;
+* create several rules for the same decision;
+* duplicate explanations already given by the root `README.md`.
+
+Reference an existing rule instead.
+
+## Exceptions
+
+Prefer a strong main rule followed by an explicit exception.
+
+Example:
+
+```md
+- Use shared UI primitives before creating local equivalents.
+- Exception: create a local primitive when the shared component cannot satisfy the required semantics without inappropriate coupling.
+```
+
+Do not weaken every rule with vague phrases such as "usually", "generally", or "when appropriate".
+
+## Updating structure
+
+When introducing a new technology or category:
+
+1. create its directory;
+2. add a concise `README.md`;
+3. document inheritance only if it is not obvious from the path;
+4. add it to a profile only when independent branches need composition.
+
+Keep the root documentation architectural.
+
+Keep the leaf documentation normative.

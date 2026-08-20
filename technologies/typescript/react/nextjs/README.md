@@ -1,8 +1,9 @@
 # Next.js conventions
 
-Next.js inherits React and TypeScript conventions.
+## NEXT-001 — Prefer the donut pattern
 
-## Accepted conventions
+- Keep the tree server-rendered by default; add focused client boundaries only for interactive behavior.
 
-- [NEXT-001 — Prefer the donut pattern](NEXT-001-prefer-donut-pattern.md)
-- [NEXT-002 — Keep page-specific code local](NEXT-002.md)
+## NEXT-002 — Keep page-specific code local
+
+- Keep code used by one route in its local scope; move it only when real reuse broadens ownership.

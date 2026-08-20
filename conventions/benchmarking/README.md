@@ -1,8 +1,10 @@
 # Benchmarking conventions
 
-Benchmarking rules apply across languages and harnesses. Tool-specific details belong in technology branches such as Vitest or Rust/Criterion.
+## BENCH-001 — Benchmark named representative scenarios
 
-## Accepted conventions
+- Define a named workload, measured unit, optimization direction, sampling method, and environment fingerprint.
 
-- [BENCH-001 — Benchmark named representative scenarios](BENCH-001-representative-scenarios.md)
-- [BENCH-002 — Compare candidates against versioned baselines](BENCH-002-versioned-baselines.md)
+## BENCH-002 — Compare candidates against versioned baselines
+
+- Compare equivalent harness runs on equivalent infrastructure.
+- Fail only regressions beyond committed relative and absolute-noise thresholds.

@@ -1,10 +1,9 @@
 # Playwright conventions
 
-Playwright is the browser-workflow specialization in this convention stack.
+## PLAYWRIGHT-001 — Test critical observable workflows
 
-Rules in this directory use the `PLAYWRIGHT-*` prefix. They govern observable workflow coverage, environment ownership, selectors, isolation, and failure artifacts.
+- Cover user-visible workflows that focused tests cannot prove using accessible selectors, URLs, and observable outcomes.
 
-## Accepted conventions
+## PLAYWRIGHT-002 — Own the environment and preserve failure evidence
 
-- [PLAYWRIGHT-001 — Test critical observable workflows](PLAYWRIGHT-001-test-observable-workflows.md)
-- [PLAYWRIGHT-002 — Own the environment and preserve failure evidence](PLAYWRIGHT-002-own-environment-and-artifacts.md)
+- Explicitly provision servers, data, services, ports, and teardown; retain enough artifacts to reproduce failures.

@@ -1,7 +1,9 @@
 # React Testing Library conventions
 
-React Testing Library is treated as a React-specific testing specialization in this convention stack.
+## RTL-001 — Test observable user behavior
 
-Rules in this directory use the `RTL-*` prefix and apply to component test style, queries, user interaction, accessibility-oriented assertions, test boundaries, and interaction with React rendering behavior.
+- Interact through user-facing controls and assert observable outcomes, not React internals.
 
-Rules here inherit TypeScript and React conventions through the directory hierarchy. General test-scope and bottom-up validation rules remain in the general `conventions/testing/` catalog.
+## RTL-002 — Prefer accessible queries
+
+- Query through roles, labels, names, and visible text; use test markers only without a stable user-facing query.

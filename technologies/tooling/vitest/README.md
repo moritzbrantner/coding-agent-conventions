@@ -1,9 +1,6 @@
 # Vitest conventions
 
-Vitest is the focused TypeScript/JavaScript test and benchmark runner in this convention stack.
+## VITEST-001 — Separate execution kinds with names and scripts
 
-Rules in this directory use the `VITEST-*` prefix and inherit the general testing and benchmarking conventions.
-
-## Accepted conventions
-
-- [VITEST-001 — Separate execution kinds with names and scripts](VITEST-001-separate-execution-kinds.md)
+- Keep tests at their dependency scope; encode kind in filenames such as .unit.test.ts, .integration.test.ts, or .bench.ts.
+- Provide one non-interactive script per kind and separate configuration when setup differs materially.

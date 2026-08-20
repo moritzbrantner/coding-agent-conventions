@@ -1,17 +1,17 @@
 # TanStack Query conventions
 
-TanStack Query (React Query) is treated as a React-specific specialization in this convention stack.
+## QUERY-001 — TanStack Query is the owner of backend-derived data
 
-Rules in this directory use the `QUERY-*` prefix and apply to server-state fetching, query keys, cache policy, invalidation, mutations, stale data, error handling, and related TanStack Query behavior.
+- Read and cache backend data through TanStack Query; create local state only for distinct semantics such as drafts.
 
-Rules here inherit the conventions from:
+## QUERY-002 — Use structured deterministic query keys
 
-```text
-technologies/typescript/react/tanstack-query/
-        -> technologies/typescript/react/
-        -> technologies/typescript/
-        -> general conventions
-        -> principles
-```
+- Use consistent hierarchical query keys and include every result-changing input.
 
-Do not place general React state rules here unless they are specifically about TanStack Query. Likewise, Next.js-specific integration rules belong in a profile or a more specific repository rule unless a real dependency relationship justifies a nested scope.
+## QUERY-003 — Update or invalidate the narrowest relevant query scope
+
+- After mutations, update or invalidate only data that may have changed.
+
+## QUERY-004 — Do not copy query results into local state
+
+- Consume or derive query data directly; do not synchronize it into another owner.

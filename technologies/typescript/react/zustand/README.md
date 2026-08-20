@@ -1,7 +1,6 @@
 # Zustand conventions
 
-Zustand inherits React and TypeScript conventions.
+## ZUSTAND-001 — Use Zustand for shared client values
 
-## Accepted conventions
-
-- [ZUSTAND-001 — Use Zustand for shared client values](ZUSTAND-001.md)
+- Use Zustand for client values shared across distant consumers.
+- Keep small-subtree state local and do not duplicate another layer's data.

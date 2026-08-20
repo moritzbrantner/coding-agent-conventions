@@ -1,10 +1,9 @@
 # Lighthouse conventions
 
-Lighthouse and compatible multi-route runners such as Unlighthouse are the web-performance audit specialization in this convention stack.
+## LIGHTHOUSE-001 — Audit production-shaped routes against budgets
 
-Rules in this directory use the `LIGHTHOUSE-*` prefix. They govern production-shaped audits, route budgets, baseline stabilization, and regression gates.
+- Audit a committed representative route set against a production-shaped build and repository-owned budgets.
 
-## Accepted conventions
+## LIGHTHOUSE-002 — Stabilize baselines before blocking
 
-- [LIGHTHOUSE-001 — Audit production-shaped routes against budgets](LIGHTHOUSE-001-audit-production-routes.md)
-- [LIGHTHOUSE-002 — Stabilize baselines before blocking](LIGHTHOUSE-002-stabilize-before-blocking.md)
+- Establish controlled baselines before gating; fail only regressions beyond relative and absolute-noise thresholds.

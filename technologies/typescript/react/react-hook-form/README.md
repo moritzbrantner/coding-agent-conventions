@@ -1,7 +1,6 @@
 # React Hook Form conventions
 
-React Hook Form inherits React and TypeScript conventions.
+## RHF-001 — Use React Hook Form for non-trivial forms
 
-## Accepted conventions
-
-- [RHF-001 — Use React Hook Form for non-trivial forms](RHF-001.md)
+- Use React Hook Form for meaningful validation, related or dynamic fields, submission state, or reusable form logic.
+- A one- or two-input form may remain direct when clearer.

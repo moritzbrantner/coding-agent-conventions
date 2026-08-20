@@ -57,4 +57,4 @@ Orthogonal technologies should remain separate branches and be composed with pro
 
 Docker Compose development/test orchestration remains a general environment concern under `ENV-002`, while Dockerfile authoring belongs in the Docker technology tree.
 
-Use [`../templates/technology-convention.md`](../templates/technology-convention.md) for new rules. When rules conflict, use the specificity order defined by `REPO-002`.
+Add new rules to the README in their narrowest applicable scope. When rules conflict, use the specificity order defined by `REPO-002`.

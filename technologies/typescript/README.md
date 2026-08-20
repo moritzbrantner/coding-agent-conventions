@@ -1,14 +1,9 @@
 # TypeScript conventions
 
-TypeScript is a parent scope for the React stack documented in this repository. Rules here apply to all descendant TypeScript technology scopes unless a more specific rule overrides the conflicting part.
+## TS-002 — Model invalid states out of the type system
 
-## Accepted conventions
+- Prefer types, especially discriminated unions, that make invalid combinations unrepresentable.
 
-| ID | Convention |
-|---|---|
-| TS-002 | [Model invalid states out of the type system](TS-002-model-invalid-states-out.md) |
-| TS-003 | [Prefer `type` over `interface`](TS-003-prefer-type-over-interface.md) |
+## TS-003 — Prefer type over interface
 
-Mechanically enforceable formatting, compiler, and lint behavior belongs in repository tooling rather than prose conventions.
-
-React-specific rules inherit these conventions under [`react/`](react/).
+- Prefer type aliases for application-level TypeScript models.

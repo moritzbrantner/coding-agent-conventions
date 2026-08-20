@@ -1,9 +1,28 @@
-# Rust conventions
+# Rust
 
-## Accepted conventions
+Rust-specific conventions.
 
-- [RUST-001 — Encode invariants in types](RUST-001-encode-invariants-in-types.md)
-- [RUST-002 — Avoid unwrap/expect in normal production flow](RUST-002-no-unwrap-expect-in-production-flow.md)
-- [RUST-003 — Do not clone merely to satisfy the borrow checker](RUST-003-no-clone-to-silence-borrow-checker.md)
+Repository-specific rules override these where they conflict.
 
-Formatting and static-analysis gates belong in executable repository tooling rather than the prose convention catalog, following `PRINCIPLE-005`.
+## RUST-001 — Encode invariants in types
+
+* Prefer types that make invalid domain states unrepresentable.
+* Validate external input when converting it into those types.
+* Do not replace meaningful domain distinctions with primitive strings, integers, or booleans merely for convenience.
+
+## RUST-002 — Avoid `unwrap` and `expect` in normal production control flow
+
+* Handle or propagate recoverable errors explicitly.
+* Prefer `Result`, `?`, typed errors, or explicit recovery.
+* `unwrap()` or `expect()` require a proven invariant or an intentionally fatal condition.
+* Exceptions: tests, examples, and clearly proven initialization invariants.
+
+## RUST-003 — Do not clone merely to satisfy the borrow checker
+
+* Treat unnecessary cloning as a signal to inspect ownership boundaries first.
+* Prefer borrowing, moving ownership, restructuring lifetimes, or changing API boundaries when those better express ownership.
+* Clone when duplication is semantically intended or materially simpler than introducing inappropriate complexity.
+
+## Enforcement
+
+Formatting, Clippy configuration, compiler settings, and other deterministic checks belong in repository tooling and CI rather than being duplicated as conventions here.

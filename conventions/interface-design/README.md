@@ -1,13 +1,33 @@
 # Interface design conventions
 
-These cross-stack rules govern information hierarchy, surface composition, adaptation, interaction, and device-independent access. Framework and design-system implementation details belong in technology branches.
+## UI-001 — Use surfaces to communicate structure, not to decorate every section
 
-## Accepted conventions
+- Use raised surfaces for meaningful semantic units; otherwise use hierarchy, spacing, headings, separators, lists, tables, or rows.
 
-- [UI-001 — Use surfaces to communicate structure, not to decorate every section](UI-001-surfaces-communicate-structure.md)
-- [UI-002 — Show information where it changes a decision](UI-002-information-supports-decisions.md)
-- [UI-003 — Treat theme preference as a product contract](UI-003-theme-preference-is-a-product-contract.md)
-- [UI-004 — Treat localization as an application contract](UI-004-localization-is-an-application-contract.md)
-- [UI-005 — Make primary workflows keyboard-first and commands discoverable](UI-005-primary-workflows-are-keyboard-first.md)
-- [UI-006 — Make interactive data views accessible and shareable](UI-006-data-views-are-accessible-and-shareable.md)
-- [UI-007 — Make primary workflows work on touch and mobile](UI-007-primary-workflows-support-touch-and-mobile.md)
+## UI-002 — Show information where it changes a decision
+
+- Give prominence only to information that changes understanding or next action; do not repeat facts already visible.
+
+## UI-003 — Treat theme preference as a product contract
+
+- Support light, dark, and system modes unless explicitly opted out.
+- Persist explicit choices and render the same hierarchy and states through semantic tokens.
+
+## UI-004 — Treat localization as an application contract
+
+- Ship en, de, and es unless explicitly opted out; English is the fallback.
+- Localize all user-visible content and formatting; never concatenate translated fragments or use display text as keys.
+
+## UI-005 — Make primary workflows keyboard-first and commands discoverable
+
+- Make every primary workflow keyboard-completable.
+- Use a central, discoverable command registry; shortcuts accelerate commands but are never their only access.
+
+## UI-006 — Make interactive data views accessible and shareable
+
+- Use charts only when interaction adds understanding; provide equivalent structured values.
+- Make durable non-sensitive view state deep-linkable on shareable platforms.
+
+## UI-007 — Make primary workflows work on touch and mobile
+
+- Preserve primary tasks, hierarchy, state, and required actions on representative mobile and touch input.
