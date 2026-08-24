@@ -31,3 +31,20 @@
 ## UI-007 — Make primary workflows work on touch and mobile
 
 - Preserve primary tasks, hierarchy, state, and required actions on representative mobile and touch input.
+
+## UI-008 — Respect reduced-motion preferences everywhere
+
+- Non-essential animation must respect the application's reduced-motion preference.
+- Apply the preference consistently to CSS animation, transitions, page entrances, hover choreography, ambient motion, and motion libraries.
+- Reduced motion should remove or substantially simplify continuous and decorative motion rather than only shortening it.
+
+## UI-009 — Put durable navigational state in the URL
+
+- Store shareable or reload-persistent view state in URL path, query, or fragment state when the platform supports it.
+- This includes filters, search, sorting, pagination, tabs, and meaningful selections.
+- Keep ephemeral UI state and sensitive values out of URLs.
+
+## UI-010 — Reuse established UI primitives before creating local ones
+
+- Inspect and reuse the project's established UI package or component system before creating local buttons, dialogs, menus, form controls, and other primitives.
+- Keep app-specific workflows and stateful composition local; promote reusable state-light primitives only when ownership is genuinely shared.
