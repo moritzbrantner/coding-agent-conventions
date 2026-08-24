@@ -37,6 +37,10 @@ technologies/
       README.md
       nextjs/
         README.md
+    vue/
+      README.md
+      nuxt/
+        README.md
 ```
 
 A Next.js repository therefore inherits:
@@ -49,9 +53,19 @@ React
 Next.js
 ```
 
-Rules should live at the highest scope where they are actually true.
+A Nuxt repository similarly inherits:
 
-Do not repeat inherited rules in child scopes.
+```text
+TypeScript
+    ↓
+Vue
+    ↓
+Nuxt
+```
+
+Rules should normally live at the highest scope where they are actually true.
+
+Concise duplication in a child scope is acceptable when it materially improves agent discoverability or makes a framework-local rule set usable on its own. Duplicated rules must remain semantically aligned with their broader source.
 
 ## Applying conventions
 
@@ -164,6 +178,8 @@ UI-*
 TS-*
 REACT-*
 NEXT-*
+VUE-*
+NUXT-*
 RUST-*
 DB-*
 POSTGRES-*
