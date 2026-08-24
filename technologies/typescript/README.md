@@ -7,3 +7,8 @@
 ## TS-003 — Prefer type over interface
 
 - Prefer type aliases for application-level TypeScript models.
+
+## Child scopes
+
+- [`react/`](react/)
+- [`vue/`](vue/)
