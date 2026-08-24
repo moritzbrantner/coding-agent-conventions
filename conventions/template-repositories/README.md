@@ -31,3 +31,9 @@
 ## TEMPLATE-008 — Templates declare their applicable convention stack
 
 - Reference applicable convention IDs and technology scopes from machine-readable local configuration or profiles.
+
+## TEMPLATE-009 — Templates expose a predictable quality command surface
+
+- Provide repository-owned commands for `lint`, `format`, `format:check`, `typecheck`, and `verify` when those checks apply to the stack.
+- Framework-specific tools may differ behind those commands; downstream users and agents should not need to rediscover equivalent entrypoints for every template.
+- Keep `verify` as the canonical broad confidence path and allow narrower commands to remain cheap enough for iterative use.
