@@ -35,7 +35,14 @@
 ## AGENT-009 — Delegate one bounded capability per implementation run
 
 - Give each delegated implementation run one independently verifiable capability slice.
-- Use a validated, pinned task packet; do not invent missing contract data or widen the assigned scope.
+- Use a validated, pinned task packet when the surrounding cross-component protocol requires one; do not invent missing contract data or widen the assigned scope.
 - Only one active implementation run may own an overlapping path or behavioral scope.
-- Report undeclared prerequisites, drift, overlap, or inconsistent packet inputs to the outer orchestrator for replanning.
+- Report undeclared prerequisites, drift, overlap, or inconsistent delegated inputs to the delegating caller or coordination layer for replanning.
 - Distinguish completing a partial slice from satisfying the broader convention.
+
+## AGENT-010 — Do not require higher-level execution machinery
+
+- A direct coding-agent run is valid without a task object, loop, or orchestrator.
+- Reusable skills must remain independently invokable; loops may compose skills; orchestrators may compose runs or loops.
+- Introduce work items, durable run state, scheduling, or multi-worker coordination only when the workload needs those capabilities.
+- Higher-level layers may wrap lower-level capabilities without making those lower-level capabilities depend on the wrapper.
