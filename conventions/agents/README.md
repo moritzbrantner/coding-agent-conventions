@@ -40,9 +40,6 @@
 - Report undeclared prerequisites, drift, overlap, or inconsistent delegated inputs to the delegating caller or coordination layer for replanning.
 - Distinguish completing a partial slice from satisfying the broader convention.
 
-## AGENT-010 — Do not require higher-level execution machinery
+## AGENT-010 — Apply progressive composition to agent execution
 
-- A direct coding-agent run is valid without a task object, loop, or orchestrator.
-- Reusable skills must remain independently invokable; loops may compose skills; orchestrators may compose runs or loops.
-- Introduce work items, durable run state, scheduling, or multi-worker coordination only when the workload needs those capabilities.
-- Higher-level layers may wrap lower-level capabilities without making those lower-level capabilities depend on the wrapper.
+- Resolve execution-layer choices to `PRINCIPLE-006`; AGENT-010 is the agent-category pointer and adds no second copy of that policy.
