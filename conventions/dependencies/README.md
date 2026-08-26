@@ -35,3 +35,11 @@
 - Keep application-local JavaScript or TypeScript packages source-local.
 - Do not publish to npm solely because a workspace package boundary exists.
 - Publish only when another independently versioned consumer requires the package or distribution itself is the product.
+
+## DEP-007 — Keep private source graphs local to the coding workspace
+
+- For private cross-repository dependencies, prefer exact sibling repositories or worktrees owned by the outer coding workspace rather than authenticated Git fallback inside the dependency resolver.
+- Require each local source checkout to match the exact declared revision before using it; missing or mismatched source must fail explicitly.
+- Do not add repository secrets, personal access tokens, or hosted-CI private checkouts merely to reproduce an ordinary multi-repository development workspace.
+- Keep hosted CI repository-local when private source access would otherwise be required. Record the exact source revisions and local verification evidence as the implementation proof.
+- Authentication may still exist in an explicit release/distribution workflow when that workflow genuinely needs protected release inputs; do not make those credentials a prerequisite for feature development.
