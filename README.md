@@ -85,9 +85,9 @@ This repository is the live source of shared policy. Consumer repositories shoul
 
 For local coding-agent work, use `coding-tooling conventions resolve` against the target repository. The resolver discovers the current registered conventions checkout, infers applicable technology branches, resolves any explicitly referenced stable IDs, and reports repository-local instructions separately.
 
-Repositories may declare a reusable convention profile, additional scopes, stable IDs, and reasoned exceptions in `.coding-tooling.json`. `catalog.source.json` defines profile composition and scope inheritance; generated `catalog.json` indexes current policy paths and stable IDs so connected agents can resolve the stack through exact file reads instead of recursive repository discovery.
+Repositories may declare a reusable convention profile, additional scopes, stable IDs, and reasoned exceptions in `.coding-tooling.json`. `catalog.source.json` defines profile composition and scope inheritance. Generated `catalog.json` indexes current policy paths; `convention-ids.json` keeps the larger stable-ID map separate so connected agents only load it when refs or exceptions require it.
 
-Regenerate or verify the catalog with `coding-tooling conventions catalog --write` or `coding-tooling conventions catalog --check` from this repository.
+Regenerate or verify both generated indexes with `coding-tooling conventions catalog --write` or `coding-tooling conventions catalog --check` from this repository.
 
 Cloud-hosted agents that cannot access the local machine registry should retrieve this repository live through their connected source-control integration and apply the same stack and precedence rules.
 
@@ -117,27 +117,27 @@ Unrelated broader rules continue to apply.
 
 Document a rule when:
 
-* a competent engineer could reasonably choose differently;
-* the choice materially affects implementation, architecture, testing, validation, or agent behavior;
-* the repository does not already make the choice mechanically obvious;
-* deterministic tooling does not already completely express the rule.
+- a competent engineer could reasonably choose differently;
+- the choice materially affects implementation, architecture, testing, validation, or agent behavior;
+- the repository does not already make the choice mechanically obvious;
+- deterministic tooling does not already completely express the rule.
 
 Prefer executable enforcement over prose.
 
 Examples of useful conventions:
 
-* tests live near the narrowest dependency scope they validate;
-* important navigational state belongs in the URL;
-* production Rust code should not use `unwrap()` as normal control flow;
-* primary application workflows must work without a mouse;
-* agents validate narrow scopes before broad scopes.
+- tests live near the narrowest dependency scope they validate;
+- important navigational state belongs in the URL;
+- production Rust code should not use `unwrap()` as normal control flow;
+- primary application workflows must work without a mouse;
+- agents validate narrow scopes before broad scopes.
 
 Examples that usually do **not** belong here:
 
-* formatter output;
-* compiler settings already committed to configuration;
-* lint rules already enforced in CI;
-* generic ecosystem best practices that have not been deliberately adopted.
+- formatter output;
+- compiler settings already committed to configuration;
+- lint rules already enforced in CI;
+- generic ecosystem best practices that have not been deliberately adopted.
 
 ## Rule format
 
