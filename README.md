@@ -85,6 +85,10 @@ This repository is the live source of shared policy. Consumer repositories shoul
 
 For local coding-agent work, use `coding-tooling conventions resolve` against the target repository. The resolver discovers the current registered conventions checkout, infers applicable technology branches, resolves any explicitly referenced stable IDs, and reports repository-local instructions separately.
 
+Repositories may declare a reusable convention profile, additional scopes, stable IDs, and reasoned exceptions in `.coding-tooling.json`. `catalog.source.json` defines profile composition and scope inheritance; generated `catalog.json` indexes current policy paths and stable IDs so connected agents can resolve the stack through exact file reads instead of recursive repository discovery.
+
+Regenerate or verify the catalog with `coding-tooling conventions catalog --write` or `coding-tooling conventions catalog --check` from this repository.
+
 Cloud-hosted agents that cannot access the local machine registry should retrieve this repository live through their connected source-control integration and apply the same stack and precedence rules.
 
 When reproducibility matters, a run, review, or evidence record may store the observed Git revision of this repository. That revision records which policy was seen; it does not become a required dependency pin in every consumer repository.
