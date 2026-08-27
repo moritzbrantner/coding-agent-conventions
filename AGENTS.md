@@ -122,7 +122,7 @@ When introducing a new technology or category:
 3. document inheritance only if it is not obvious from the path;
 4. add it to a profile only when independent branches need composition.
 
-Update `catalog.source.json` when scope inheritance or profile composition changes. Regenerate `catalog.json` with `coding-tooling conventions catalog --write`; do not hand-edit the generated index. Run the matching `--check` command before completion.
+Update `catalog.source.json` when scope inheritance or profile composition changes. Regenerate `catalog.json` and `convention-ids.json` with `coding-tooling conventions catalog --write`; do not hand-edit the generated indexes. Run the matching `--check` command before completion.
 
 Keep the root documentation architectural.
 
