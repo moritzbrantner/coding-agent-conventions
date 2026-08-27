@@ -79,6 +79,18 @@ Playwright
 
 may be combined through a profile.
 
+### Live consumption contract
+
+This repository is the live source of shared policy. Consumer repositories should not copy its rule text or pin a convention revision merely to receive normal policy updates.
+
+For local coding-agent work, use `coding-tooling conventions resolve` against the target repository. The resolver discovers the current registered conventions checkout, infers applicable technology branches, resolves any explicitly referenced stable IDs, and reports repository-local instructions separately.
+
+Cloud-hosted agents that cannot access the local machine registry should retrieve this repository live through their connected source-control integration and apply the same stack and precedence rules.
+
+When reproducibility matters, a run, review, or evidence record may store the observed Git revision of this repository. That revision records which policy was seen; it does not become a required dependency pin in every consumer repository.
+
+Repository-local files remain responsible for project-specific semantics, commands, architecture boundaries, and deliberate exceptions. They should not become generated mirrors of this repository.
+
 ## Precedence
 
 More specific rules override broader rules only where they conflict.
