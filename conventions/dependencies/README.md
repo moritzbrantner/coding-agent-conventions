@@ -12,10 +12,11 @@
 - Put version bumps, changelogs, tags, registry publication, and registry-only consumer updates in a dedicated release change.
 - Do not treat a missing published version as a feature blocker when an exact source dependency can prove the change.
 
-## DEP-003 — Bound cross-repository expansion
+## DEP-003 — Bound cross-repository task expansion
 
-- A normal application task may modify the target repository and at most two upstream repositories unless broader migration scope is explicitly authorized.
-- If the required dependency closure exceeds that budget, stop expanding the implementation and report the boundary as an architectural problem.
+- A normal implementation task may modify the target repository and at most two upstream repositories unless broader migration scope is explicitly authorized.
+- Treat this as an execution-scope budget, not as a limit on how many independently versioned capabilities an application may consume.
+- If implementation requires changing a wider source graph, stop recursively expanding the task and treat the boundary as explicit architecture or migration work.
 - Do not recursively repair or release unrelated transitive packages merely because they appear in the dependency graph.
 
 ## DEP-004 — Require a reason for a new independently versioned package
@@ -43,3 +44,29 @@
 - Do not add repository secrets, personal access tokens, or hosted-CI private checkouts merely to reproduce an ordinary multi-repository development workspace.
 - Keep hosted CI repository-local when private source access would otherwise be required. Record the exact source revisions and local verification evidence as the implementation proof.
 - Authentication may still exist in an explicit release/distribution workflow when that workflow genuinely needs protected release inputs; do not make those credentials a prerequisite for feature development.
+
+## DEP-008 — Keep repository dependencies directional
+
+- Put broadly reusable contracts and primitives below the domain repositories that consume them.
+- Domain repositories should depend downward on shared contracts or foundations rather than sideways on another domain's implementation merely to exchange data.
+- Put genuine cross-domain behavior in an explicit adapter or composition layer that depends on both domains.
+- Applications may compose several domain capabilities directly; that composition is not itself unwanted coupling.
+
+## DEP-009 — Depend on capability surfaces, not upstream topology
+
+- Consume the smallest stable public surface that represents the required capability.
+- Do not make callers understand an upstream repository's internal crate/package decomposition when a cohesive public facade or adapter can hide it.
+- If ordinary callers must pin or update several same-owner implementation packages together to obtain one capability, improve the owning repository's public boundary instead of spreading that topology into more consumers.
+- Do not create a facade that merely forwards APIs without reducing caller knowledge or concentrating compatibility logic.
+
+## DEP-010 — Give every versioned package one canonical owner
+
+- A versioned package or crate must have one canonical repository responsible for source changes, compatibility, tests, and releases.
+- During a repository migration, document the temporary old/new ownership state and the exact cutover condition.
+- After cutover, the former repository may keep compatibility shims or provenance, but must not remain a competing release or source authority.
+
+## DEP-011 — Treat source overrides as development mechanics
+
+- Exact source overrides may substitute unpublished revisions during cross-repository development, but they must preserve the intended public dependency direction.
+- Do not use source patches to normalize permanent sideways dependencies, duplicate ownership, or consumer knowledge of implementation internals.
+- Repeated feature work that requires coordinated source heads across several sibling repositories is an architecture signal: introduce or improve a contract, capability surface, adapter, or ownership boundary before expanding the patch graph further.
