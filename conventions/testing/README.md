@@ -20,3 +20,21 @@
 ## TEST-005 — Behavior changes require executable evidence
 
 - Add or update the smallest automated test that would fail without a behavior change or bug fix.
+
+## TEST-006 — Prefer stable public behavior seams
+
+- Test through the highest practical stable interface that exercises the real behavior.
+- Callers and tests should normally cross the same seam; avoid coupling tests to private structure when a public seam can prove the behavior.
+- Add a lower-level test only when an important rule cannot be exercised reliably through the higher interface.
+
+## TEST-007 — Infer testing strategy from the repository before inventing one
+
+- Reuse the repository's established test layers, commands, fixtures, and public seams.
+- Treat test architecture as a design choice only when the existing structure does not provide a safe answer.
+- Do not make specs repeat generic testing doctrine that is already encoded here or in repository-local rules.
+
+## TEST-008 — Keep behavior change and structural cleanup distinct
+
+- For approved behavior changes, establish the failing evidence before the production change and return it to green.
+- Perform behavior-preserving refactoring only from a green baseline.
+- If structural cleanup reveals a test that is insensitive, misleading, or validates the wrong behavior, stop before rewriting the test when doing so could conceal a product or contract decision.
