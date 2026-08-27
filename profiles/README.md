@@ -20,3 +20,10 @@ template-base
 - [tauri-template](tauri-template.md) — TypeScript/React plus Rust/Tauri, Bun, and Tailwind CSS for the web UI where practical.
 
 Repository-specific rules may refine a profile according to `REPO-002`.
+
+## Library profiles
+
+- [react-vite-library](react-vite-library.md) — reusable TypeScript/React libraries with their focused, Storybook, browser, and performance tooling.
+- [react-ui-library](react-ui-library.md) — `react-vite-library` specialized for the `@moritzbrantner/ui` design-system package.
+
+Machine-readable profile composition lives in `catalog.source.json`; `catalog.json` is its generated agent-facing index.
