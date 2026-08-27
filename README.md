@@ -20,9 +20,6 @@ technologies/
 
 profiles/
     compositions of independent convention branches
-
-skills/
-    executable agent procedures
 ```
 
 Most rules live directly in the `README.md` of the narrowest applicable scope.
@@ -194,19 +191,19 @@ next-template
 
 Do not create profiles merely to reproduce inheritance already encoded by the directory tree.
 
-## Skills
+## Relationship to coding-agent-skills
 
 Conventions answer:
 
 > What rules should the agent follow?
 
-Skills answer:
+`coding-agent-skills` answers:
 
-> What procedure should the agent execute?
+> What reusable reasoning procedure or executable flow should the agent execute?
 
-Skills may therefore be substantially more detailed than convention files.
+This repository does not own procedural skills. General development, debugging, review, planning, refactoring, and similar procedures belong in `coding-agent-skills`. Those capabilities may reference stable convention IDs from this repository rather than copying policy or rationale.
 
-Procedural development loops, release flows, debugging workflows, and similar instructions belong under `skills/`, not inside individual convention rules.
+Deterministic mechanics belong in `coding-tooling`; a convention should not grow into a procedural wrapper around an operation that tooling can perform directly.
 
 ## Repository-local conventions
 
