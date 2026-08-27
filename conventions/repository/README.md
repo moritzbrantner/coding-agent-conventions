@@ -32,3 +32,15 @@
 ## REPO-008 — Templates expose a canonical validation interface
 
 - Make the commands for development, focused tests, broader validation, and build mechanically obvious.
+
+## REPO-009 — Use conventional roots for durable agent-authored project knowledge
+
+Unless a repository explicitly overrides them, use:
+
+- `CONTEXT.md` for the concise domain glossary and project-level domain overview;
+- `docs/domain/` for richer domain-first hierarchical knowledge;
+- `docs/adr/` for consequential architectural decisions;
+- `docs/specs/` for canonical human-readable implementation specs;
+- `docs/reviews/` for durable review history when review persistence is enabled.
+
+These are repository-layout defaults, not requirements that every repository create every directory. Create a durable artifact only when the corresponding knowledge exists. Runtime agent state, ticket queues, run evidence, and derived catalog/profile resolution do not belong in these roots.
