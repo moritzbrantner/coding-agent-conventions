@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "scopes": {
+    "databases": {
+      "path": "technologies/databases/README.md"
+    },
+    "docker": {
+      "path": "technologies/docker/README.md"
+    },
+    "dockerfile": {
+      "path": "technologies/docker/dockerfile/README.md",
+      "parents": ["docker"]
+    },
+    "lighthouse": {
+      "path": "technologies/tooling/lighthouse/README.md",
+      "parents": ["tooling"]
+    },
+    "moritzbrantner-ui": {
+      "path": "technologies/typescript/react/moritzbrantner-ui/README.md",
+      "parents": ["react"]
+    },
+    "nextjs": {
+      "path": "technologies/typescript/react/nextjs/README.md",
+      "parents": ["react"]
+    },
+    "playwright": {
+      "path": "technologies/tooling/playwright/README.md",
+      "parents": ["tooling"]
+    },
+    "postgres": {
+      "path": "technologies/databases/postgres/README.md",
+      "parents": ["databases"]
+    },
+    "react": {
+      "path": "technologies/typescript/react/README.md",
+      "parents": ["typescript"]
+    },
+    "react-hook-form": {
+      "path": "technologies/typescript/react/react-hook-form/README.md",
+      "parents": ["react"]
+    },
+    "rust": {
+      "path": "technologies/rust/README.md"
+    },
+    "storybook": {
+      "path": "technologies/tooling/storybook/README.md",
+      "parents": ["tooling"]
+    },
+    "tanstack-query": {
+      "path": "technologies/typescript/react/tanstack-query/README.md",
+      "parents": ["react"]
+    },
+    "testing-library": {
+      "path": "technologies/typescript/react/testing-library/README.md",
+      "parents": ["react"]
+    },
+    "tooling": {
+      "path": "technologies/tooling/README.md"
+    },
+    "typescript": {
+      "path": "technologies/typescript/README.md"
+    },
+    "vite": {
+      "path": "technologies/tooling/vite/README.md",
+      "parents": ["tooling"]
+    },
+    "vitest": {
+      "path": "technologies/tooling/vitest/README.md",
+      "parents": ["tooling"]
+    },
+    "zustand": {
+      "path": "technologies/typescript/react/zustand/README.md",
+      "parents": ["react"]
+    }
+  },
+  "profiles": {
+    "expo-template": {
+      "extends": ["template-base"],
+      "scopes": ["react", "tooling", "playwright"]
+    },
+    "next-template": {
+      "extends": ["template-base"],
+      "scopes": [
+        "nextjs",
+        "moritzbrantner-ui",
+        "testing-library",
+        "vitest",
+        "storybook",
+        "playwright",
+        "lighthouse"
+      ]
+    },
+    "react-ui-library": {
+      "extends": ["react-vite-library"],
+      "scopes": ["moritzbrantner-ui"]
+    },
+    "react-vite-library": {
+      "scopes": [
+        "react",
+        "testing-library",
+        "vite",
+        "vitest",
+        "storybook",
+        "playwright",
+        "lighthouse"
+      ]
+    },
+    "tauri-template": {
+      "extends": ["template-base"],
+      "scopes": [
+        "moritzbrantner-ui",
+        "rust",
+        "testing-library",
+        "vitest",
+        "storybook",
+        "playwright"
+      ]
+    },
+    "template-base": {
+      "scopes": [],
+      "refs": ["REPO-003", "REPO-004", "REPO-005", "REPO-006", "REPO-007", "REPO-008"]
+    }
+  }
+}
