@@ -26,4 +26,4 @@ Repository-specific rules may refine a profile according to `REPO-002`.
 - [react-vite-library](react-vite-library.md) — reusable TypeScript/React libraries with their focused, Storybook, browser, and performance tooling.
 - [react-ui-library](react-ui-library.md) — `react-vite-library` specialized for the `@moritzbrantner/ui` design-system package.
 
-Machine-readable profile composition lives in `catalog.source.json`; `catalog.json` is its generated agent-facing index.
+Machine-readable profile composition lives in `catalog.source.json`; `catalog.json` is its generated agent-facing profile index, while `convention-ids.json` is loaded only for stable refs or exceptions.
