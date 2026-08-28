@@ -6,7 +6,13 @@ const outputDirectory = join(repositoryRoot, "dist");
 const routeRoots = ["principles", "conventions", "technologies", "profiles", "skills"];
 
 async function findMarkdownFiles(directory) {
-  const entries = await readdir(directory, { withFileTypes: true });
+  let entries;
+  try {
+    entries = await readdir(directory, { withFileTypes: true });
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
   const files = await Promise.all(entries.map(async (entry) => {
     const path = join(directory, entry.name);
     if (entry.isDirectory()) return findMarkdownFiles(path);
