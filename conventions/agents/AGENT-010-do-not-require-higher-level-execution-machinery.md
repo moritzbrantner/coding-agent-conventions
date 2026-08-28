@@ -1,7 +1,7 @@
 # AGENT-010 — Apply progressive composition to agent execution
 
-**Status:** Accepted  
-**Category:** Agents  
+**Status:** Accepted
+**Category:** Agents
 **Derived from:** `PRINCIPLE-006`
 
 ## Rule
