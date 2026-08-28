@@ -18,11 +18,31 @@ Installation vendors managed snapshots into `.conventions/` and records the sele
 
 Installed convention snapshots are managed files. Repository-specific additions and exceptions belong in `AGENTS.md` or another explicitly local policy document rather than edits to `.conventions/`.
 
+## Token-efficient composition
+
+`base` is intentionally a small, high-signal core. It contains the cross-cutting principles plus concise agent, codebase-design, repository, and testing rules that are useful in nearly every implementation task.
+
+Policy that is important only for some workloads is installed explicitly instead of being pulled into every technology module. Current focused modules include:
+
+- `dependencies` for cross-repository dependency, source-development, and package-ownership policy;
+- `environment` and `git` for development-environment and Git policy;
+- `security` for authentication and authorization;
+- `ui` for technology-independent interface policy;
+- `benchmarking` for performance-validation policy;
+- `agent-delegation` for detailed delegated/multi-run execution guidance;
+- `template-authoring` for template-repository and reusable-script policy.
+
+Technology modules such as `react`, `nextjs`, and `rust` still depend on `base`, but no longer transitively install unrelated optional policy. Profiles compose focused modules when the profile's workload consistently needs them; repositories can add other modules explicitly.
+
+This keeps the default agent context small without weakening or duplicating the underlying convention catalog.
+
 ## Registry rules
 
 - Keep rule text single-sourced in the normal authoring hierarchy.
+- Keep `base` limited to policy that is broadly useful in ordinary implementation work.
 - Add a registry module only for a coherent reusable policy scope.
 - Model inheritance through module `dependencies`; do not repeat parent sources.
+- Keep rarely applicable deep guidance in an explicit module rather than making every technology inherit it.
 - Keep profiles as convenience compositions of modules.
 - Prefer one repository-wide registry revision over independent versions for every module.
 - Mechanical enforcement remains the responsibility of repository tooling, analyzers, linters, tests, and CI.
