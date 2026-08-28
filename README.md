@@ -6,6 +6,17 @@ The repository records **decisions an agent should not have to infer**.
 
 It does not duplicate defaults that are already obvious from source code, configuration, formatters, linters, compilers, or executable tooling.
 
+## Website
+
+The repository includes a searchable React catalog that mirrors the Markdown folder structure with directory-style static pages.
+
+```sh
+bun install
+bun run dev
+```
+
+Run `bun run check` to type-check, test, and build the site. The GitHub Pages workflow deploys `dist/` after pushes to `main`; configure the repository's Pages source as **GitHub Actions** before the first deployment.
+
 ## Structure
 
 ```text

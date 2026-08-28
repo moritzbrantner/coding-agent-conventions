@@ -1,0 +1,32 @@
+{
+  "name": "coding-agent-conventions-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/create-static-routes.mjs",
+    "preview": "vite preview",
+    "test:unit": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "bun run typecheck && bun run test:unit && bun run build"
+  },
+  "dependencies": {
+    "marked": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@testing-library/user-event": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "jsdom": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vitest": "latest"
+  }
+}
