@@ -104,6 +104,8 @@
   },
   "profiles": {
     "react-app": ["react", "testing-library", "tooling", "vite", "vitest", "playwright"],
+    "react-vite-library": ["react", "testing-library", "tooling", "vite", "vitest"],
+    "react-ui-library": ["react", "testing-library", "tooling", "vite", "vitest", "storybook", "playwright", "lighthouse"],
     "next-template": ["nextjs", "moritzbrantner-ui", "testing-library", "tooling", "vitest", "storybook", "playwright", "lighthouse"],
     "rust-library": ["rust"]
   }
