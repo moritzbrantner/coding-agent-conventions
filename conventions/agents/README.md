@@ -35,7 +35,11 @@
 ## AGENT-009 — Delegate one bounded capability per implementation run
 
 - Give each delegated implementation run one independently verifiable capability slice.
-- Use a validated, pinned task packet; do not invent missing contract data or widen the assigned scope.
+- Use a validated, pinned task packet when the surrounding cross-component protocol requires one; do not invent missing contract data or widen the assigned scope.
 - Only one active implementation run may own an overlapping path or behavioral scope.
-- Report undeclared prerequisites, drift, overlap, or inconsistent packet inputs to the outer orchestrator for replanning.
+- Report undeclared prerequisites, drift, overlap, or inconsistent delegated inputs to the delegating caller or coordination layer for replanning.
 - Distinguish completing a partial slice from satisfying the broader convention.
+
+## AGENT-010 — Apply progressive composition to agent execution
+
+- Resolve execution-layer choices to `PRINCIPLE-006`; AGENT-010 is the agent-category pointer and adds no second copy of that policy.
