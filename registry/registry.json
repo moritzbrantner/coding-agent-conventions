@@ -2,9 +2,64 @@
   "schemaVersion": 1,
   "modules": {
     "base": {
-      "description": "Cross-cutting principles and technology-independent conventions.",
-      "sources": ["principles", "conventions"],
+      "description": "High-signal principles and core agent, codebase, repository, and testing conventions.",
+      "sources": [
+        "principles/README.md",
+        "conventions/agents/README.md",
+        "conventions/codebase-design/README.md",
+        "conventions/repository/README.md",
+        "conventions/testing/README.md"
+      ],
       "dependencies": []
+    },
+    "dependencies": {
+      "description": "Cross-repository dependency, ownership, source-development, and release-boundary conventions.",
+      "sources": ["conventions/dependencies/README.md"],
+      "dependencies": ["base"]
+    },
+    "environment": {
+      "description": "Development environment conventions.",
+      "sources": ["conventions/environment/README.md"],
+      "dependencies": ["base"]
+    },
+    "git": {
+      "description": "Git conventions.",
+      "sources": ["conventions/git/README.md"],
+      "dependencies": ["base"]
+    },
+    "security": {
+      "description": "Authentication and authorization conventions.",
+      "sources": [
+        "conventions/authentication/README.md",
+        "conventions/authorization/README.md"
+      ],
+      "dependencies": ["base"]
+    },
+    "ui": {
+      "description": "Technology-independent interface and product UI conventions.",
+      "sources": ["conventions/interface-design/README.md"],
+      "dependencies": ["base"]
+    },
+    "benchmarking": {
+      "description": "Benchmark design and validation conventions.",
+      "sources": ["conventions/benchmarking/README.md"],
+      "dependencies": ["base"]
+    },
+    "agent-delegation": {
+      "description": "Detailed delegated-agent execution policy for workloads that need bounded multi-run coordination.",
+      "sources": [
+        "conventions/agents/AGENT-009-delegate-one-bounded-capability-per-run.md",
+        "conventions/agents/AGENT-010-do-not-require-higher-level-execution-machinery.md"
+      ],
+      "dependencies": ["base"]
+    },
+    "template-authoring": {
+      "description": "Template-repository and reusable script authoring conventions.",
+      "sources": [
+        "conventions/template-repositories/README.md",
+        "conventions/scripts/README.md"
+      ],
+      "dependencies": ["base"]
     },
     "typescript": {
       "description": "TypeScript conventions.",
@@ -24,7 +79,7 @@
     "moritzbrantner-ui": {
       "description": "Shared @moritzbrantner/ui consumption conventions.",
       "sources": ["technologies/typescript/react/moritzbrantner-ui/README.md"],
-      "dependencies": ["react"]
+      "dependencies": ["react", "ui"]
     },
     "react-hook-form": {
       "description": "React Hook Form conventions.",
@@ -103,10 +158,37 @@
     }
   },
   "profiles": {
-    "react-app": ["react", "testing-library", "tooling", "vite", "vitest", "playwright"],
+    "react-app": [
+      "react",
+      "testing-library",
+      "tooling",
+      "vite",
+      "vitest",
+      "playwright",
+      "ui"
+    ],
     "react-vite-library": ["react", "testing-library", "tooling", "vite", "vitest"],
-    "react-ui-library": ["react", "testing-library", "tooling", "vite", "vitest", "storybook", "playwright", "lighthouse"],
-    "next-template": ["nextjs", "moritzbrantner-ui", "testing-library", "tooling", "vitest", "storybook", "playwright", "lighthouse"],
+    "react-ui-library": [
+      "react",
+      "testing-library",
+      "tooling",
+      "vite",
+      "vitest",
+      "storybook",
+      "playwright",
+      "lighthouse",
+      "ui"
+    ],
+    "next-template": [
+      "nextjs",
+      "moritzbrantner-ui",
+      "testing-library",
+      "tooling",
+      "vitest",
+      "storybook",
+      "playwright",
+      "lighthouse"
+    ],
     "rust-library": ["rust"]
   }
 }
