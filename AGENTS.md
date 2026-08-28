@@ -2,7 +2,15 @@
 
 This repository contains conventions for coding agents.
 
-Keep it small, precise, and mechanically navigable.
+Keep it small, precise, mechanically navigable, and single-sourced.
+
+## Responsibility
+
+Conventions answer **what the resulting code must look like or satisfy**.
+
+Do not put reusable procedures such as implementation, debugging, review, or refactoring workflows here; those belong in `coding-agent-skills`.
+
+Do not put repository-specific consumer rules here; those belong in that repository's `AGENTS.md`.
 
 ## Before adding a rule
 
@@ -20,37 +28,26 @@ Do not add generic best practices merely to make the catalog more complete.
 
 ## Choose the narrowest correct scope
 
-Put rules under:
+Put durable ideas that explain multiple conventions under `principles/`.
 
-```text
-principles/
-```
+Put technology-independent rules under `conventions/<category>/README.md`.
 
-for durable ideas that explain multiple conventions.
+Put technology-specific rules under `technologies/<technology>/README.md`.
 
-Put technology-independent rules under:
+Nest technologies only when inheritance is intentional. Keep independent technologies separate.
 
-```text
-conventions/<category>/README.md
-```
+## Registry modules
 
-Put technology-specific rules under:
+`registry/registry.json` is a distribution manifest, not another authoring location.
 
-```text
-technologies/<technology>/README.md
-```
+- Rule text remains single-sourced in `principles/`, `conventions/`, and `technologies/`.
+- Registry modules reference those sources.
+- Use module dependencies for inherited policy instead of copying parent sources.
+- Keep modules coherent; do not create one module per individual rule.
+- Profiles are convenience compositions of modules.
+- Prefer one registry revision for the whole catalog rather than independent versions per module.
 
-Nest technologies only when inheritance is intentional.
-
-For example:
-
-```text
-typescript/
-  react/
-    nextjs/
-```
-
-Keep independent technologies separate and compose them through profiles.
+When adding or moving a convention scope, update the registry only when that scope should be independently installable.
 
 ## Writing rules
 
@@ -66,62 +63,36 @@ Good:
 - Exceptions: tests and examples.
 ```
 
-Avoid mandatory sections such as:
-
-```text
-Rationale
-Agent behavior
-Example
-Consequences
-Trade-offs
-```
-
-unless that information is necessary to understand or apply the rule.
-
-A convention should normally be understandable in a few bullets.
+Avoid mandatory rationale, agent-behavior, example, consequence, and trade-off sections unless necessary to understand or apply the rule.
 
 ## IDs
 
-Preserve existing IDs.
-
-Do not renumber rules after deletion or reorganization.
-
-Use the prefix associated with the rule's scope.
+Preserve existing IDs. Do not renumber rules after deletion or reorganization. Use the prefix associated with the rule's scope.
 
 ## Avoid duplication
 
 Do not:
 
-* repeat parent rules in child technology scopes;
-* copy convention text into profiles;
-* restate executable configuration;
-* create several rules for the same decision;
-* duplicate explanations already given by the root `README.md`.
+- repeat parent rules in child technology scopes;
+- copy convention text into registry modules or profiles;
+- restate executable configuration;
+- create several rules for the same decision;
+- duplicate explanations already given by the root `README.md`.
 
-Reference an existing rule instead.
+Reference existing policy instead.
 
 ## Exceptions
 
-Prefer a strong main rule followed by an explicit exception.
-
-Example:
-
-```md
-- Use shared UI primitives before creating local equivalents.
-- Exception: create a local primitive when the shared component cannot satisfy the required semantics without inappropriate coupling.
-```
-
-Do not weaken every rule with vague phrases such as "usually", "generally", or "when appropriate".
+Prefer a strong main rule followed by an explicit exception. Consumer repositories place deliberate local exceptions in repository-local guidance, not in managed installed convention snapshots.
 
 ## Updating structure
 
 When introducing a new technology or category:
 
-1. create its directory;
+1. create its authoring directory;
 2. add a concise `README.md`;
 3. document inheritance only if it is not obvious from the path;
-4. add it to a profile only when independent branches need composition.
+4. add or update a registry module only if consumers should select it independently;
+5. add it to a registry profile only when the profile genuinely improves installation ergonomics.
 
-Keep the root documentation architectural.
-
-Keep the leaf documentation normative.
+Keep root documentation architectural. Keep leaf documentation normative.

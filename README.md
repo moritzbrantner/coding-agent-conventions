@@ -6,6 +6,20 @@ The repository records **decisions an agent should not have to infer**.
 
 It does not duplicate defaults that are already obvious from source code, configuration, formatters, linters, compilers, or executable tooling.
 
+## Responsibility boundary
+
+This repository answers:
+
+> What shared engineering rules should the resulting code satisfy?
+
+Related responsibilities stay separate:
+
+- `coding-agent-skills`: **how** to perform reusable development procedures.
+- repository `AGENTS.md`: repository-specific context, commands, architecture boundaries, and deliberate exceptions.
+- deterministic tooling, analyzers, linters, tests, and CI: mechanical verification and enforcement.
+
+Skills may reference convention modules or stable rule IDs, but should not copy their policy text.
+
 ## Website
 
 The repository includes a searchable React catalog that mirrors the Markdown folder structure with directory-style static pages.
@@ -17,7 +31,7 @@ bun run dev
 
 Run `bun run check` to type-check, test, and build the site. The GitHub Pages workflow deploys `dist/` after pushes to `main`; configure the repository's Pages source as **GitHub Actions** before the first deployment.
 
-## Structure
+## Authoring structure
 
 ```text
 principles/
@@ -30,7 +44,10 @@ technologies/
     technology-specific rules
 
 profiles/
-    compositions of independent convention branches
+    human-readable compositions
+
+registry/
+    installable module/profile metadata
 ```
 
 Most rules live directly in the `README.md` of the narrowest applicable scope.
@@ -47,104 +64,98 @@ technologies/
         README.md
 ```
 
-A Next.js repository therefore inherits:
+Rules should live at the highest scope where they are actually true. Do not repeat inherited rules in child scopes.
 
-```text
-TypeScript
-    ↓
-React
-    ↓
-Next.js
+## Installable registry
+
+`registry/registry.json` is the distribution view of this repository. It groups the authoring sources into coherent modules such as `base`, `typescript`, `react`, `nextjs`, `rust`, `postgres`, and `playwright` without duplicating rule text.
+
+Consumer repositories explicitly install only what they need, similar to a source registry:
+
+```sh
+coding-tooling conventions init
+coding-tooling conventions add react testing-library vitest
+coding-tooling conventions check
 ```
 
-Rules should live at the highest scope where they are actually true.
+The installer vendors managed snapshots into `.conventions/` and writes `conventions.json` plus `conventions.lock.json`. This makes the active policy available to humans and agents without requiring live access to this repository during ordinary work.
 
-Do not repeat inherited rules in child scopes.
+Normal policy changes are received deliberately through:
 
-## Applying conventions
-
-An agent determines its applicable convention stack from the repository's technologies and profile.
-
-For a Next.js application, for example:
-
-```text
-principles/
-conventions/
-technologies/typescript/README.md
-technologies/typescript/react/README.md
-technologies/typescript/react/nextjs/README.md
-repository-local rules
+```sh
+coding-tooling conventions diff
+coding-tooling conventions update
 ```
 
-Independent branches are composed rather than nested artificially.
+That makes convention changes reviewable instead of silently changing every repository at runtime.
 
-For example:
+Installed `.conventions/` files are managed snapshots, not local forks. Repository-specific additions and exceptions belong in `AGENTS.md` or another explicit local policy file.
+
+## Composition
+
+Registry modules depend on broader modules rather than copying them. For example:
 
 ```text
-Next.js
+base
+  ↓
+typescript
+  ↓
+react
+  ↓
+nextjs
+```
+
+Independent modules are composed explicitly:
+
+```text
+react
 +
-PostgreSQL
+postgres
 +
-Playwright
+playwright
 ```
 
-may be combined through a profile.
-
-### Live consumption contract
-
-This repository is the live source of shared policy. Consumer repositories should not copy its rule text or pin a convention revision merely to receive normal policy updates.
-
-For local coding-agent work, use `coding-tooling conventions resolve` against the target repository. The resolver discovers the current registered conventions checkout, infers applicable technology branches, resolves any explicitly referenced stable IDs, and reports repository-local instructions separately.
-
-Cloud-hosted agents that cannot access the local machine registry should retrieve this repository live through their connected source-control integration and apply the same stack and precedence rules.
-
-When reproducibility matters, a run, review, or evidence record may store the observed Git revision of this repository. That revision records which policy was seen; it does not become a required dependency pin in every consumer repository.
-
-Repository-local files remain responsible for project-specific semantics, commands, architecture boundaries, and deliberate exceptions. They should not become generated mirrors of this repository.
+Profiles are convenience compositions only. They do not own copied rule text.
 
 ## Precedence
 
-More specific rules override broader rules only where they conflict.
+Repository-local instructions have the highest precedence for repository-specific decisions:
 
 ```text
 repository-specific rule
         ↓
-deepest applicable technology scope
+installed specific convention
         ↓
-parent technology scopes
-        ↓
-general convention
-        ↓
-principle
+installed broader convention
 ```
 
-Unrelated broader rules continue to apply.
+An explicit local exception should state which shared rule it overrides and why. Unrelated shared rules continue to apply.
 
 ## What belongs here
 
 Document a rule when:
 
-* a competent engineer could reasonably choose differently;
-* the choice materially affects implementation, architecture, testing, validation, or agent behavior;
-* the repository does not already make the choice mechanically obvious;
-* deterministic tooling does not already completely express the rule.
+- a competent engineer could reasonably choose differently;
+- the choice materially affects implementation, architecture, testing, validation, or agent behavior;
+- the repository does not already make the choice mechanically obvious;
+- deterministic tooling does not already completely express the rule.
 
 Prefer executable enforcement over prose.
 
 Examples of useful conventions:
 
-* tests live near the narrowest dependency scope they validate;
-* important navigational state belongs in the URL;
-* production Rust code should not use `unwrap()` as normal control flow;
-* primary application workflows must work without a mouse;
-* agents validate narrow scopes before broad scopes.
+- tests live near the narrowest dependency scope they validate;
+- important navigational state belongs in the URL;
+- production Rust code should not use `unwrap()` as normal control flow;
+- primary application workflows must work without a mouse;
+- agents validate narrow scopes before broad scopes.
 
 Examples that usually do **not** belong here:
 
-* formatter output;
-* compiler settings already committed to configuration;
-* lint rules already enforced in CI;
-* generic ecosystem best practices that have not been deliberately adopted.
+- formatter output;
+- compiler settings already committed to configuration;
+- lint rules already enforced in CI;
+- generic ecosystem best practices that have not been deliberately adopted.
 
 ## Rule format
 
@@ -190,50 +201,20 @@ POSTGRES-*
 ...
 ```
 
-Changing wording does not change an ID.
+Changing wording does not change an ID. Removing a rule does not cause later IDs to be renumbered.
 
-Removing a rule does not cause later IDs to be renumbered.
+## Relationship to coding-tooling
 
-## Profiles
+`coding-tooling` owns deterministic registry installation and verification mechanics. It may read `registry/registry.json`, resolve module dependencies, vendor snapshots, compute hashes, and detect drift.
 
-Profiles compose independent convention branches.
+It does not own or reinterpret convention semantics.
 
-They contain references, not copies of rules.
-
-Example:
-
-```text
-next-template
-├── TypeScript
-├── React
-├── Next.js
-├── Bun
-├── Playwright
-└── Lighthouse
-```
-
-Do not create profiles merely to reproduce inheritance already encoded by the directory tree.
-
-## Relationship to coding-agent-skills
-
-Conventions answer:
-
-> What rules should the agent follow?
-
-`coding-agent-skills` answers:
-
-> What reusable reasoning procedure or executable flow should the agent execute?
-
-This repository does not own procedural skills. General development, debugging, review, planning, refactoring, and similar procedures belong in `coding-agent-skills`. Those capabilities may reference stable convention IDs from this repository rather than copying policy or rationale.
-
-Deterministic mechanics belong in `coding-tooling`; a convention should not grow into a procedural wrapper around an operation that tooling can perform directly.
+`coding-tooling conventions resolve` is retained as a migration compatibility path for repositories that still consume live conventions. New consumers should prefer explicit installed modules.
 
 ## Repository-local conventions
 
-Projects consuming this repository may define additional rules locally.
+Projects may define additional rules locally.
 
-Repository-local rules are authoritative for that repository and may intentionally override these conventions.
+Repository-local rules are authoritative for that repository and may intentionally override shared conventions. They should not modify managed `.conventions/` snapshots.
 
-The goal of this repository is not to make every project identical.
-
-The goal is to make deliberate engineering decisions **explicit, composable, mechanically discoverable, and cheap for agents to load**.
+The goal is not to make every project identical. The goal is to make deliberate engineering decisions **explicit, composable, mechanically discoverable, cheap for agents to load, and reviewable when they change**.

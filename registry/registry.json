@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "modules": {
+    "base": {
+      "description": "Cross-cutting principles and technology-independent conventions.",
+      "sources": ["principles", "conventions"],
+      "dependencies": []
+    },
+    "typescript": {
+      "description": "TypeScript conventions.",
+      "sources": ["technologies/typescript/README.md"],
+      "dependencies": ["base"]
+    },
+    "react": {
+      "description": "React conventions.",
+      "sources": ["technologies/typescript/react/README.md"],
+      "dependencies": ["typescript"]
+    },
+    "nextjs": {
+      "description": "Next.js conventions.",
+      "sources": ["technologies/typescript/react/nextjs/README.md"],
+      "dependencies": ["react"]
+    },
+    "moritzbrantner-ui": {
+      "description": "Shared @moritzbrantner/ui consumption conventions.",
+      "sources": ["technologies/typescript/react/moritzbrantner-ui/README.md"],
+      "dependencies": ["react"]
+    },
+    "react-hook-form": {
+      "description": "React Hook Form conventions.",
+      "sources": ["technologies/typescript/react/react-hook-form/README.md"],
+      "dependencies": ["react"]
+    },
+    "tanstack-query": {
+      "description": "TanStack Query conventions.",
+      "sources": ["technologies/typescript/react/tanstack-query/README.md"],
+      "dependencies": ["react"]
+    },
+    "testing-library": {
+      "description": "React Testing Library conventions.",
+      "sources": ["technologies/typescript/react/testing-library/README.md"],
+      "dependencies": ["react"]
+    },
+    "zustand": {
+      "description": "Zustand conventions.",
+      "sources": ["technologies/typescript/react/zustand/README.md"],
+      "dependencies": ["react"]
+    },
+    "tooling": {
+      "description": "General development-tooling conventions.",
+      "sources": ["technologies/tooling/README.md"],
+      "dependencies": ["base"]
+    },
+    "vite": {
+      "description": "Vite conventions.",
+      "sources": ["technologies/tooling/vite/README.md"],
+      "dependencies": ["tooling"]
+    },
+    "vitest": {
+      "description": "Vitest conventions.",
+      "sources": ["technologies/tooling/vitest/README.md"],
+      "dependencies": ["tooling"]
+    },
+    "playwright": {
+      "description": "Playwright conventions.",
+      "sources": ["technologies/tooling/playwright/README.md"],
+      "dependencies": ["tooling"]
+    },
+    "storybook": {
+      "description": "Storybook conventions.",
+      "sources": ["technologies/tooling/storybook/README.md"],
+      "dependencies": ["tooling"]
+    },
+    "lighthouse": {
+      "description": "Lighthouse and compatible web-quality conventions.",
+      "sources": ["technologies/tooling/lighthouse/README.md"],
+      "dependencies": ["tooling"]
+    },
+    "databases": {
+      "description": "Database conventions.",
+      "sources": ["technologies/databases/README.md"],
+      "dependencies": ["base"]
+    },
+    "postgres": {
+      "description": "PostgreSQL conventions.",
+      "sources": ["technologies/databases/postgres/README.md"],
+      "dependencies": ["databases"]
+    },
+    "docker": {
+      "description": "Container conventions.",
+      "sources": ["technologies/docker/README.md"],
+      "dependencies": ["base"]
+    },
+    "dockerfile": {
+      "description": "Dockerfile conventions.",
+      "sources": ["technologies/docker/dockerfile/README.md"],
+      "dependencies": ["docker"]
+    },
+    "rust": {
+      "description": "Rust conventions.",
+      "sources": ["technologies/rust/README.md"],
+      "dependencies": ["base"]
+    }
+  },
+  "profiles": {
+    "react-app": ["react", "testing-library", "tooling", "vite", "vitest", "playwright"],
+    "next-template": ["nextjs", "moritzbrantner-ui", "testing-library", "tooling", "vitest", "storybook", "playwright", "lighthouse"],
+    "rust-library": ["rust"]
+  }
+}
