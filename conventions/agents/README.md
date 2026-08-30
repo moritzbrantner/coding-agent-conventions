@@ -4,10 +4,6 @@
 
 - Encode mechanically checkable properties as executable checks.
 
-## AGENT-002 — Agents work in isolated worktrees
-
-- Give concurrent implementation tasks separate worktrees or equivalent isolated checkouts.
-
 ## AGENT-003 — Separate execution from orchestration
 
 - Keep the development loop independent of its local, CI, or hosted orchestration adapter.
