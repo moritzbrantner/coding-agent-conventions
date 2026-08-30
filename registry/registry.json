@@ -209,6 +209,7 @@
       "ui"
     ],
     "next-template": [
+      "template-authoring",
       "nextjs",
       "moritzbrantner-ui",
       "testing-library",
