@@ -19,7 +19,10 @@
     },
     "environment": {
       "description": "Development environment conventions.",
-      "sources": ["conventions/environment/README.md"],
+      "sources": [
+        "conventions/environment/README.md",
+        "conventions/environment/ENV-003.json"
+      ],
       "dependencies": ["base"]
     },
     "git": {
@@ -42,7 +45,10 @@
     },
     "benchmarking": {
       "description": "Benchmark design and validation conventions.",
-      "sources": ["conventions/benchmarking/README.md"],
+      "sources": [
+        "conventions/benchmarking/README.md",
+        "conventions/benchmarking/BENCH-002.json"
+      ],
       "dependencies": ["base"]
     },
     "agent-delegation": {
@@ -57,18 +63,25 @@
       "description": "Template-repository and reusable script authoring conventions.",
       "sources": [
         "conventions/template-repositories/README.md",
+        "conventions/template-repositories/TEMPLATE-003.json",
         "conventions/scripts/README.md"
       ],
       "dependencies": ["base"]
     },
     "typescript": {
       "description": "TypeScript conventions.",
-      "sources": ["technologies/typescript/README.md"],
+      "sources": [
+        "technologies/typescript/README.md",
+        "technologies/typescript/TS-003.json"
+      ],
       "dependencies": ["base"]
     },
     "react": {
       "description": "React conventions.",
-      "sources": ["technologies/typescript/react/README.md"],
+      "sources": [
+        "technologies/typescript/react/README.md",
+        "technologies/typescript/react/REACT-004.json"
+      ],
       "dependencies": ["typescript"]
     },
     "nextjs": {
@@ -103,7 +116,10 @@
     },
     "tooling": {
       "description": "General development-tooling conventions.",
-      "sources": ["technologies/tooling/README.md"],
+      "sources": [
+        "technologies/tooling/README.md",
+        "technologies/tooling/BUN-001.json"
+      ],
       "dependencies": ["base"]
     },
     "vite": {
@@ -113,7 +129,10 @@
     },
     "vitest": {
       "description": "Vitest conventions.",
-      "sources": ["technologies/tooling/vitest/README.md"],
+      "sources": [
+        "technologies/tooling/vitest/README.md",
+        "technologies/tooling/vitest/VITEST-001.json"
+      ],
       "dependencies": ["tooling"]
     },
     "playwright": {
@@ -123,12 +142,19 @@
     },
     "storybook": {
       "description": "Storybook conventions.",
-      "sources": ["technologies/tooling/storybook/README.md"],
+      "sources": [
+        "technologies/tooling/storybook/README.md",
+        "technologies/tooling/storybook/STORYBOOK-002.json"
+      ],
       "dependencies": ["tooling"]
     },
     "lighthouse": {
       "description": "Lighthouse and compatible web-quality conventions.",
-      "sources": ["technologies/tooling/lighthouse/README.md"],
+      "sources": [
+        "technologies/tooling/lighthouse/README.md",
+        "technologies/tooling/lighthouse/LIGHTHOUSE-001.json",
+        "technologies/tooling/lighthouse/LIGHTHOUSE-002.json"
+      ],
       "dependencies": ["tooling"]
     },
     "databases": {
@@ -153,7 +179,10 @@
     },
     "rust": {
       "description": "Rust conventions.",
-      "sources": ["technologies/rust/README.md"],
+      "sources": [
+        "technologies/rust/README.md",
+        "technologies/rust/RUST-002.json"
+      ],
       "dependencies": ["base"]
     }
   },
