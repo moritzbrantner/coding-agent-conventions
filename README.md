@@ -183,6 +183,31 @@ Add supporting fields only when they provide useful information:
 
 Examples and rationale should be included only when the rule would otherwise be ambiguous.
 
+### Deterministic enforcement sidecars
+
+When a rule has a mechanical subset, place a small `<RULE-ID>.json` file beside its Markdown source and include that file in the same registry module. The Markdown remains the policy source; the sidecar only declares deterministic enforcement for `coding-tooling`.
+
+Supported sidecars intentionally stay narrow: Oxlint rule configuration, Clippy arguments, a small set of structural checks, and required semantic capabilities. Do not move judgment-heavy semantics into a sidecar merely because they can be approximated.
+
+For example:
+
+```json
+{
+  "schemaVersion": 1,
+  "ruleId": "TS-003",
+  "enforcement": {
+    "kind": "oxlint",
+    "technologies": ["typescript"],
+    "config": {
+      "plugins": ["typescript"],
+      "rules": {
+        "typescript/consistent-type-definitions": ["error", "type"]
+      }
+    }
+  }
+}
+```
+
 ## Stable IDs
 
 Rules use stable identifiers:
@@ -205,7 +230,7 @@ Changing wording does not change an ID. Removing a rule does not cause later IDs
 
 ## Relationship to coding-tooling
 
-`coding-tooling` owns deterministic registry installation and verification mechanics. It may read `registry/registry.json`, resolve module dependencies, vendor snapshots, compute hashes, and detect drift.
+`coding-tooling` owns deterministic registry installation and verification mechanics. It may read `registry/registry.json`, resolve module dependencies, vendor snapshots, compute hashes, detect drift, and execute installed deterministic enforcement descriptors.
 
 It does not own or reinterpret convention semantics.
 
