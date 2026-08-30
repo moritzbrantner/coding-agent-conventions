@@ -7,3 +7,4 @@
 ## TS-003 — Prefer type over interface
 
 - Prefer type aliases for application-level TypeScript models.
+- Deterministic lint configuration: [`./TS-003.oxlint.json`](./TS-003.oxlint.json).
