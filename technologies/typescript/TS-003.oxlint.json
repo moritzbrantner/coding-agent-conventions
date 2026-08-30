@@ -1,5 +1,4 @@
 {
-  "plugins": ["typescript"],
   "rules": {
     "typescript/consistent-type-definitions": ["error", "type"]
   }
