@@ -41,6 +41,41 @@ When an asset is intended for deterministic enforcement, `configurations` associ
 
 The companion file is the native configuration format of the target tool. Do not invent a second abstract policy DSL. `coding-tooling` installs and hashes the asset, then deterministically composes applicable fragments into the normal formatter/linter configuration used by its existing capabilities and hooks.
 
+## Generator assets
+
+A module may also distribute deterministic scaffolds that materialize structures implied by its installed conventions. Generators are first-class module assets: the module registers a globally unique generator ID and descriptor path, while the descriptor and every referenced template are included in the module's normal `assets` list so installation and hashing use the existing snapshot model.
+
+```json
+{
+  "assets": [
+    "technologies/typescript/react/generators/react-component/generator.json",
+    "technologies/typescript/react/generators/react-component/templates/Component.tsx.tmpl"
+  ],
+  "generators": [
+    {
+      "id": "react-component",
+      "path": "technologies/typescript/react/generators/react-component/generator.json"
+    }
+  ]
+}
+```
+
+A generator descriptor may declare:
+
+- a stable `id`, description, referenced convention rule IDs, and applicable technologies;
+- a small typed input schema (`string`, `boolean`, `enum`, and narrowly validated identifier/path values);
+- a deterministic target concept that must resolve unambiguously or be supplied explicitly by the caller;
+- declarative operations from a closed set, initially text-template file creation plus narrowly supported structured updates;
+- explicit acyclic `compose` references with input mappings;
+- exact prerequisites and focused semantic postconditions;
+- whether a future supported native/dependency adapter or explicit network permission would be required.
+
+Templates support only variable interpolation and a closed set of deterministic name transforms such as `pascal`, `camel`, `kebab`, and `snake`. They are not executable programs: no arbitrary expressions, loops, filesystem access, shell commands, JavaScript hooks, regex rewrite programs, or general AST/codemod DSL belongs in a convention generator.
+
+Generators are one-shot constructors. Once generated, application source is ordinary repository code; updating a convention or template does not make the old source generator-owned or synchronize it later. Rich refactoring and codemods belong outside this registry/tooling boundary.
+
+Rule prose remains the policy source. A generator's `rules` list explains which installed decisions it materializes; generator metadata does not reinterpret or replace those rules. Repository-local generators may use the same restricted descriptor contract, but remain repository-owned rather than shared policy.
+
 ## Token-efficient composition
 
 `base` is intentionally a small, high-signal core. It contains the cross-cutting principles plus concise agent, codebase-design, repository, and testing rules that are useful in nearly every implementation task.
@@ -69,11 +104,12 @@ This keeps the default agent context small without weakening or duplicating the 
 - Keep profiles as convenience compositions of modules.
 - Prefer one repository-wide registry revision over independent versions for every module.
 - Keep companion configuration tool-native and explicitly associated with an existing stable rule and semantic capability.
-- Mechanical composition and enforcement remain the responsibility of deterministic repository tooling, analyzers, linters, tests, and CI.
+- Keep generator descriptors declarative, module-owned, globally unique, and fully included in normal module assets.
+- Mechanical composition, generation, and enforcement remain the responsibility of deterministic repository tooling, analyzers, linters, tests, and CI.
 
 ## Boundary
 
 - `coding-agent-skills`: how to perform reusable development procedures.
-- `coding-agent-conventions`: what shared engineering policy and tool-native policy fragments the resulting code must satisfy.
-- repository `AGENTS.md`: repository-specific context, commands, boundaries, and exceptions.
-- deterministic tooling and CI: composition, verification, and enforcement.
+- `coding-agent-conventions`: what shared engineering policy, tool-native policy fragments, and declarative generator assets the resulting code must satisfy or may deterministically materialize.
+- repository `AGENTS.md`: repository-specific context, commands, boundaries, exceptions, and local generator definitions.
+- deterministic tooling and CI: composition, generation planning/application, verification, and enforcement.
