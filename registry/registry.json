@@ -96,6 +96,17 @@
         "technologies/typescript/react/README.md",
         "technologies/typescript/react/REACT-004.json"
       ],
+      "assets": [
+        "technologies/typescript/react/generators/react-component/generator.json",
+        "technologies/typescript/react/generators/react-component/templates/Component.tsx.tmpl",
+        "technologies/typescript/react/generators/react-component/templates/index.ts.tmpl"
+      ],
+      "generators": [
+        {
+          "id": "react-component",
+          "path": "technologies/typescript/react/generators/react-component/generator.json"
+        }
+      ],
       "dependencies": ["typescript"]
     },
     "nextjs": {
