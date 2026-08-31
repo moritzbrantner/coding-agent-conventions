@@ -68,23 +68,23 @@
       ],
       "dependencies": ["base"]
     },
-      "typescript": {
-        "description": "TypeScript conventions.",
-        "sources": [
-          "technologies/typescript/README.md",
-          "technologies/typescript/TS-003.json"
-        ],
-        "assets": ["technologies/typescript/TS-003.oxlint.json"],
-        "configurations": [
-          {
+    "typescript": {
+      "description": "TypeScript conventions.",
+      "sources": [
+        "technologies/typescript/README.md",
+        "technologies/typescript/TS-003.json"
+      ],
+      "assets": ["technologies/typescript/TS-003.oxlint.json"],
+      "configurations": [
+        {
           "rule": "TS-003",
           "path": "technologies/typescript/TS-003.oxlint.json",
           "tool": "oxlint",
-            "capability": "lint"
-          }
-        ],
-        "dependencies": ["base"]
-      },
+          "capability": "lint"
+        }
+      ],
+      "dependencies": ["base"]
+    },
     "react": {
       "description": "React conventions.",
       "sources": [
