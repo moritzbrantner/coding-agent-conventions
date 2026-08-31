@@ -2,12 +2,15 @@
   "schemaVersion": 1,
   "modules": {
     "base": {
-      "description": "High-signal principles and core agent, codebase, repository, and testing conventions.",
+      "description": "High-signal principles and core agent, codebase, repository, reproducibility, reliability, and testing conventions.",
       "sources": [
         "principles/README.md",
         "conventions/agents/README.md",
         "conventions/codebase-design/README.md",
         "conventions/repository/README.md",
+        "conventions/repository/REPO-010.json",
+        "conventions/reproducibility/README.md",
+        "conventions/reliability/README.md",
         "conventions/testing/README.md"
       ],
       "dependencies": []
@@ -72,7 +75,9 @@
       "description": "TypeScript conventions.",
       "sources": [
         "technologies/typescript/README.md",
-        "technologies/typescript/TS-003.json"
+        "technologies/typescript/TS-003.json",
+        "technologies/typescript/TS-005.json",
+        "technologies/typescript/TS-006.json"
       ],
       "assets": ["technologies/typescript/TS-003.oxlint.json"],
       "configurations": [
@@ -140,7 +145,8 @@
       "description": "Vitest conventions.",
       "sources": [
         "technologies/tooling/vitest/README.md",
-        "technologies/tooling/vitest/VITEST-001.json"
+        "technologies/tooling/vitest/VITEST-001.json",
+        "technologies/tooling/vitest/VITEST-002.json"
       ],
       "dependencies": ["tooling"]
     },

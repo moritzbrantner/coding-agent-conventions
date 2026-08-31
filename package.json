@@ -2,6 +2,7 @@
   "name": "coding-agent-conventions-site",
   "private": true,
   "type": "module",
+  "packageManager": "bun@1.4.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/create-static-routes.mjs",
