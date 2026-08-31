@@ -70,3 +70,16 @@
 - Exact source overrides may substitute unpublished revisions during cross-repository development, but they must preserve the intended public dependency direction.
 - Do not use source patches to normalize permanent sideways dependencies, duplicate ownership, or consumer knowledge of implementation internals.
 - Repeated feature work that requires coordinated source heads across several sibling repositories is an architecture signal: introduce or improve a contract, capability surface, adapter, or ownership boundary before expanding the patch graph further.
+
+## DEP-012 — Declare dependency versions according to the consumer contract
+
+- Applications, internal tooling, and other leaf deliverables prefer exact dependency versions for predictable resolution.
+- Published libraries declare the narrowest semver-compatible range that truthfully describes the versions consumers may use.
+- Lockfiles remain the reproducible resolution record; do not use `latest`, wildcard ranges, or similarly floating declarations for leaf repositories.
+
+## DEP-013 — Make dependency changes explicit transactions
+
+- Ordinary install and verification commands use the committed lockfile without modifying it.
+- A dependency-manifest change includes the corresponding lockfile change; unexplained lockfile-only changes are not normal feature-work noise.
+- Dependency updates use an explicit update command or workflow. Do not run a generic update merely to make dependency resolution or a build start passing.
+- Verification should use the ecosystem's frozen/locked mode where available.
