@@ -43,3 +43,14 @@
 - Repositories pin exact versions of the toolchains that participate in build and verification using the ecosystem's normal native mechanism.
 - When a landscape-wide canonical version exists, repository pins must match it unless the repository documents an explicit compatibility exception.
 - Do not use floating toolchain channels such as `latest` or silently upgrade a toolchain to make a task pass.
+
+## REP-009 — Unused implementation code is not part of a green baseline
+
+- Unused private code, imports, variables, parameters, and unreachable implementation paths should fail deterministic verification where the language can detect them.
+- Public library seams, callbacks, FFI, generated bindings, and feature-gated code may use an explicit language/tooling-supported annotation or suppression when the unused shape is intentional.
+- Do not globally disable unused-code diagnostics to accommodate one intentional seam.
+
+## REP-010 — Handle closed variants exhaustively and unknown external values explicitly
+
+- Closed enums, variants, and discriminated unions owned by the application should be handled exhaustively so adding a new case creates a deterministic failure at affected callers.
+- External protocols and deserialization boundaries may use an explicit unknown/fallback case when forward compatibility requires it.
