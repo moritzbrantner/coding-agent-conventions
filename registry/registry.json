@@ -64,6 +64,15 @@
     "typescript": {
       "description": "TypeScript conventions.",
       "sources": ["technologies/typescript/README.md"],
+      "assets": ["technologies/typescript/TS-003.oxlint.json"],
+      "configurations": [
+        {
+          "rule": "TS-003",
+          "path": "technologies/typescript/TS-003.oxlint.json",
+          "tool": "oxlint",
+          "capability": "lint"
+        }
+      ],
       "dependencies": ["base"]
     },
     "react": {

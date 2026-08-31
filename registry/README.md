@@ -18,6 +18,29 @@ Installation vendors managed snapshots into `.conventions/` and records the sele
 
 Installed convention snapshots are managed files. Repository-specific additions and exceptions belong in `AGENTS.md` or another explicitly local policy document rather than edits to `.conventions/`.
 
+## Companion tooling configuration
+
+A convention module may distribute tool-native configuration beside its prose rules. Keep the relationship simple: a rule can point to a nearby JSON/config/dotfile, and the module declares that file as an `asset`.
+
+When an asset is intended for deterministic enforcement, `configurations` associates it with the stable rule ID, tool, and existing semantic capability. Example:
+
+```json
+{
+  "sources": ["technologies/typescript/README.md"],
+  "assets": ["technologies/typescript/TS-003.oxlint.json"],
+  "configurations": [
+    {
+      "rule": "TS-003",
+      "path": "technologies/typescript/TS-003.oxlint.json",
+      "tool": "oxlint",
+      "capability": "lint"
+    }
+  ]
+}
+```
+
+The companion file is the native configuration format of the target tool. Do not invent a second abstract policy DSL. `coding-tooling` installs and hashes the asset, then deterministically composes applicable fragments into the normal formatter/linter configuration used by its existing capabilities and hooks.
+
 ## Token-efficient composition
 
 `base` is intentionally a small, high-signal core. It contains the cross-cutting principles plus concise agent, codebase-design, repository, and testing rules that are useful in nearly every implementation task.
@@ -45,11 +68,12 @@ This keeps the default agent context small without weakening or duplicating the 
 - Keep rarely applicable deep guidance in an explicit module rather than making every technology inherit it.
 - Keep profiles as convenience compositions of modules.
 - Prefer one repository-wide registry revision over independent versions for every module.
-- Mechanical enforcement remains the responsibility of repository tooling, analyzers, linters, tests, and CI.
+- Keep companion configuration tool-native and explicitly associated with an existing stable rule and semantic capability.
+- Mechanical composition and enforcement remain the responsibility of deterministic repository tooling, analyzers, linters, tests, and CI.
 
 ## Boundary
 
 - `coding-agent-skills`: how to perform reusable development procedures.
-- `coding-agent-conventions`: what shared engineering policy the resulting code must satisfy.
+- `coding-agent-conventions`: what shared engineering policy and tool-native policy fragments the resulting code must satisfy.
 - repository `AGENTS.md`: repository-specific context, commands, boundaries, and exceptions.
-- deterministic tooling and CI: verification and enforcement.
+- deterministic tooling and CI: composition, verification, and enforcement.
