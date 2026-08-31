@@ -38,3 +38,39 @@
 - For approved behavior changes, establish the failing evidence before the production change and return it to green.
 - Perform behavior-preserving refactoring only from a green baseline.
 - If structural cleanup reveals a test that is insensitive, misleading, or validates the wrong behavior, stop before rewriting the test when doing so could conceal a product or contract decision.
+
+## TEST-009 — Keep the deterministic test gate hermetic
+
+- Unit and ordinary integration tests must not depend on the public internet or an uncontrolled external service.
+- Use local fixtures, fakes, containers, or versioned inputs for the deterministic gate.
+- Real external systems belong in explicitly classified acceptance, compatibility, or canary tiers and are not part of the fast deterministic gate unless a repository deliberately promotes them.
+
+## TEST-010 — Build minimal deterministic fixtures
+
+- Tests create only the state they need through small reusable builders or factories rather than a giant shared mutable seed database.
+- Control IDs, clocks, randomness, and ordering when they affect assertions or diagnostics.
+- Version larger reference datasets separately only when the dataset itself is part of the behavior under test.
+
+## TEST-011 — Use snapshots only for stable structured output
+
+- Prefer explicit semantic assertions for ordinary business behavior.
+- Snapshot or golden tests are appropriate for genuinely structured/stable outputs such as serialized formats, compiler output, rendering trees, or generated text.
+- Snapshot updates are deliberate reviewable changes; never regenerate snapshots automatically merely to make a failing test green.
+
+## TEST-012 — Do not retry a deterministic gate until it turns green
+
+- A required deterministic test failing once is a failed gate.
+- Retries may collect diagnostic evidence but must not convert a failed deterministic result into success.
+- Known flaky tests may move temporarily into an explicit, machine-readable quarantine tier that remains visible but does not redefine green.
+
+## TEST-013 — Prefer risk-based differential coverage over a global percentage target
+
+- Changed behavior requires executable evidence; use changed-line or changed-branch coverage where tooling can measure it reliably.
+- Apply stronger deterministic coverage expectations to high-risk code such as authorization, persistence, parsers, protocols, migrations, billing, security-sensitive logic, and concurrency.
+- Do not optimize tests merely to raise a repository-wide coverage percentage.
+
+## TEST-014 — Tests do not depend on execution order
+
+- Tests must be runnable individually and must not rely on state left by another test.
+- Make tests parallel-safe where practical; suites that genuinely require exclusive resources may explicitly opt into serialization.
+- Randomized-order or parallel stress runs may be used in broader diagnostic tiers to expose hidden coupling.
