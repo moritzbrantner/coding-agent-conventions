@@ -44,3 +44,9 @@ Unless a repository explicitly overrides them, use:
 - `docs/reviews/` for durable review history when review persistence is enabled.
 
 These are repository-layout defaults, not requirements that every repository create every directory. Create a durable artifact only when the corresponding knowledge exists. Runtime agent state, ticket queues, run evidence, and derived catalog/profile resolution do not belong in these roots.
+
+## REPO-010 — Keep TODOs machine-discoverable and actionable
+
+- Developer-authored TODOs are legitimate follow-up work that agents may later enumerate, implement, or turn into issues.
+- Use `TODO: <actionable description>` when no issue exists and `TODO(#123): <actionable description>` when the work is already tracked.
+- A linked issue is optional; vague markers such as `TODO fix this` or unexplained `FIXME` comments are not an acceptable durable backlog.
