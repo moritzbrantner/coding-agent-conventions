@@ -107,3 +107,9 @@
 - Browser automation targets stable user-facing semantics such as roles with accessible names, labels, and visible text before implementation-shaped selectors.
 - Use deliberate test identifiers only when no stable user-facing semantic target exists; prefer them over DOM shape, CSS/XPath, or coordinates.
 - Coordinate or image targeting is acceptable for surfaces without an adequate semantic tree, such as canvas or maps, but should be isolated to the interaction that actually requires it.
+
+## TEST-021 — Keep browser test doubles protocol-faithful
+
+- A browser failure that crosses a mocked or stubbed network boundary is not sufficient evidence of a product defect until the double preserves the production protocol semantics that materially affect the behavior.
+- Match relevant request methods, statuses, headers, bodies, and stateful or streaming behavior such as redirects, cookies or authentication, CORS or cache handling, byte ranges and partial-content responses, downloads, SSE, or WebSockets.
+- Prefer a deterministic real local service when it is cheap; otherwise use the smallest protocol-faithful double. Do not change product code merely to compensate for an unrealistic browser fixture.
