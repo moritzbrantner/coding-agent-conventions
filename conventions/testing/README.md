@@ -97,13 +97,13 @@
 - Continue the verification path through application-owned decision logic where narrower tests materially improve determinism or diagnosis; stop at trusted library or framework behavior unless an adapter contract is owned by the repository.
 - Do not translate this into testing every function, mirroring every call graph edge, or mocking implementation details merely to manufacture coverage.
 
-## TEST-019 — Verify browser-visible behavior at the browser boundary
+## TEST-019 — Verify browser-specific risk at the browser boundary
 
-- Changes to browser-visible interaction, rendering, navigation, or client state should normally include browser-level verification when the affected behavior can be exercised reliably.
-- Interactive browser exploration is useful implementation and diagnostic evidence, but a durable behavior change still needs the smallest automated executable evidence that belongs in the repository.
-- Do not promote live external dependencies into the deterministic gate merely to obtain browser coverage; use local services, versioned inputs, or explicit higher tiers as appropriate.
+- Use real-browser verification when the changed behavior materially depends on browser semantics such as layout, scrolling, pointer geometry, media, browser APIs, or navigation that a lower layer cannot prove reliably.
+- Do not require a browser test when the affected risk is fully established by a cheaper stable layer; TEST-005 and TEST-009 remain the source of truth for durable executable evidence and deterministic-gate isolation.
 
 ## TEST-020 — Prefer semantic browser targets
 
-- Browser automation targets stable user-facing semantics such as roles, accessible names, labels, or deliberate test identifiers before DOM shape, CSS/XPath, or coordinates.
-- Coordinate or image targeting is acceptable for surfaces without a useful semantic tree, such as canvas or maps, but should be isolated to the interaction that actually requires it.
+- Browser automation targets stable user-facing semantics such as roles with accessible names, labels, and visible text before implementation-shaped selectors.
+- Use deliberate test identifiers only when no stable user-facing semantic target exists; prefer them over DOM shape, CSS/XPath, or coordinates.
+- Coordinate or image targeting is acceptable for surfaces without an adequate semantic tree, such as canvas or maps, but should be isolated to the interaction that actually requires it.
