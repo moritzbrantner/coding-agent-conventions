@@ -38,11 +38,13 @@
 - Exact comparison is appropriate when exactness is part of the contract or a value is merely carried through unchanged.
 - Computed floating-point results use an explicit domain-appropriate tolerance; do not hide different accuracy requirements behind one global epsilon.
 
-## REP-008 — Pin toolchains exactly
+## REP-008 — Pin toolchains exactly and keep canonical baselines current
 
 - Repositories pin exact versions of the toolchains that participate in build and verification using the ecosystem's normal native mechanism.
-- When a landscape-wide canonical version exists, repository pins must match it unless the repository documents an explicit compatibility exception.
-- Do not use floating toolchain channels such as `latest` or silently upgrade a toolchain to make a task pass.
+- A landscape-wide canonical toolchain baseline should track the newest stable release after that release passes the applicable compatibility and full verification gates.
+- Repository pins must match the accepted canonical baseline unless the repository documents an explicit compatibility exception; such exceptions should be temporary and visible rather than silently drifting.
+- Toolchain upgrades are explicit, reviewable mutations that update exact native pins and any affected lockfiles or generated metadata before verification runs.
+- Do not use floating toolchain channels such as `latest`, resolve a different tool version during build or verification, or silently upgrade a toolchain merely to make a task pass.
 
 ## REP-009 — Unused implementation code is not part of a green baseline
 
