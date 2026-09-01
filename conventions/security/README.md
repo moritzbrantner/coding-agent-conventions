@@ -27,4 +27,4 @@
 
 - Cookies, storage state, session tokens, authenticated profiles, HARs, traces, screenshots, and videos may contain credentials, personal data, or other sensitive information.
 - Keep reusable authentication state out of version control and place it under an ignored local path by default.
-- Sanitize captured artifacts before committing or broadly sharing them; prefer ephemeral browser state for agent exploration unless persistence is explicitly required.
+- Sanitize captured artifacts before committing or broadly sharing them.
