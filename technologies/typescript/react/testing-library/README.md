@@ -16,7 +16,7 @@
 - Test pure non-DOM logic with ordinary unit tests without rendering React.
 - Prefer React Testing Library for meaningful component behavior such as interaction, local state transitions, validation, async UI, dialogs, menus, and keyboard behavior.
 - Exercise cross-component DOM workflows as integration tests with real composition when that gives useful confidence.
-- Use a real-browser layer such as Playwright for behavior that materially depends on layout, scrolling, pointer geometry, media, browser APIs, navigation, or other browser semantics that DOM emulation cannot prove reliably.
+- Apply TEST-019 for deciding whether browser-specific risk requires a real-browser layer; do not restate that cross-technology boundary here.
 
 ## RTL-004 — Model interactions through user events
 
@@ -38,5 +38,4 @@
 ## RTL-007 — Avoid snapshot-only and duplicate confidence
 
 - Prefer explicit behavioral assertions over broad DOM snapshots. Use small snapshots only when the serialized or rendered shape is itself a meaningful contract.
-- Do not reproduce the same confidence mechanically across React Testing Library, Storybook, and Playwright.
-- Use the cheapest stable layer that proves the behavior, and add a browser-level test when browser-specific risk remains.
+- Do not reproduce the same confidence mechanically across React Testing Library, Storybook, and Playwright; apply TEST-019 when choosing whether a browser layer adds distinct evidence.
