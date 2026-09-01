@@ -96,3 +96,20 @@
 - Important public behavior should have executable evidence at a stable boundary and enough lower-level evidence to isolate important owned rules, branches, or failure modes beneath it.
 - Continue the verification path through application-owned decision logic where narrower tests materially improve determinism or diagnosis; stop at trusted library or framework behavior unless an adapter contract is owned by the repository.
 - Do not translate this into testing every function, mirroring every call graph edge, or mocking implementation details merely to manufacture coverage.
+
+## TEST-019 — Verify browser-specific risk at the browser boundary
+
+- Use real-browser verification when the changed behavior materially depends on browser semantics such as layout, scrolling, pointer geometry, media, browser APIs, or navigation that a lower layer cannot prove reliably.
+- Do not require a browser test when the affected risk is fully established by a cheaper stable layer; TEST-005 and TEST-009 remain the source of truth for durable executable evidence and deterministic-gate isolation.
+
+## TEST-020 — Prefer semantic browser targets
+
+- Browser automation targets stable user-facing semantics such as roles with accessible names, labels, and visible text before implementation-shaped selectors.
+- Use deliberate test identifiers only when no stable user-facing semantic target exists; prefer them over DOM shape, CSS/XPath, or coordinates.
+- Coordinate or image targeting is acceptable for surfaces without an adequate semantic tree, such as canvas or maps, but should be isolated to the interaction that actually requires it.
+
+## TEST-021 — Keep browser test doubles protocol-faithful
+
+- A browser failure that crosses a mocked or stubbed network boundary is not sufficient evidence of a product defect until the double preserves the production protocol semantics that materially affect the behavior.
+- Match relevant request methods, statuses, headers, bodies, and stateful or streaming behavior such as redirects, cookies or authentication, CORS or cache handling, byte ranges and partial-content responses, downloads, SSE, or WebSockets.
+- Prefer a deterministic real local service when it is cheap; otherwise use the smallest protocol-faithful double. Do not change product code merely to compensate for an unrealistic browser fixture.

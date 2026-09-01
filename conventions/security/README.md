@@ -22,3 +22,9 @@
 
 - External tools, binaries, archives, and artifacts used in deterministic setup, build, or release paths are version-pinned and verified with a cryptographic checksum, signature, immutable release identity, or equivalent ecosystem-native integrity mechanism.
 - Cached copies are acceptable only when they satisfy the same declared identity check.
+
+## SEC-005 — Treat reusable browser state and captured sessions as sensitive
+
+- Cookies, storage state, session tokens, authenticated profiles, HARs, traces, screenshots, and videos may contain credentials, personal data, or other sensitive information.
+- Keep reusable authentication state out of version control and place it under an ignored local path by default.
+- Sanitize captured artifacts before committing or broadly sharing them.
