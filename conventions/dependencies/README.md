@@ -83,3 +83,9 @@
 - A dependency-manifest change includes the corresponding lockfile change; unexplained lockfile-only changes are not normal feature-work noise.
 - Dependency updates use an explicit update command or workflow. Do not run a generic update merely to make dependency resolution or a build start passing.
 - Verification should use the ecosystem's frozen/locked mode where available.
+
+## DEP-014 — Keep production dependency graphs acyclic by default
+
+- Production package, module, project, and repository dependency graphs should be acyclic where the ecosystem can model and verify the relationship.
+- Test-only, generated, framework-required, or otherwise unavoidable cycles use a narrow explicit exception rather than weakening cycle detection globally.
+- Treat a newly introduced cycle as an ownership or boundary problem to resolve, not as normal dependency noise.
