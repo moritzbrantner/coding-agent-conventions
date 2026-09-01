@@ -74,3 +74,19 @@
 - Tests must be runnable individually and must not rely on state left by another test.
 - Make tests parallel-safe where practical; suites that genuinely require exclusive resources may explicitly opt into serialization.
 - Randomized-order or parallel stress runs may be used in broader diagnostic tiers to expose hidden coupling.
+
+## TEST-015 — Run expensive correctness analyzers in risk-appropriate tiers
+
+- Keep the fast development gate focused on normal compiler, linter, and test evidence.
+- Full/nightly/security tiers run applicable ecosystem-native race detectors, sanitizers, Miri, thread analyzers, or equivalent deeper correctness tools.
+- Changes involving concurrency, `unsafe`, native memory, or similarly high-risk code may promote the relevant analyzer into the affected-change gate.
+
+## TEST-016 — Allocate dynamic ports for disposable processes
+
+- Temporary test servers and parallel disposable services ask the OS for an available port rather than assuming a fixed port is free.
+- Stable development services may use documented fixed ports when humans or external tooling genuinely require predictable addresses.
+
+## TEST-017 — Choose database-test isolation by the semantics under test
+
+- Transaction rollback is preferred when it faithfully represents behavior and provides cheap isolation.
+- Tests involving commits, transaction boundaries, concurrency, migrations, connection behavior, or persistence across sessions use isolated schemas/databases/containers instead of a wrapping transaction that would change the behavior being tested.

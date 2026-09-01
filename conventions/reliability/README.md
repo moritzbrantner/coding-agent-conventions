@@ -51,3 +51,15 @@
 
 - Versioned/public APIs, schemas, persisted formats, CLI contracts, package exports, and protocol messages should have deterministic compatibility checks where established tooling can provide them.
 - Breaking changes are allowed when intentional, but must be explicitly classified through versioning, migration, adapter, or deliberate compatibility-baseline changes rather than occurring accidentally.
+
+## REL-010 — Give CLIs stable exit and stream semantics
+
+- Successful commands return exit code `0`; failures return a non-zero exit code.
+- Machine-readable modes write structured results to stdout and keep diagnostics/progress on stderr so callers can compose them reliably.
+- Specialized exit codes are allowed when a CLI genuinely needs them, but do not invent a landscape-wide bespoke taxonomy.
+
+## REL-011 — Replace durable machine-managed state atomically
+
+- State/config manifests, generated indexes, cache metadata, downloaded artifacts, and similar machine-managed files use temporary output plus validation and atomic replacement where the filesystem supports it.
+- Do not leave a durable state file partially written when a process is interrupted.
+- Ordinary source editing does not require a bespoke atomic-write abstraction.

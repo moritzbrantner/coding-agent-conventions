@@ -14,3 +14,9 @@
 - Pre-push runs broader affected-scope checks such as typechecking and focused unit/integration tests.
 - Full-repository, E2E, benchmark, compatibility, and release verification remain explicit broader tiers rather than making every commit expensive.
 - Hooks invoke the same canonical repository capabilities used by humans, agents, and CI; do not implement a second copy of validation logic inside hook scripts.
+
+## GIT-004 — Pin CI action dependencies immutably
+
+- Verification, security, release, and deployment workflows pin external GitHub Actions or reusable workflows to a full commit SHA rather than a mutable version tag.
+- Keep a human-readable version comment where useful so reviewers can see the intended release without sacrificing immutability.
+- Local actions such as `./.github/actions/...` are repository source and do not need an external SHA pin.

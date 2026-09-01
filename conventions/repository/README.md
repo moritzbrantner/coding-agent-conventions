@@ -50,3 +50,21 @@ These are repository-layout defaults, not requirements that every repository cre
 - Developer-authored TODOs are legitimate follow-up work that agents may later enumerate, implement, or turn into issues.
 - Use `TODO: <actionable description>` when no issue exists and `TODO(#123): <actionable description>` when the work is already tracked.
 - A linked issue is optional; vague markers such as `TODO fix this` or unexplained `FIXME` comments are not an acceptable durable backlog.
+
+## REPO-011 — Verify only meaningful file permissions
+
+- Directly executable scripts and tools have the executable bit when the target platform uses it; ordinary source/config files should not accidentally become executable.
+- Sensitive private-key material created locally uses restrictive permissions appropriate to the platform.
+- Do not normalize permission metadata that has no portable semantic meaning.
+
+## REPO-012 — Treat symlinks as explicit filesystem boundaries
+
+- Deterministic traversal does not recursively follow symlinks by default.
+- When symlinks are intentionally supported, targets stay inside the declared repository/workspace boundary unless the command explicitly permits external targets.
+- Hashing, copying, cleanup, and generation distinguish the link from its target rather than silently traversing it.
+
+## REPO-013 — Keep path casing portable
+
+- Imports and references use the exact on-disk path casing.
+- A repository must not contain case-colliding tracked entries such as `User.ts` and `user.ts`.
+- Perform case-only renames explicitly through Git rather than relying on the host filesystem's case sensitivity.
