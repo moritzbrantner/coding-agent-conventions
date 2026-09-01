@@ -90,3 +90,9 @@
 
 - Transaction rollback is preferred when it faithfully represents behavior and provides cheap isolation.
 - Tests involving commits, transaction boundaries, concurrency, migrations, connection behavior, or persistence across sessions use isolated schemas/databases/containers instead of a wrapping transaction that would change the behavior being tested.
+
+## TEST-018 — Maintain a verification path through owned behavior
+
+- Important public behavior should have executable evidence at a stable boundary and enough lower-level evidence to isolate important owned rules, branches, or failure modes beneath it.
+- Continue the verification path through application-owned decision logic where narrower tests materially improve determinism or diagnosis; stop at trusted library or framework behavior unless an adapter contract is owned by the repository.
+- Do not translate this into testing every function, mirroring every call graph edge, or mocking implementation details merely to manufacture coverage.
