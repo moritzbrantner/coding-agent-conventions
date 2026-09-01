@@ -2,16 +2,21 @@
   "schemaVersion": 1,
   "modules": {
     "base": {
-      "description": "High-signal principles and core agent, codebase, repository, reproducibility, reliability, and testing conventions.",
+      "description": "High-signal principles and core agent, codebase, repository, reproducibility, reliability, testing, script, and security conventions.",
       "sources": [
         "principles/README.md",
         "conventions/agents/README.md",
         "conventions/codebase-design/README.md",
         "conventions/repository/README.md",
         "conventions/repository/REPO-010.json",
+        "conventions/repository/REPO-012.json",
+        "conventions/repository/REPO-013.json",
         "conventions/reproducibility/README.md",
+        "conventions/reproducibility/REP-011.json",
         "conventions/reliability/README.md",
-        "conventions/testing/README.md"
+        "conventions/testing/README.md",
+        "conventions/scripts/README.md",
+        "conventions/security/README.md"
       ],
       "dependencies": []
     },
@@ -30,7 +35,10 @@
     },
     "git": {
       "description": "Git conventions.",
-      "sources": ["conventions/git/README.md"],
+      "sources": [
+        "conventions/git/README.md",
+        "conventions/git/GIT-004.json"
+      ],
       "dependencies": ["base"]
     },
     "security": {
@@ -63,11 +71,10 @@
       "dependencies": ["base"]
     },
     "template-authoring": {
-      "description": "Template-repository and reusable script authoring conventions.",
+      "description": "Template-repository authoring conventions.",
       "sources": [
         "conventions/template-repositories/README.md",
-        "conventions/template-repositories/TEMPLATE-003.json",
-        "conventions/scripts/README.md"
+        "conventions/template-repositories/TEMPLATE-003.json"
       ],
       "dependencies": ["base"]
     },
