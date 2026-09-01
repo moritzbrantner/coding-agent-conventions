@@ -54,3 +54,61 @@
 
 - Closed enums, variants, and discriminated unions owned by the application should be handled exhaustively so adding a new case creates a deterministic failure at affected callers.
 - External protocols and deserialization boundaries may use an explicit unknown/fallback case when forward compatibility requires it.
+
+## REP-011 — Keep repository text portable
+
+- Source, configuration, documentation, scripts, fixtures, and machine-readable text use UTF-8 and LF by default.
+- Use an explicit narrow exception only when a platform or external tool requires another encoding or line ending.
+- Prefer `.editorconfig` and native formatters to make the rule automatic rather than relying on editor settings.
+
+## REP-012 — Separate verification from mutation
+
+- Commands used as gates such as `check`, `verify`, format-check, lint, tests, CI, and release verification do not modify tracked source, lockfiles, generated outputs, or configuration.
+- Mutating operations such as formatting writes, autofixes, dependency updates, code generation, and migration generation use separate explicit commands.
+- Green means the submitted state was valid, not that verification silently repaired it.
+
+## REP-013 — Use semantic paths internally and canonical paths at observable boundaries
+
+- Use the language/runtime path APIs rather than manual path-string concatenation.
+- Machine-readable output, manifests, hashes, snapshots, diagnostics, and cross-platform comparisons use stable repository-relative `/`-separated paths.
+- Do not make a command depend on the caller's current working directory unless that is an explicit part of its contract.
+
+## REP-014 — Keep disposable output in declared disposable locations
+
+- Temporary files use OS temporary storage or an explicit ignored workspace directory.
+- Build, cache, and generated outputs use conventional declared ignored locations rather than being scattered through source directories.
+- A supposedly non-mutating verification command must not leave unexpected repository artifacts behind.
+
+## REP-015 — Treat caches as transparent optimizations
+
+- Correctness must not depend on a warm cache; important verification can succeed from a cold cache.
+- Cache identity includes every relevant input and tool version needed to prevent stale results from masquerading as valid work.
+- Invalid or corrupt caches are safely disposable, while agents should reuse valid caches instead of repeatedly downloading or rebuilding the same inputs.
+
+## REP-016 — Separate dependency acquisition from deterministic build work
+
+- Restore/install/fetch phases may use the network to acquire declared dependencies and external inputs.
+- Once those inputs are present, compilation, tests, packaging, generation, and deterministic verification do not unexpectedly reach the public network.
+- Hidden downloads are dependency acquisition and should be made explicit rather than buried inside a build step.
+
+## REP-017 — Control ambient environment at deterministic boundaries
+
+- Ordinary interactive development may inherit the user's shell environment.
+- Hermetic tests, generators, builds, packaging, and release steps explicitly control environment values that can alter behavior, such as locale, time zone, proxies, feature flags, credentials, paths, and compiler settings.
+- Unknown ambient variables must not silently change deterministic output.
+
+## REP-018 — Keep build artifacts reproducible from declared inputs
+
+- Artifact contents do not accidentally depend on wall-clock time, host name, user name, absolute checkout path, random build IDs, or other ambient machine state.
+- When build metadata is part of the product contract, derive it from declared reproducible inputs such as the source revision or release metadata.
+
+## REP-019 — Validate configuration against real contracts
+
+- Use official or ecosystem-native schemas and validators when a configuration format has an established contract.
+- Repository-owned machine-readable configuration gains deterministic structural validation once other tooling consumes its shape.
+- Do not invent schemas for incidental data files merely because they use JSON, TOML, or YAML.
+
+## REP-020 — Normalize Unicode where byte identity represents textual identity
+
+- Use an explicit Unicode normalization policy for identifiers, generated filenames, canonical serialized forms, hashes, search/deduplication keys, or cross-system equality when canonically equivalent text must compare the same.
+- Do not silently normalize ordinary human-facing text when the distinction could be meaningful to the domain.
