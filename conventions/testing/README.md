@@ -25,7 +25,7 @@
 
 - Test through the highest practical stable interface that exercises the real behavior.
 - Callers and tests should normally cross the same seam; avoid coupling tests to private structure when a public seam can prove the behavior.
-- Add a lower-level test only when an important rule cannot be exercised reliably through the higher interface.
+- Add a lower-level test when an important owned rule cannot be exercised reliably through the higher interface, or when narrower evidence materially improves deterministic isolation or fault localization; do not add it merely to mirror implementation structure.
 
 ## TEST-007 — Infer testing strategy from the repository before inventing one
 
