@@ -21,3 +21,11 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Validate
         run: bun run check
+
+  findings:
+    permissions:
+      contents: read
+    uses: moritzbrantner/reusable-workflows/.github/workflows/coding-tooling-validation.yml@604f68a276c49ab557d40578fb7453fb964b4882
+    with:
+      operation: findings
+      report_path: .artifacts/coding-tooling/findings.json
