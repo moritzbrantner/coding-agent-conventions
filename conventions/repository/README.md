@@ -68,3 +68,11 @@ These are repository-layout defaults, not requirements that every repository cre
 - Imports and references use the exact on-disk path casing.
 - A repository must not contain case-colliding tracked entries such as `User.ts` and `user.ts`.
 - Perform case-only renames explicitly through Git rather than relying on the host filesystem's case sensitivity.
+
+## REPO-014 — Public agent tools expose a stable machine discovery document
+
+- A public tool intentionally designed for coding-agent consumption exposes a versioned machine discovery document at a stable published URL, preferably `agent-tool.json` at the tool's Pages root.
+- The discovery document identifies the tool, describes remotely consumable operations and their transport, and states which operations remain authoritative local commands.
+- Prefer real static JSON endpoints when the operation is read-only metadata or committed evidence. Label browser-executed JSON views distinctly; do not present static hosting as a server-side API.
+- Keep limitations explicit, especially authentication, privacy, execution, mutation, CORS, rate-limit, or completeness boundaries.
+- This rule does not require private/internal repositories, ordinary libraries, or tools without a meaningful remote agent operation to become public or acquire a Pages façade.
