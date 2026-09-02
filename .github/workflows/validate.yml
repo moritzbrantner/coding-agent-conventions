@@ -29,3 +29,12 @@ jobs:
     with:
       operation: findings
       report_path: .artifacts/coding-tooling/findings.json
+
+  tooling-fast:
+    permissions:
+      contents: read
+    uses: moritzbrantner/reusable-workflows/.github/workflows/coding-tooling-validation.yml@604f68a276c49ab557d40578fb7453fb964b4882
+    with:
+      operation: run
+      tier: fast
+      report_path: .artifacts/coding-tooling/fast.json
