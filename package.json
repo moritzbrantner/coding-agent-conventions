@@ -7,9 +7,9 @@
     "dev": "vite",
     "build": "vite build && node scripts/create-static-routes.mjs",
     "preview": "vite preview",
-    "format": "bunx oxfmt@0.52.0 .",
-    "format:check": "bunx oxfmt@0.52.0 --check .",
-    "lint": "bunx oxlint@1.67.0 --format=github",
+    "format": "bunx oxfmt@0.65.0 .",
+    "format:check": "bunx oxfmt@0.65.0 --check .",
+    "lint": "bunx oxlint@1.80.0 --format=github",
     "test:unit": "vitest run",
     "typecheck": "tsc --noEmit",
     "check": "bun run format:check && bun run lint && bun run typecheck && bun run test:unit && bun run build"
