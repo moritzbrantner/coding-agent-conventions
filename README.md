@@ -31,6 +31,20 @@ bun run dev
 
 Run `bun run check` to type-check, test, and build the site. The GitHub Pages workflow deploys `dist/` after pushes to `main`; configure the repository's Pages source as **GitHub Actions** before the first deployment.
 
+Coding agents can discover the machine interface at:
+
+```text
+https://moritzbrantner.github.io/coding-agent-conventions/agent-tool.json
+```
+
+The Pages build also publishes real static JSON endpoints that do not require browser execution:
+
+- `registry.json` — installable modules, dependencies, profiles, assets, and generators;
+- `rules.json` — stable rule IDs with titles, source paths, documentation routes, and registry module ownership;
+- `routes.json` — the human-readable Pages routes.
+
+These are read-only distribution views. Installing or updating conventions remains an explicit local `coding-tooling conventions ...` operation.
+
 ## Authoring structure
 
 ```text
