@@ -220,6 +220,7 @@
     }
   },
   "profiles": {
+    "foundation": ["base", "dependencies", "environment", "git"],
     "react-app": [
       "react",
       "testing-library",
