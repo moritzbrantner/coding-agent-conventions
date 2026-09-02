@@ -89,3 +89,11 @@
 - Production package, module, project, and repository dependency graphs should be acyclic where the ecosystem can model and verify the relationship.
 - Test-only, generated, framework-required, or otherwise unavoidable cycles use a narrow explicit exception rather than weakening cycle detection globally.
 - Treat a newly introduced cycle as an ownership or boundary problem to resolve, not as normal dependency noise.
+
+## DEP-015 — Centralize automated dependency update policy
+
+- Use Renovate as the canonical routine dependency-update engine for repositories adopting these conventions.
+- Keep the shared Renovate policy in this repository's `default.json`; consumer repositories should normally contain only a small `renovate.json` extending `github>moritzbrantner/coding-agent-conventions` plus narrow repository-specific exceptions when genuinely required.
+- Keep dependency-update policy in conventions and installation/scaffolding behavior in coding tooling; do not duplicate the policy across repository templates or consumers.
+- Ordinary dependency updates run on the shared cadence and limits. Major updates require explicit Dependency Dashboard approval, and broad automerge stays disabled until a repository has a trustworthy deterministic gate.
+- Keep GitHub dependency/vulnerability detection available, but do not run overlapping Dependabot version-update PRs after a repository has migrated to Renovate. Existing Dependabot updater configuration must be migrated explicitly rather than deleted implicitly by tooling.
