@@ -76,3 +76,12 @@ These are repository-layout defaults, not requirements that every repository cre
 - Prefer real static JSON endpoints when the operation is read-only metadata or committed evidence. Label browser-executed JSON views distinctly; do not present static hosting as a server-side API.
 - Keep limitations explicit, especially authentication, privacy, execution, mutation, CORS, rate-limit, or completeness boundaries.
 - This rule does not require private/internal repositories, ordinary libraries, or tools without a meaningful remote agent operation to become public or acquire a Pages façade.
+
+## REPO-015 — Prefer vertical growth before creating another repository
+
+- Before creating a new repository or lab, identify the capability, ownership boundary, runtime constraint, or validation need that cannot be expressed coherently in an existing repository.
+- Prefer a deeper slice in an existing repository when the proposed work reuses the same domain, teaching surface, runtime, or maintenance owner and does not need an independently versioned contract.
+- A new repository is justified when separation materially improves ownership, release cadence, security/privacy boundary, dependency isolation, platform/runtime isolation, or reusable public contract—not merely because the topic can be named separately.
+- For a new lab, require at least one demonstrable interaction, measurement, algorithm, or platform behavior that the existing labs do not already teach. A renamed collection of explanations or duplicate controls is insufficient.
+- Record the nearest existing repository considered and why extending it was rejected. Keep this rationale concise and reviewable; it is a scope decision, not a permanent architectural commitment.
+- Do not block small experiments from being tested locally or on a branch. The higher bar applies when promoting an experiment into a durable repository with its own maintenance, CI, Pages, dependency, and automation surface.
