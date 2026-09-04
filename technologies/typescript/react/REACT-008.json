@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "ruleId": "REACT-008",
+  "enforcement": {
+    "kind": "builtin",
+    "check": "react-props-adjacency"
+  }
+}
