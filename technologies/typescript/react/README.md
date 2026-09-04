@@ -30,6 +30,12 @@
 - Inspect and reuse the established UI package before creating local primitives.
 - Keep workflows and stateful page composition in the app; keep reusable state-light primitives and patterns shared.
 
+## REACT-008 — Keep named props immediately above their component
+
+- When a component uses a dedicated same-file `FooProps` type or interface, place `FooProps` immediately before `Foo`.
+- Do not require a dedicated props declaration when props are intentionally inline or the component has no props.
+- Deterministic enforcement: [`./REACT-008.json`](./REACT-008.json).
+
 ## Child scopes
 
 - [`nextjs/`](nextjs/)
