@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "ruleId": "CSHARP-002",
+  "enforcement": {
+    "kind": "builtin",
+    "check": "csharp-explicit-control-flow"
+  }
+}
