@@ -242,6 +242,14 @@
         "technologies/rust/RUST-002.json"
       ],
       "dependencies": ["base"]
+    },
+    "rust-performance": {
+      "description": "Performance conventions for Rust crates where execution cost is an explicit engineering contract.",
+      "sources": [
+        "technologies/rust/performance/README.md",
+        "technologies/rust/performance/RUST-005.json"
+      ],
+      "dependencies": ["rust", "benchmarking"]
     }
   },
   "profiles": {
@@ -278,6 +286,7 @@
       "playwright",
       "lighthouse"
     ],
-    "rust-library": ["rust"]
+    "rust-library": ["rust"],
+    "rust-performance-library": ["rust-performance"]
   }
 }
