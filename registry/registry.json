@@ -126,7 +126,8 @@
       "description": "React conventions.",
       "sources": [
         "technologies/typescript/react/README.md",
-        "technologies/typescript/react/REACT-004.json"
+        "technologies/typescript/react/REACT-004.json",
+        "technologies/typescript/react/REACT-008.json"
       ],
       "assets": [
         "technologies/typescript/react/generators/react-component/generator.json",
@@ -170,6 +171,14 @@
       "description": "Zustand conventions.",
       "sources": ["technologies/typescript/react/zustand/README.md"],
       "dependencies": ["react"]
+    },
+    "csharp": {
+      "description": "C# source-shape conventions.",
+      "sources": [
+        "technologies/csharp/README.md",
+        "technologies/csharp/CSHARP-001.json"
+      ],
+      "dependencies": ["base"]
     },
     "tooling": {
       "description": "General development-tooling conventions.",
@@ -239,7 +248,8 @@
       "description": "Rust conventions.",
       "sources": [
         "technologies/rust/README.md",
-        "technologies/rust/RUST-002.json"
+        "technologies/rust/RUST-002.json",
+        "technologies/rust/RUST-004.json"
       ],
       "dependencies": ["base"]
     }
