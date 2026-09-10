@@ -10,12 +10,16 @@ Do not remove deliberately independent verification. A second computation remain
 
 ## First inspection wave
 
-- `audio-analysis` — strongest concrete duplicate boundary: explicit FFmpeg audio-stream selection currently probes the same input once for stream validation and again for selected-stream metadata. First repair target.
-- `video-to-3d` — already demonstrates the desired pattern for revisit recovery by retaining vetted match evidence and reusing it for PnP recovery instead of rematching.
-- `nlp-stack` — inspect persisted corpus/retrieval/model inputs for repeated parse/normalize/validation and reuse only owner-produced typed snapshots/indexes.
-- `maps` — inspect decoded/validated geographic inputs and prepared spatial/render structures for repeated normalization or index construction; keep renderer-specific preparation distinct from semantic map ownership.
-- `dirbase` — existing positive reference: parsed resources are cached with invalidation and shared through `Arc<Value>`; per-request embed lookup structures are built once and reused.
+- `audio-analysis` — **actionable**. Explicit FFmpeg audio-stream selection currently probes the same input once for stream-inventory validation and immediately again for selected-stream metadata. The repair should retain one richer private probe snapshot, validate the requested stream against it, and derive selected metadata from that same snapshot. Keep the snapshot private to `audio-analysis-io`; there is no second consumer justifying a shared package/type.
+- `video-to-3d` — **adopted** for revisit recovery. Vetted non-adjacent mutual-match evidence is retained and reused by failed-registration recovery, which then feeds the existing PnP/geometry authority instead of rematching or creating a second pose authority.
+- `nlp-stack` — **no immediate duplicate boundary found in the first storage/corpus pass**. `TextCorpusSnapshot` is validated when reconstructing the typed corpus, and persisted retrieval data is loaded into one typed `PersistedSearchIndex` before conversion into `RetrievalIndex`. Do not invent a cache or wrapper here without call-site or profiling evidence of repeated equivalent work; continue inspection around model-backed semantic-map pipelines as those stabilize.
+- `maps` — **adopted** for point aggregation. `PointAggregationIndex::new` validates options, normalizes source points, builds the spatial hierarchy, metric-key set, and stable point lookup once; viewport and cluster queries reuse that owned index and its metric cache. Renderer-specific preparation remains a distinct downstream concern.
+- `dirbase` — **mature positive reference**. Parsed resources are cached with explicit file-metadata invalidation and shared through `Arc<Value>`; per-request embed target data and lookup structures are loaded/built once and reused across rows.
 
 ## Extraction rule
 
 Keep each trusted representation with its semantic owner. Extract a shared type or package only after at least two real consumers require the same meaning, validation contract, and invalidation lifecycle.
+
+## Next repair
+
+Implement the `audio-analysis-io` FFprobe snapshot repair first. After it is accepted, use runtime-profiler/call-site evidence to choose the next migration rather than sweeping repositories mechanically.
