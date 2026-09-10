@@ -10,7 +10,7 @@ Do not remove deliberately independent verification. A second computation remain
 
 ## First inspection wave
 
-- `audio-analysis` — **actionable**. Explicit FFmpeg audio-stream selection currently probes the same input once for stream-inventory validation and immediately again for selected-stream metadata. The repair should retain one richer private probe snapshot, validate the requested stream against it, and derive selected metadata from that same snapshot. Keep the snapshot private to `audio-analysis-io`; there is no second consumer justifying a shared package/type.
+- `audio-analysis` — **repair in progress in `moritzbrantner/audio-analysis#86`**. Explicit FFmpeg audio-stream selection probed the same input once for stream-inventory validation and immediately again for selected-stream metadata. The candidate retains one richer private probe snapshot, validates the requested stream against it, and derives selected metadata from that same snapshot. The snapshot remains private to `audio-analysis-io`; there is no second consumer justifying a shared package/type.
 - `video-to-3d` — **adopted** for revisit recovery. Vetted non-adjacent mutual-match evidence is retained and reused by failed-registration recovery, which then feeds the existing PnP/geometry authority instead of rematching or creating a second pose authority.
 - `nlp-stack` — **no immediate duplicate boundary found in the first storage/corpus pass**. `TextCorpusSnapshot` is validated when reconstructing the typed corpus, and persisted retrieval data is loaded into one typed `PersistedSearchIndex` before conversion into `RetrievalIndex`. Do not invent a cache or wrapper here without call-site or profiling evidence of repeated equivalent work; continue inspection around model-backed semantic-map pipelines as those stabilize.
 - `maps` — **adopted** for point aggregation. `PointAggregationIndex::new` validates options, normalizes source points, builds the spatial hierarchy, metric-key set, and stable point lookup once; viewport and cluster queries reuse that owned index and its metric cache. Renderer-specific preparation remains a distinct downstream concern.
@@ -22,4 +22,4 @@ Keep each trusted representation with its semantic owner. Extract a shared type 
 
 ## Next repair
 
-Implement the `audio-analysis-io` FFprobe snapshot repair first. After it is accepted, use runtime-profiler/call-site evidence to choose the next migration rather than sweeping repositories mechanically.
+Accept `audio-analysis#86` only after its repository-owned validation is green. After that, use runtime-profiler/call-site evidence to choose the next migration rather than sweeping repositories mechanically.
