@@ -151,6 +151,11 @@
       "sources": ["technologies/typescript/react/nextjs/README.md"],
       "dependencies": ["react"]
     },
+    "expo": {
+      "description": "Expo conventions, including runtime-specific performance evidence.",
+      "sources": ["technologies/typescript/react/expo/README.md"],
+      "dependencies": ["react", "benchmarking"]
+    },
     "moritzbrantner-ui": {
       "description": "Shared @moritzbrantner/ui consumption conventions.",
       "sources": ["technologies/typescript/react/moritzbrantner-ui/README.md"],
