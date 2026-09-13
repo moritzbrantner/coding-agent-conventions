@@ -5,14 +5,9 @@
 
 ## Includes
 
-### Repository conventions
+### Template-authoring conventions
 
-- `REPO-003` — Template decisions are executable.
-- `REPO-004` — Validate template changes from a fresh instance.
-- `REPO-005` — Include one small vertical slice.
-- `REPO-006` — Dogfood the template workflow.
-- `REPO-007` — Do not preinstall speculative architecture.
-- `REPO-008` — Expose a canonical validation interface.
+Use the `template-authoring` convention scope (`TEMPLATE-001` through `TEMPLATE-008`) as the authoritative template policy. Do not copy its rule text into this profile.
 
 ### Testing and agent workflow
 
