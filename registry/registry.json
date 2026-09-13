@@ -23,12 +23,8 @@
     },
     "dependencies": {
       "description": "Cross-repository dependency, ownership, source-development, and release-boundary conventions.",
-      "sources": [
-        "conventions/dependencies/README.md"
-      ],
-      "dependencies": [
-        "base"
-      ]
+      "sources": ["conventions/dependencies/README.md"],
+      "dependencies": ["base"]
     },
     "environment": {
       "description": "Development environment conventions.",
@@ -36,9 +32,7 @@
         "conventions/environment/README.md",
         "conventions/environment/ENV-003.json"
       ],
-      "dependencies": [
-        "base"
-      ]
+      "dependencies": ["base"]
     },
     "git": {
       "description": "Git conventions.",
@@ -46,9 +40,7 @@
         "conventions/git/README.md",
         "conventions/git/GIT-004.json"
       ],
-      "dependencies": [
-        "base"
-      ]
+      "dependencies": ["base"]
     },
     "security": {
       "description": "Authentication and authorization conventions.",
@@ -56,27 +48,17 @@
         "conventions/authentication/README.md",
         "conventions/authorization/README.md"
       ],
-      "dependencies": [
-        "base"
-      ]
+      "dependencies": ["base"]
     },
     "ui": {
       "description": "Technology-independent structural interface conventions.",
-      "sources": [
-        "conventions/interface-design/README.md"
-      ],
-      "dependencies": [
-        "base"
-      ]
+      "sources": ["conventions/interface-design/README.md"],
+      "dependencies": ["base"]
     },
     "product-ui": {
       "description": "User-facing product UI defaults for theme and localization.",
-      "sources": [
-        "conventions/interface-design/product/README.md"
-      ],
-      "dependencies": [
-        "ui"
-      ]
+      "sources": ["conventions/interface-design/product/README.md"],
+      "dependencies": ["ui"]
     },
     "benchmarking": {
       "description": "Benchmark design and validation conventions.",
@@ -84,9 +66,7 @@
         "conventions/benchmarking/README.md",
         "conventions/benchmarking/BENCH-002.json"
       ],
-      "dependencies": [
-        "base"
-      ]
+      "dependencies": ["base"]
     },
     "agent-delegation": {
       "description": "Detailed delegated-agent execution policy for workloads that need bounded multi-run coordination.",
@@ -94,9 +74,7 @@
         "conventions/agents/AGENT-009-delegate-one-bounded-capability-per-run.md",
         "conventions/agents/AGENT-010-do-not-require-higher-level-execution-machinery.md"
       ],
-      "dependencies": [
-        "base"
-      ]
+      "dependencies": ["base"]
     },
     "template-authoring": {
       "description": "Template-repository authoring conventions.",
@@ -104,9 +82,7 @@
         "conventions/template-repositories/README.md",
         "conventions/template-repositories/TEMPLATE-003.json"
       ],
-      "dependencies": [
-        "base"
-      ]
+      "dependencies": ["base"]
     },
     "typescript": {
       "description": "TypeScript conventions.",
@@ -150,9 +126,7 @@
           "capability": "format:check"
         }
       ],
-      "dependencies": [
-        "base"
-      ]
+      "dependencies": ["base"]
     },
     "react": {
       "description": "React conventions.",
@@ -171,74 +145,42 @@
           "path": "technologies/typescript/react/generators/react-component/generator.json"
         }
       ],
-      "dependencies": [
-        "typescript"
-      ]
+      "dependencies": ["typescript"]
     },
     "nextjs": {
       "description": "Next.js conventions.",
-      "sources": [
-        "technologies/typescript/react/nextjs/README.md"
-      ],
-      "dependencies": [
-        "react"
-      ]
+      "sources": ["technologies/typescript/react/nextjs/README.md"],
+      "dependencies": ["react"]
     },
     "expo": {
       "description": "Expo conventions, including runtime-specific performance evidence.",
-      "sources": [
-        "technologies/typescript/react/expo/README.md"
-      ],
-      "dependencies": [
-        "react",
-        "benchmarking"
-      ]
+      "sources": ["technologies/typescript/react/expo/README.md"],
+      "dependencies": ["react", "benchmarking"]
     },
     "moritzbrantner-ui": {
       "description": "Shared @moritzbrantner/ui consumption conventions.",
-      "sources": [
-        "technologies/typescript/react/moritzbrantner-ui/README.md"
-      ],
-      "dependencies": [
-        "react",
-        "ui"
-      ]
+      "sources": ["technologies/typescript/react/moritzbrantner-ui/README.md"],
+      "dependencies": ["react", "ui"]
     },
     "react-hook-form": {
       "description": "React Hook Form conventions.",
-      "sources": [
-        "technologies/typescript/react/react-hook-form/README.md"
-      ],
-      "dependencies": [
-        "react"
-      ]
+      "sources": ["technologies/typescript/react/react-hook-form/README.md"],
+      "dependencies": ["react"]
     },
     "tanstack-query": {
       "description": "TanStack Query conventions.",
-      "sources": [
-        "technologies/typescript/react/tanstack-query/README.md"
-      ],
-      "dependencies": [
-        "react"
-      ]
+      "sources": ["technologies/typescript/react/tanstack-query/README.md"],
+      "dependencies": ["react"]
     },
     "testing-library": {
       "description": "React Testing Library conventions.",
-      "sources": [
-        "technologies/typescript/react/testing-library/README.md"
-      ],
-      "dependencies": [
-        "react"
-      ]
+      "sources": ["technologies/typescript/react/testing-library/README.md"],
+      "dependencies": ["react"]
     },
     "zustand": {
       "description": "Zustand conventions.",
-      "sources": [
-        "technologies/typescript/react/zustand/README.md"
-      ],
-      "dependencies": [
-        "react"
-      ]
+      "sources": ["technologies/typescript/react/zustand/README.md"],
+      "dependencies": ["react"]
     },
     "tooling": {
       "description": "General development-tooling conventions.",
@@ -246,18 +188,12 @@
         "technologies/tooling/README.md",
         "technologies/tooling/BUN-001.json"
       ],
-      "dependencies": [
-        "base"
-      ]
+      "dependencies": ["base"]
     },
     "vite": {
       "description": "Vite conventions.",
-      "sources": [
-        "technologies/tooling/vite/README.md"
-      ],
-      "dependencies": [
-        "tooling"
-      ]
+      "sources": ["technologies/tooling/vite/README.md"],
+      "dependencies": ["tooling"]
     },
     "vitest": {
       "description": "Vitest conventions.",
@@ -266,18 +202,12 @@
         "technologies/tooling/vitest/VITEST-001.json",
         "technologies/tooling/vitest/VITEST-002.json"
       ],
-      "dependencies": [
-        "tooling"
-      ]
+      "dependencies": ["tooling"]
     },
     "playwright": {
       "description": "Playwright conventions.",
-      "sources": [
-        "technologies/tooling/playwright/README.md"
-      ],
-      "dependencies": [
-        "tooling"
-      ]
+      "sources": ["technologies/tooling/playwright/README.md"],
+      "dependencies": ["tooling"]
     },
     "storybook": {
       "description": "Storybook conventions.",
@@ -285,9 +215,7 @@
         "technologies/tooling/storybook/README.md",
         "technologies/tooling/storybook/STORYBOOK-002.json"
       ],
-      "dependencies": [
-        "tooling"
-      ]
+      "dependencies": ["tooling"]
     },
     "lighthouse": {
       "description": "Lighthouse and compatible web-quality conventions.",
@@ -296,45 +224,27 @@
         "technologies/tooling/lighthouse/LIGHTHOUSE-001.json",
         "technologies/tooling/lighthouse/LIGHTHOUSE-002.json"
       ],
-      "dependencies": [
-        "tooling"
-      ]
+      "dependencies": ["tooling"]
     },
     "databases": {
       "description": "Database conventions.",
-      "sources": [
-        "technologies/databases/README.md"
-      ],
-      "dependencies": [
-        "base"
-      ]
+      "sources": ["technologies/databases/README.md"],
+      "dependencies": ["base"]
     },
     "postgres": {
       "description": "PostgreSQL conventions.",
-      "sources": [
-        "technologies/databases/postgres/README.md"
-      ],
-      "dependencies": [
-        "databases"
-      ]
+      "sources": ["technologies/databases/postgres/README.md"],
+      "dependencies": ["databases"]
     },
     "docker": {
       "description": "Container conventions.",
-      "sources": [
-        "technologies/docker/README.md"
-      ],
-      "dependencies": [
-        "base"
-      ]
+      "sources": ["technologies/docker/README.md"],
+      "dependencies": ["base"]
     },
     "dockerfile": {
       "description": "Dockerfile conventions.",
-      "sources": [
-        "technologies/docker/dockerfile/README.md"
-      ],
-      "dependencies": [
-        "docker"
-      ]
+      "sources": ["technologies/docker/dockerfile/README.md"],
+      "dependencies": ["docker"]
     },
     "rust": {
       "description": "Rust conventions.",
@@ -342,9 +252,7 @@
         "technologies/rust/README.md",
         "technologies/rust/RUST-002.json"
       ],
-      "dependencies": [
-        "base"
-      ]
+      "dependencies": ["base"]
     },
     "rust-performance": {
       "description": "Performance conventions for Rust crates where execution cost is an explicit engineering contract.",
@@ -352,19 +260,11 @@
         "technologies/rust/performance/README.md",
         "technologies/rust/performance/RUST-005.json"
       ],
-      "dependencies": [
-        "rust",
-        "benchmarking"
-      ]
+      "dependencies": ["rust", "benchmarking"]
     }
   },
   "profiles": {
-    "foundation": [
-      "base",
-      "dependencies",
-      "environment",
-      "git"
-    ],
+    "foundation": ["base", "dependencies", "environment", "git"],
     "react-app": [
       "react",
       "testing-library",
@@ -374,13 +274,7 @@
       "playwright",
       "product-ui"
     ],
-    "react-vite-library": [
-      "react",
-      "testing-library",
-      "tooling",
-      "vite",
-      "vitest"
-    ],
+    "react-vite-library": ["react", "testing-library", "tooling", "vite", "vitest"],
     "react-ui-library": [
       "react",
       "testing-library",
@@ -404,17 +298,8 @@
       "lighthouse",
       "product-ui"
     ],
-    "expo-template": [
-      "template-authoring",
-      "expo",
-      "tooling",
-      "playwright"
-    ],
-    "rust-library": [
-      "rust"
-    ],
-    "rust-performance-library": [
-      "rust-performance"
-    ]
+    "expo-template": ["template-authoring", "expo", "tooling", "playwright"],
+    "rust-library": ["rust"],
+    "rust-performance-library": ["rust-performance"]
   }
 }
