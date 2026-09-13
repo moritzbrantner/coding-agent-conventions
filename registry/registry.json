@@ -50,9 +50,14 @@
       "dependencies": ["base"]
     },
     "ui": {
-      "description": "Technology-independent interface and product UI conventions.",
+      "description": "Technology-independent structural interface conventions.",
       "sources": ["conventions/interface-design/README.md"],
       "dependencies": ["base"]
+    },
+    "product-ui": {
+      "description": "User-facing product UI defaults for theme and localization.",
+      "sources": ["conventions/interface-design/product/README.md"],
+      "dependencies": ["ui"]
     },
     "benchmarking": {
       "description": "Benchmark design and validation conventions.",
@@ -261,7 +266,7 @@
       "vite",
       "vitest",
       "playwright",
-      "ui"
+      "product-ui"
     ],
     "react-vite-library": ["react", "testing-library", "tooling", "vite", "vitest"],
     "react-ui-library": [
@@ -284,7 +289,8 @@
       "vitest",
       "storybook",
       "playwright",
-      "lighthouse"
+      "lighthouse",
+      "product-ui"
     ],
     "rust-library": ["rust"],
     "rust-performance-library": ["rust-performance"]

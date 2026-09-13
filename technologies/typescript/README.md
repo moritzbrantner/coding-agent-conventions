@@ -16,15 +16,15 @@
 - Enable unused-local and unused-parameter diagnostics for implementation code; intentional callback/adapter parameters should use the language/tooling's explicit convention rather than weakening the project globally.
 - Repositories may document a narrow compatibility exception for generated code or an incompatible external tool, but the normal state is strict.
 
-## TS-005 — Handle closed variants exhaustively
+## TS-005 — Enforce exhaustive owned variants in TypeScript
 
-- Switches over enums and discriminated unions owned by the application should be exhaustive so adding a new variant produces a deterministic failure until callers handle it.
-- External protocol boundaries may use an explicit unknown/fallback branch when forward compatibility requires it.
+- TypeScript code applies `REP-010` to application-owned enums and discriminated unions.
+- Deterministic TypeScript enforcement belongs to this technology scope rather than duplicating the broader policy.
 
-## TS-006 — Do not leave promises unobserved
+## TS-006 — Enforce owned asynchronous work in TypeScript
 
-- Await or return promises by default.
-- Detached asynchronous work must flow through an explicit abstraction that owns lifetime, cancellation, error handling, and observability; a bare `void promise` is not the normal escape hatch.
+- TypeScript code applies `REL-006`: promises are observed unless an explicit abstraction owns detached work.
+- Deterministic TypeScript enforcement belongs to this technology scope rather than duplicating the broader policy.
 
 ## TS-007 — Use structurally explicit control flow and side effects
 

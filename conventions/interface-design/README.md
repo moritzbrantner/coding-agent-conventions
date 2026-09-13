@@ -3,20 +3,11 @@
 ## UI-001 — Use surfaces to communicate structure, not to decorate every section
 
 - Use raised surfaces for meaningful semantic units; otherwise use hierarchy, spacing, headings, separators, lists, tables, or rows.
+- Do not turn ordinary counts, statuses, or metadata into decorative metric/KPI cards when the same information is clearer in context.
 
 ## UI-002 — Show information where it changes a decision
 
 - Give prominence only to information that changes understanding or next action; do not repeat facts already visible.
-
-## UI-003 — Treat theme preference as a product contract
-
-- Support light, dark, and system modes unless explicitly opted out.
-- Persist explicit choices and render the same hierarchy and states through semantic tokens.
-
-## UI-004 — Treat localization as an application contract
-
-- Ship en, de, and es unless explicitly opted out; English is the fallback.
-- Localize all user-visible content and formatting; never concatenate translated fragments or use display text as keys.
 
 ## UI-005 — Make primary workflows keyboard-first and commands discoverable
 
