@@ -9,30 +9,6 @@
 - On conflict, use the narrowest applicable rule; non-conflicting broader rules remain in force.
 - Precedence: repository rule → deepest technology scope → parent scopes → general convention → principle.
 
-## REPO-003 — Template decisions are executable
-
-- Encode template defaults in working configuration, scripts, structure, dependencies, tests, and examples.
-
-## REPO-004 — Validate templates from a fresh instance
-
-- A template is complete only when a fresh instance can install, start, test, and build without undeclared local state.
-
-## REPO-005 — Templates include one small vertical slice
-
-- Include one thin, real end-to-end feature that demonstrates the intended architecture.
-
-## REPO-006 — Dogfood the template workflow
-
-- Maintain templates through the same structure, commands, tests, and agent workflow given to downstream projects.
-
-## REPO-007 — Do not preinstall speculative architecture
-
-- Include dependencies and abstractions only when they are intentional template defaults.
-
-## REPO-008 — Templates expose a canonical validation interface
-
-- Make the commands for development, focused tests, broader validation, and build mechanically obvious.
-
 ## REPO-009 — Use conventional roots for durable agent-authored project knowledge
 
 Unless a repository explicitly overrides them, use:
@@ -98,3 +74,10 @@ These are repository-layout defaults, not requirements that every repository cre
 - Do not force WASM or browser compatibility through filesystem, networking, threading, database, GPU, or platform abstractions that would make the production code less coherent. A truthful static explanation is better than a fake demo.
 - Pages deployments should reuse the repository landscape's shared deployment workflow when applicable and publish the same validated build artifact or a deterministically derived static artifact.
 - Treat the Pages surface as part of the repository's public contract: keep examples accurate, responsive, accessible, and aligned with current capabilities rather than promising unimplemented behavior.
+
+## REPO-017 — Public claims must not exceed verified capability
+
+- README text, Pages surfaces, generated reports, release notes, PR descriptions, benchmark summaries, and demos must distinguish verified capability from experimental, advisory, simulated, or planned behavior when the distinction matters.
+- Do not turn skipped, unavailable, incomparable, partial, or non-authoritative evidence into a success claim.
+- Qualify claims to the boundary actually proved: target, workload, platform, precision, protocol behavior, authority level, or other material limitation.
+- Prefer a narrower accurate claim over a broader claim that relies on inference beyond the evidence.
