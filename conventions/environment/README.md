@@ -4,10 +4,11 @@
 
 - Containers provide reproducible execution, not source, Git, credentials, worktrees, or agent-session state.
 
-## ENV-002 — Use Docker Compose as the canonical local development and test topology
+## ENV-002 — Use one canonical local service topology when services are required
 
-- Define required local services in Compose and reuse those definitions across development and tests.
-- Express differences with configuration, profiles, or explicit overrides; unit tests need no external topology.
+- When a repository requires multiple local services or a reproducible service topology, define one canonical Docker Compose topology and reuse it across development and tests.
+- Express differences with configuration, profiles, or explicit overrides rather than maintaining competing service definitions.
+- Libraries, CLIs, browser-only applications, and self-contained tests do not need Compose merely for uniformity; unit tests need no external topology.
 
 ## ENV-003 — .env.example is the committed environment contract
 
