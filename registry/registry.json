@@ -297,6 +297,7 @@
       "lighthouse",
       "product-ui"
     ],
+    "expo-template": ["template-authoring", "expo", "tooling", "playwright"],
     "rust-library": ["rust"],
     "rust-performance-library": ["rust-performance"]
   }
