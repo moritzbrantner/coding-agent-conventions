@@ -7,14 +7,7 @@
 
 ### Template-authoring conventions
 
-- `TEMPLATE-001` — Template repositories are executable golden paths.
-- `TEMPLATE-002` — Templates must dogfood the conventions they prescribe.
-- `TEMPLATE-003` — Fresh instantiation is the acceptance test.
-- `TEMPLATE-004` — A template should have one canonical path to green.
-- `TEMPLATE-005` — Only propagate intentional decisions.
-- `TEMPLATE-006` — Prove the stack with a thin vertical slice.
-- `TEMPLATE-007` — Downstream friction feeds back into the template.
-- `TEMPLATE-008` — Templates declare their applicable convention stack.
+Use the `template-authoring` convention scope (`TEMPLATE-001` through `TEMPLATE-008`) as the authoritative template policy. Do not copy its rule text into this profile.
 
 ### Testing and agent workflow
 
