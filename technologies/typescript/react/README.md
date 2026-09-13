@@ -20,11 +20,6 @@
 
 - Prefer focused composition over unrelated flags and modes.
 
-## REACT-006 — Keep component boundaries structurally clear
-
-- Names, directories, props, and immediate dependencies must make a component's purpose locally understandable.
-- Split unrelated concerns at ownership boundaries; coordinator components are valid when coordination is their purpose.
-
 ## REACT-007 — Reuse shared UI before creating local primitives
 
 - Inspect and reuse the established UI package before creating local primitives.
