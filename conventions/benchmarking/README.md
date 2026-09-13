@@ -17,7 +17,11 @@
 - Do not make raw wall-clock deltas from ordinary shared CI runners a blocking gate.
 - Use a deterministic or sufficiently low-noise proxy for blocking regression thresholds when that proxy represents the intended workload.
 - Keep the metric identity explicit: instruction counts, allocations, cache events, operation counts, and wall-clock latency are different evidence and must not be presented as interchangeable.
-- Use controlled hardware when wall-clock latency itself is a blocking contract.
+- Use controlled hardware or otherwise controlled execution environments whenever wall-clock latency itself is a blocking contract.
+- Persistent wall-clock history used for regression decisions must come from dedicated, pinned, or otherwise controlled execution environments with workload and environment fingerprints.
+- Bind controlled baseline and candidate observations to exact source or artifact identities and preserve the raw observations needed to explain the comparison.
+- Ordinary shared-runner wall-clock results may remain informational but must not silently join controlled history as equivalent samples.
+- Missing history, unavailable runners, or incompatible fingerprints are unavailable or incomparable evidence rather than a green regression result.
 
 ## BENCH-004 — Benchmark enough workload shapes to expose scaling regressions
 
@@ -55,8 +59,8 @@
 ## BENCH-009 — Measure browser and mobile performance through representative journeys
 
 - Browser traces should identify the immutable build artifact and representative interaction journey being measured; developer-server timing is not automatically deployment timing.
-- Keep long tasks/main-thread work, React render counts or render budgets, network/loading evidence, and Lighthouse-style audits as distinct metrics rather than one synthetic truth.
-- Mobile/Expo evidence should identify device/runtime conditions and distinguish startup, frame stalls, JavaScript/native CPU, memory, and interaction latency.
+- Keep long tasks/main-thread work, render counts or render budgets, network/loading evidence, and audit scores as distinct metrics rather than one synthetic truth.
+- Mobile evidence should identify device/runtime conditions and distinguish startup, frame stalls, CPU, memory, and interaction latency.
 - Performance traces supplement behavioral and accessibility tests; loading a page or completing a trace does not prove the interaction is correct.
 
 ## BENCH-010 — Compare size only across equivalent artifacts
@@ -65,10 +69,3 @@
 - Compare equivalent artifacts against a versioned baseline; incompatible targets, feature sets, minification modes, or packaging boundaries are incomparable.
 - Keep size evidence separate from runtime latency, CPU, and memory evidence. Smaller is not automatically faster or better.
 - When a size budget is blocking, commit the budget and the artifact-selection rule so the measured boundary cannot drift silently.
-
-## BENCH-011 — Use controlled history for blocking wall-clock trends
-
-- Persistent wall-clock history intended for regression decisions must come from dedicated, pinned, or otherwise controlled execution environments with workload and environment fingerprints.
-- Bind baseline and candidate evidence to exact source/artifact identities and preserve raw observations needed to explain the comparison.
-- Ordinary shared-runner wall-clock results may remain informational but must not silently join controlled history as equivalent samples.
-- Missing history, unavailable runners, or incompatible fingerprints remain unavailable/incomparable; never coerce them into a green trend.

@@ -7,6 +7,7 @@ Rule IDs are never reused. When a rule is removed because a broader or narrower 
 | `AGENT-001` | `PRINCIPLE-001`, `REP-002` | Deterministic checks before judgment is already owned by the determinism principle and mechanization policy. |
 | `AGENT-007` | `PRINCIPLE-003` | Cheap-to-expensive validation is the progressive-validation principle. |
 | `AGENT-008` | `PRINCIPLE-003` | Revalidation after broader fixes is the progressive-validation principle. |
+| `BENCH-011` | `BENCH-003` | Controlled wall-clock history is part of the existing blocking wall-clock evidence contract. |
 | `TEST-002` | `PRINCIPLE-003` | Bottom-up validation duplicated the general progressive-validation policy. |
 | `TEST-018` | `TEST-006` | The verification-path guidance is now part of the stable public behavior seam rule. |
 | `REPO-003` | `TEMPLATE-001`, `TEMPLATE-005` | Executable template defaults belong to the template-authoring scope. |
