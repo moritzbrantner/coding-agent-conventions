@@ -5,14 +5,16 @@
 
 ## Includes
 
-### Repository conventions
+### Template-authoring conventions
 
-- `REPO-003` — Template decisions are executable.
-- `REPO-004` — Validate template changes from a fresh instance.
-- `REPO-005` — Include one small vertical slice.
-- `REPO-006` — Dogfood the template workflow.
-- `REPO-007` — Do not preinstall speculative architecture.
-- `REPO-008` — Expose a canonical validation interface.
+- `TEMPLATE-001` — Template repositories are executable golden paths.
+- `TEMPLATE-002` — Templates must dogfood the conventions they prescribe.
+- `TEMPLATE-003` — Fresh instantiation is the acceptance test.
+- `TEMPLATE-004` — A template should have one canonical path to green.
+- `TEMPLATE-005` — Only propagate intentional decisions.
+- `TEMPLATE-006` — Prove the stack with a thin vertical slice.
+- `TEMPLATE-007` — Downstream friction feeds back into the template.
+- `TEMPLATE-008` — Templates declare their applicable convention stack.
 
 ### Testing and agent workflow
 
