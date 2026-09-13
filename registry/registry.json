@@ -265,6 +265,7 @@
   },
   "profiles": {
     "foundation": ["base", "dependencies", "environment", "git"],
+    "template-base": ["template-authoring"],
     "react-app": [
       "react",
       "testing-library",
@@ -299,6 +300,16 @@
       "product-ui"
     ],
     "expo-template": ["template-authoring", "expo", "tooling", "playwright"],
+    "tauri-template": [
+      "template-authoring",
+      "moritzbrantner-ui",
+      "testing-library",
+      "rust",
+      "tooling",
+      "vitest",
+      "storybook",
+      "playwright"
+    ],
     "rust-library": ["rust"],
     "rust-performance-library": ["rust-performance"]
   }
