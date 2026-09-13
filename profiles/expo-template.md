@@ -14,17 +14,17 @@
 
 - `technologies/typescript/`
 - `technologies/typescript/react/`
+- `technologies/typescript/react/expo/`
 
 Tooling decisions:
 
 - `BUN-001`
+- `EXPO-001`
 - `technologies/tooling/playwright/` for the declared web E2E workflow
 
 ## Expo-specific conventions
 
-Expo identifies this profile's framework, but no Expo-specific convention branch is defined yet. Add one only when there are real Expo decisions worth documenting under `PRINCIPLE-005`.
-
-Do not copy generic React or TypeScript rules into future Expo conventions.
+Use the Expo technology branch only for decisions that are genuinely Expo-specific. Do not copy generic React, TypeScript, or benchmarking rules into it.
 
 ## Optional branches
 
