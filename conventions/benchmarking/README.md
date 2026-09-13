@@ -17,6 +17,7 @@
 - Do not make raw wall-clock deltas from ordinary shared CI runners a blocking gate.
 - Use a deterministic or sufficiently low-noise proxy for blocking regression thresholds when that proxy represents the intended workload.
 - Keep the metric identity explicit: instruction counts, allocations, cache events, operation counts, and wall-clock latency are different evidence and must not be presented as interchangeable.
+- Use controlled hardware or otherwise controlled execution environments whenever wall-clock latency itself is a blocking contract.
 - Persistent wall-clock history used for regression decisions must come from dedicated, pinned, or otherwise controlled execution environments with workload and environment fingerprints.
 - Bind controlled baseline and candidate observations to exact source or artifact identities and preserve the raw observations needed to explain the comparison.
 - Ordinary shared-runner wall-clock results may remain informational but must not silently join controlled history as equivalent samples.
