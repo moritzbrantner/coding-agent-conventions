@@ -5,6 +5,7 @@
       "description": "High-signal principles and core agent, codebase, repository, reproducibility, reliability, testing, script, and security conventions.",
       "sources": [
         "principles/README.md",
+        "docs/adr/0001-capability-internalization.md",
         "conventions/agents/README.md",
         "conventions/codebase-design/README.md",
         "conventions/repository/README.md",
