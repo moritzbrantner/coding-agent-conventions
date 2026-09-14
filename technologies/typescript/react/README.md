@@ -18,7 +18,9 @@
 
 ## REACT-005 — Prefer composition over highly configurable mega-components
 
-- Prefer focused composition over unrelated flags and modes.
+- Give a reusable component one coherent responsibility and compose larger experiences from smaller parts.
+- Prefer children, slots, focused subcomponents, and small semantic wrappers over unrelated boolean flags, mode switches, and render callbacks that turn one component into several products at once.
+- When variants share behavior or state but differ in presentation, keep the shared behavior in the narrowest hook/controller/headless layer and compose the visual pieces separately.
 
 ## REACT-007 — Reuse shared UI before creating local primitives
 
@@ -43,6 +45,27 @@
 - Add memoization when profiling or a clear identity/compute cost shows that it prevents meaningful work, and keep dependency semantics correct.
 - Use stable semantic keys for mutable collections and virtualize large repeated views instead of rendering every row or item merely because React can express it.
 - When making a material React performance optimization, add a representative deterministic benchmark or render-count regression check when practical; keep correctness tests separate from performance evidence.
+
+## REACT-011 — Build component systems in layers
+
+- Prefer a component vocabulary that composes upward: low-level primitives and behavior, reusable domain building blocks, feature-level compositions, then pages or screens.
+- Keep dependencies flowing upward. A primitive or reusable building block must not import a page, feature workflow, or application-specific orchestration layer.
+- Let pages and screens assemble building blocks and own workflow-specific wiring; do not make them the only place where reusable interaction or presentation logic exists.
+- Keep domain semantics visible in component names and APIs. Reuse should not erase meaningful concepts merely to produce generic `Box`, `Item`, or `Thing` abstractions.
+
+## REACT-012 — Expose explicit composition seams
+
+- Make optional regions explicit composition points when consumers reasonably need to replace, omit, or reorder them. Prefer named subcomponents, slots, children, or small compound-component APIs over a growing collection of `showX`, `hideY`, `variant`, and `mode` props.
+- Use compound components or a focused context when several child building blocks genuinely share one local state machine; do not introduce context merely to avoid passing a few stable props.
+- Support controlled and uncontrolled ownership only when both are real consumer needs. Keep one state model and one transition path rather than separate controlled and internal implementations.
+- Preserve accessibility semantics across composition seams: ownership of labels, focus, keyboard behavior, and ARIA relationships must remain clear when pieces are rearranged.
+
+## REACT-013 — Extract stable reuse, not speculative universality
+
+- Keep a domain-specific component local while its semantics are still changing. Do not generalize a one-off component only because it is large.
+- Extract a shared building block when multiple consumers share the same semantic behavior or when a stable boundary is already clear; extract the smallest coherent unit that removes duplication without coupling unrelated workflows.
+- Prefer thin domain wrappers around shared primitives or headless behavior over a universal component with many product-specific switches.
+- When a reusable component accumulates independent feature flags or multiple unrelated state machines, split it before adding another mode.
 
 ## Child scopes
 
