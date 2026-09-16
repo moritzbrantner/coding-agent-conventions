@@ -69,3 +69,53 @@
 - Compare equivalent artifacts against a versioned baseline; incompatible targets, feature sets, minification modes, or packaging boundaries are incomparable.
 - Keep size evidence separate from runtime latency, CPU, and memory evidence. Smaller is not automatically faster or better.
 - When a size budget is blocking, commit the budget and the artifact-selection rule so the measured boundary cannot drift silently.
+
+## Performance architecture
+
+## BENCH-011 — Declare the hot-path cost model
+
+- Performance-sensitive repositories and components must name the workload dimensions that drive execution cost, such as entities, candidates, samples, contacts, rows, pixels, queries, materializations, or network messages.
+- Describe which stages are expected to be constant, linear, logarithmic, quadratic, or otherwise bounded in those dimensions.
+- Review architectural changes against the cost model, not only against local function complexity.
+- When a production path changes the unit of repeated work, update the representative scenario and its counters in the same slice.
+
+## BENCH-012 — Make deterministic work counters part of observability
+
+- Expose cheap structured counters at natural operation boundaries for expensive reusable work such as candidate visits, exact evaluations, cache rebuilds/reuses, allocations, materializations, solver passes, queries, or serialization bytes.
+- Prefer deterministic operation-count or allocation-count sentinels for blocking CI when they faithfully represent the workload.
+- Treat counters as evidence about work performed, not as substitutes for behavioral correctness or real latency measurements.
+- Consumers should aggregate counters from authoritative foundations instead of reimplementing equivalent instrumentation locally.
+
+## BENCH-013 — Reuse work deliberately and make invalidation explicit
+
+- Do not repeatedly clone, parse, integrate, prepare, index, materialize, or query identical state inside one logical operation when reusable state can be retained safely.
+- Give prepared or cached state an explicit owner, lifetime, identity key, and invalidation rule.
+- A conceptual snapshot or transactional boundary does not by itself justify physically cloning the complete state; prefer borrowing, staging only changed data, or in-place commands with explicit failure semantics when those preserve the contract.
+- Quiescent systems should avoid repeated simulation/render/query work when authoritative state has not changed.
+
+## BENCH-014 — Separate reference semantics from production mechanics
+
+- Keep simple all-pairs, pair-major, wide-arithmetic, or otherwise obviously-correct implementations as development/test oracles when they are useful for proving equivalence.
+- Production implementations may use retained indexes, shared sampling, reordered traversal, bounded common-case arithmetic, incremental updates, or other optimizations when equivalence is established by the oracle and representative evidence.
+- Do not preserve an expensive reference execution strategy merely because it was the easiest version to prove initially.
+
+## BENCH-015 — Make exact common cases cheap
+
+- Exactness and determinism do not require every operation to use the widest supported representation.
+- Prefer the smallest exact bounded representation that can prove the common operation, with a deterministic exact fallback for genuinely wider inputs.
+- Preserve the fallback as the correctness authority and add direct fast-path-versus-fallback equivalence coverage.
+- Do not replace exact semantics with approximation solely to recover performance unless the product contract explicitly allows that approximation.
+
+## BENCH-016 — Require representative performance evidence before feature depth
+
+- Once a performance-sensitive subsystem drives a realistic vertical slice, add at least one representative end-to-end workload before substantially expanding feature depth.
+- Cover a common active case, an idle/quiescent case when meaningful, and a bounded scaling or stress case when their execution shapes differ.
+- A locally faster microbenchmark does not justify a production change that regresses the representative workload.
+- If a representative workload materially regresses and the cause is not already demonstrated by deterministic counters, profile that workload before starting a sequence of speculative micro-optimizations.
+
+## BENCH-017 — Budget product composition separately from foundation kernels
+
+- Product and game repositories should budget the cost of their composition: simulation ticks, AI/pathfinding, foundation calls, rendering submissions, persistence/snapshot work, and other domain orchestration.
+- Do not duplicate every foundation microbenchmark in each consumer; inherit foundation correctness/performance evidence and add consumer journeys that expose pathological composition.
+- Attribute work to the authoritative subsystem where practical so a product-level regression identifies whether the problem is domain orchestration, physics, rendering, networking, storage, or another foundation.
+- Keep repository-specific metric names and thresholds domain-owned while using shared evidence formats and comparison policy.
