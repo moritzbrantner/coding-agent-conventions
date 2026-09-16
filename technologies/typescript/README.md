@@ -1,5 +1,13 @@
 # TypeScript conventions
 
+## TS-001 — Prefer TypeScript over JavaScript for authored code
+
+- Use TypeScript for application code, libraries, tests, build tooling, scripts, and configuration code whenever the selected runtime or tool supports TypeScript directly or through the repository's normal build pipeline.
+- Treat plain JavaScript as an exception, not a peer default. Use it only when an external tool, runtime contract, generated artifact, or interoperability fixture requires JavaScript, and keep that exception narrowly scoped and documented when it is not self-evident.
+- When substantively changing an owned JavaScript module, migrate it to TypeScript in the same change when the migration is bounded and does not force unrelated architectural work.
+- Do not keep parallel hand-maintained JavaScript and TypeScript implementations. If JavaScript output is required for distribution, generate it from the TypeScript source.
+- TypeScript adoption must include the repository's normal validation path; merely renaming files without type-aware validation does not satisfy this rule.
+
 ## TS-002 — Model invalid states out of the type system
 
 - Prefer types, especially discriminated unions, that make invalid combinations unrepresentable.
