@@ -81,16 +81,18 @@
 
 ## BENCH-012 — Make deterministic work counters part of observability
 
-- Expose cheap structured counters at natural operation boundaries for expensive reusable work such as candidate visits, exact evaluations, cache rebuilds/reuses, allocations, materializations, solver passes, queries, or serialization bytes.
-- Prefer deterministic operation-count or allocation-count sentinels for blocking CI when they faithfully represent the workload.
+- Expose cheap structured counters at natural operation boundaries for expensive reusable work such as candidate visits, exact evaluations, cache rebuilds/reuses, allocations, copied or materialized objects/bytes, solver passes, queries, or serialization bytes.
+- When copying or materialization can dominate a hot path, count both occurrences and affected volume, such as elements or bytes, so architecture-level amplification is visible.
+- Prefer deterministic operation-count, allocation-count, or copy/materialization-count sentinels for blocking CI when they faithfully represent the workload.
 - Treat counters as evidence about work performed, not as substitutes for behavioral correctness or real latency measurements.
 - Consumers should aggregate counters from authoritative foundations instead of reimplementing equivalent instrumentation locally.
 
 ## BENCH-013 — Reuse work deliberately and make invalidation explicit
 
 - Do not repeatedly clone, parse, integrate, prepare, index, materialize, or query identical state inside one logical operation when reusable state can be retained safely.
+- Module, layer, API, or other architectural boundaries do not by themselves require physical copies. Prefer borrowing or views, stable handles, shared immutable storage, deltas, or retained prepared state when those preserve the contract.
 - Give prepared or cached state an explicit owner, lifetime, identity key, and invalidation rule.
-- A conceptual snapshot or transactional boundary does not by itself justify physically cloning the complete state; prefer borrowing, staging only changed data, or in-place commands with explicit failure semantics when those preserve the contract.
+- Full copies and materializations should correspond to a real independence boundary such as independent lifetime or ownership, thread/process/FFI isolation, persistence, or a deliberately independent snapshot; expose representative counters when such work occurs on a hot path.
 - Quiescent systems should avoid repeated simulation/render/query work when authoritative state has not changed.
 
 ## BENCH-014 — Separate reference semantics from production mechanics
