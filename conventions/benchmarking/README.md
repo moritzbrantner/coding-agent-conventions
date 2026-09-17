@@ -81,16 +81,18 @@
 
 ## BENCH-012 — Make deterministic work counters part of observability
 
-- Expose cheap structured counters at natural operation boundaries for expensive reusable work such as candidate visits, exact evaluations, cache rebuilds/reuses, allocations, materializations, solver passes, queries, or serialization bytes.
-- Prefer deterministic operation-count or allocation-count sentinels for blocking CI when they faithfully represent the workload.
+- Expose cheap structured counters at natural operation boundaries for expensive reusable work such as candidate visits, exact evaluations, cache rebuilds/reuses, allocations, copied or materialized objects/bytes, solver passes, queries, or serialization bytes.
+- When copying or materialization can dominate a hot path, count both occurrences and affected volume, such as elements or bytes, so architecture-level amplification is visible.
+- Prefer deterministic operation-count, allocation-count, or copy/materialization-count sentinels for blocking CI when they faithfully represent the workload.
 - Treat counters as evidence about work performed, not as substitutes for behavioral correctness or real latency measurements.
 - Consumers should aggregate counters from authoritative foundations instead of reimplementing equivalent instrumentation locally.
 
 ## BENCH-013 — Reuse work deliberately and make invalidation explicit
 
 - Do not repeatedly clone, parse, integrate, prepare, index, materialize, or query identical state inside one logical operation when reusable state can be retained safely.
+- Apply `PRINCIPLE-008` for ownership-preserving sharing decisions across module, layer, and API boundaries; this rule adds performance evidence and reuse requirements rather than a second sharing policy.
 - Give prepared or cached state an explicit owner, lifetime, identity key, and invalidation rule.
-- A conceptual snapshot or transactional boundary does not by itself justify physically cloning the complete state; prefer borrowing, staging only changed data, or in-place commands with explicit failure semantics when those preserve the contract.
+- When a hot path legitimately performs full copies or materializations under `PRINCIPLE-008`, expose representative occurrence and affected-volume counters so that work remains visible in the cost model and performance evidence.
 - Quiescent systems should avoid repeated simulation/render/query work when authoritative state has not changed.
 
 ## BENCH-014 — Separate reference semantics from production mechanics
