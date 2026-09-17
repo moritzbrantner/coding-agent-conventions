@@ -90,9 +90,9 @@
 ## BENCH-013 — Reuse work deliberately and make invalidation explicit
 
 - Do not repeatedly clone, parse, integrate, prepare, index, materialize, or query identical state inside one logical operation when reusable state can be retained safely.
-- Module, layer, API, or other architectural boundaries do not by themselves require physical copies. Prefer borrowing or views, stable handles, shared immutable storage, deltas, or retained prepared state when those preserve the contract.
+- Apply `PRINCIPLE-008` for ownership-preserving sharing decisions across module, layer, and API boundaries; this rule adds performance evidence and reuse requirements rather than a second sharing policy.
 - Give prepared or cached state an explicit owner, lifetime, identity key, and invalidation rule.
-- Full copies and materializations should correspond to a real independence boundary such as independent lifetime or ownership, thread/process/FFI isolation, persistence, or a deliberately independent snapshot; expose representative counters when such work occurs on a hot path.
+- When a hot path legitimately performs full copies or materializations under `PRINCIPLE-008`, expose representative occurrence and affected-volume counters so that work remains visible in the cost model and performance evidence.
 - Quiescent systems should avoid repeated simulation/render/query work when authoritative state has not changed.
 
 ## BENCH-014 — Separate reference semantics from production mechanics
