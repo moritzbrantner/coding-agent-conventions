@@ -23,7 +23,7 @@ describe("catalog", () => {
   });
 
   it("does not index example headings inside fenced code", () => {
-    const source = "# Guide\n\n\`\`\`md\n## EXAMPLE-001 — Not a catalog rule\n\`\`\`";
+    const source = "# Guide\n\n" + "```md" + "\n## EXAMPLE-001 — Not a catalog rule\n" + "```";
 
     expect(extractRules(source)).toEqual([]);
   });
