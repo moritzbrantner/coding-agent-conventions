@@ -26,7 +26,7 @@
 ## UI-008 — Make numeric editor controls precision-first
 
 - Provide directly editable numeric values for precision-sensitive parameters, including dimensions, position, rotation, timing, cuts, simulation settings, and effect parameters. Do not use slider-only controls; a value label or tooltip is not exact entry.
-- Sliders, dragging, handles, and scrubbers may supplement exact entry for coarse adjustment. Use professional-editor interactions, such as Unity, Kdenlive, and Adobe editors, as references rather than defaulting every number to a slider.
+- Sliders, dragging, handles, and scrubbers may supplement exact entry for coarse adjustment. Keep coarse and precise controls synchronized to the same authoritative value: dragging updates the editable value, typing an exact value updates the coarse control without quantizing it, and neither interaction creates a second source of truth.
 - Keep units visible and make keyboard entry and fine adjustment available. Choose domain-appropriate precision, bounds, and increments; a slider's coarse step must not silently quantize an exact typed value. Integer counts and frame-aligned time are explicit domain constraints, not accidental slider restrictions.
 - Preserve incomplete editing drafts without committing an empty string as zero, NaN, or an unintended intermediate value. Validate finite values and bounds before committing, support cancel/revert, and keep all input methods synchronized with the same authoritative state.
 - Test exact fractional and negative entry, invalid/empty drafts, boundaries, keyboard commits/cancellation, and synchronization after presets or external changes. Reuse the shared numeric control where available rather than duplicating parsing and commit policy in every editor.
