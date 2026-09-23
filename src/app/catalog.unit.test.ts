@@ -42,7 +42,15 @@ describe("catalog", () => {
   });
 
   it("loads the repository's convention documents", () => {
-    expect(catalog.find((page) => page.route === "/conventions/interface-design/")?.rules)
-      .toContainEqual(expect.objectContaining({ id: "UI-005" }));
+    const interfaceRules = catalog.find((page) => page.route === "/conventions/interface-design/")?.rules;
+
+    expect(interfaceRules).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: "UI-005" }),
+        expect.objectContaining({ id: "UI-009" }),
+        expect.objectContaining({ id: "UI-010" }),
+        expect.objectContaining({ id: "UI-011" }),
+      ]),
+    );
   });
 });
