@@ -34,15 +34,18 @@
 
 ## UI-009 — Make functional screens task-first, not promotional
 
-- On representative target viewports, put the primary task, current content or state, and frequent actions before generic introductions.
-- Do not spend recurring workflow screens on hero slogans, marketing-style copy, product pitches, decorative banners, or generic explanatory prose.
+- Apply `PRINCIPLE-009`: on representative target viewports, put the primary task, current content or state, and frequent actions before product self-description.
+- Do not spend recurring workflow screens on hero slogans, marketing-style copy, product pitches, decorative banners, generic explanatory prose, architecture summaries, implementation claims, or feature badges that do not change the user's next action.
+- Do not add a visible eyebrow, title, description, section preamble, or “choose/view/start” call to action merely to narrate controls or choices that are already immediately visible. Present the useful content directly.
+- Avoid in-page navigation whose only purpose is to jump from an introductory block to the primary content directly below it.
 - Prefer compact, scannable layouts. Whitespace and framing must improve hierarchy rather than push useful controls or results below the fold.
-- Move architecture, implementation, privacy, or product explanation to documentation, help, or about surfaces unless it changes an immediate consent decision or next action.
+- If a visible page title would only repeat obvious context but a semantic page heading is still required, preserve the heading accessibly without turning it into visual chrome.
+- Move architecture, implementation, privacy, source, or product explanation to documentation, help, about, onboarding, or a contextual details surface unless it changes an immediate consent decision or next action.
 
 ## UI-010 — Make persistent UI earn its space
 
-- Every persistent navigation item, toolbar control, panel, badge, or card must support a recurring task, a real destination, or decision-relevant state.
-- Do not ship placeholder or unimplemented navigation, decorative controls, redundant chrome, or permanently visible status content that users cannot act on.
+- Every persistent navigation item, toolbar control, panel, badge, card, or link must support a recurring task, a real destination, or decision-relevant state.
+- Do not ship placeholder or unimplemented navigation, decorative controls, redundant chrome, permanently visible status content that users cannot act on, or developer/source links that are unrelated to the product's normal workflow.
 - Prefer fewer stable destinations to speculative app shells; surface secondary tasks contextually when they become relevant.
 
 ## UI-011 — Make empty states operational
