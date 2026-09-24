@@ -42,8 +42,12 @@ describe("catalog", () => {
   });
 
   it("loads the repository's convention documents", () => {
+    const principleRules = catalog.find((page) => page.route === "/principles/")?.rules;
     const interfaceRules = catalog.find((page) => page.route === "/conventions/interface-design/")?.rules;
 
+    expect(principleRules).toEqual(
+      expect.arrayContaining([expect.objectContaining({ id: "PRINCIPLE-009" })]),
+    );
     expect(interfaceRules).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ id: "UI-005" }),
