@@ -102,7 +102,7 @@ coding-tooling conventions diff
 coding-tooling conventions update
 ```
 
-`check` must reject a cache that is behind the current source. `diff` previews the current-source delta, and `update` refreshes the cache. If current policy exposes a repository incompatibility, fix the repository or record a narrow repository-local exception instead of freezing an older convention revision.
+`check` verifies the integrity of the local managed cache; it does not make that cache authoritative or prove freshness. Resolve the selected modules from the current shared source before implementation and validation. `diff` previews the current-source delta, and `update` refreshes the cache. If current policy exposes a repository incompatibility, fix the repository or record a narrow repository-local exception instead of freezing an older convention revision.
 
 Installed `.conventions/` files are managed snapshots, not local forks. Repository-specific additions and exceptions belong in `AGENTS.md` or another explicit local policy file.
 
