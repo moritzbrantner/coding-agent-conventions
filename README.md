@@ -43,7 +43,7 @@ The Pages build also publishes real static JSON endpoints that do not require br
 - `rules.json` — stable rule IDs with titles, source paths, documentation routes, and registry module ownership;
 - `routes.json` — the human-readable Pages routes.
 
-These are read-only distribution views. Installing or updating conventions remains an explicit local `coding-tooling conventions ...` operation.
+These are read-only distribution views. Consumer repositories select the modules they need, while the current shared convention source remains authoritative; a local snapshot is only a managed cache.
 
 ## Authoring structure
 
@@ -92,16 +92,17 @@ coding-tooling conventions add react testing-library vitest
 coding-tooling conventions check
 ```
 
-The installer vendors managed snapshots into `.conventions/` and writes `conventions.json` plus `conventions.lock.json`. This makes the active policy available to humans and agents without requiring live access to this repository during ordinary work.
+The installer writes `conventions.json` for the human-owned module selection and may materialize `.conventions/` plus `conventions.lock.json` as a local managed cache. That cache is not a policy version pin: the selected modules are always interpreted against the current shared convention source.
 
-Normal policy changes are received deliberately through:
+Use:
 
 ```sh
+coding-tooling conventions check
 coding-tooling conventions diff
 coding-tooling conventions update
 ```
 
-That makes convention changes reviewable instead of silently changing every repository at runtime.
+`check` must reject a cache that is behind the current source. `diff` previews the current-source delta, and `update` refreshes the cache. If current policy exposes a repository incompatibility, fix the repository or record a narrow repository-local exception instead of freezing an older convention revision.
 
 Installed `.conventions/` files are managed snapshots, not local forks. Repository-specific additions and exceptions belong in `AGENTS.md` or another explicit local policy file.
 
@@ -244,7 +245,7 @@ Changing wording does not change an ID. Removing a rule does not cause later IDs
 
 ## Relationship to coding-tooling
 
-`coding-tooling` owns deterministic registry installation and verification mechanics. It may read `registry/registry.json`, resolve module dependencies, vendor snapshots, compute hashes, detect drift, and execute installed deterministic enforcement descriptors.
+`coding-tooling` owns deterministic registry resolution and verification mechanics. It may read `registry/registry.json`, resolve module dependencies against the current shared source, materialize non-authoritative local caches, compute hashes, detect stale caches or drift, and execute deterministic enforcement descriptors.
 
 It does not own or reinterpret convention semantics.
 
