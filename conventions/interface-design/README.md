@@ -53,3 +53,17 @@
 - State what is absent and expose the most likely next action.
 - Keep empty-state copy concise; do not turn empty states into marketing or generic onboarding explanations unless onboarding is itself the task.
 - Reuse the normal creation, import, or discovery action instead of inventing an empty-state-only workflow.
+
+## UI-012 — Make interactive tools direct-manipulation first
+
+- For editors and workspace-oriented tools, let users select, move, resize, connect, scrub, reorder, edit, or otherwise act on the represented object directly when the domain has a natural interaction for it.
+- Keep inspectors, forms, property panels, menus, and command palettes as precise or discoverable complements. Do not make users leave the work surface for an indirect form when the same operation can be performed clearly in context.
+- Preserve exact entry, keyboard commands, accessibility semantics, and non-pointer alternatives. Direct manipulation does not justify removing precision or keyboard completion; apply `UI-005`, `UI-007`, and `UI-008`.
+- Keep the primary work surface visually dominant. Toolbars and panels should be as small and contextual as their recurring tasks allow.
+
+## UI-013 — Give each interaction one owner and protect its geometry
+
+- Give each gesture and interaction state machine one authoritative owner. Parent and child layers must not independently implement competing selection rectangles, dragging, panning, resizing, connection gestures, timeline scrubbing, or equivalent behavior for the same physical input.
+- Repair the owning primitive or interaction seam when behavior is wrong. Do not hide an ownership defect behind duplicate overlays, descendant-specific CSS overrides, parallel local state, or wrapper-level gesture patches.
+- Treat hit targets, clipping, selection bounds, drag handles, overlay alignment, pointer capture, scroll/zoom behavior, and viewport placement as observable product behavior rather than cosmetic details.
+- When those properties depend on browser layout, pointer geometry, media, canvas, or viewport behavior, add focused browser evidence that exercises the real interaction; use cheaper tests for semantics that do not require a browser.
