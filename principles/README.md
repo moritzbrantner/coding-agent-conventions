@@ -58,6 +58,8 @@
 ## PRINCIPLE-009 — Spend interface space on the user's work
 
 - In an interactive product, prominent screen space must support a current user decision, action, or state; product self-description is not a default UI function.
+- For editors, games, maps, labs, media tools, and other workspace-oriented products, treat the primary work surface as the product: give the canvas, timeline, world, document, visualization, or manipulated objects the dominant usable area.
+- Prefer manipulating represented objects directly when the domain has a natural spatial or temporal interaction. Inspectors, forms, menus, and command surfaces should supplement direct work rather than replace it.
 - Assume returning users already know which product they opened. Do not repeatedly explain the product's purpose, architecture, implementation model, capability claims, privacy posture, or source provenance on ordinary workflow screens unless that information changes an immediate choice or consent decision.
 - Prefer direct access to the actual choices, content, and controls over an introductory block, section preamble, badge row, or call to action that only restates or points at content already visible on the same screen.
 - Remove redundant visible hierarchy when the content names itself. Preserve required accessibility semantics without forcing explanatory chrome into the visual layout.
