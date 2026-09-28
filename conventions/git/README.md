@@ -26,3 +26,16 @@
 - Run relevant code checks through the repository's normal local or GitHub CI paths. Do not add a second exact-head validation workflow, receipt, or runner-identity check solely to re-prove GitHub's check association.
 - For a merge, use GitHub's current pull-request status and required checks. A merge precondition may guard against a concurrent head change; it does not require rerunning the validation suite.
 - Release artifacts may retain source and artifact identities when those identities are part of their delivery contract.
+
+## GIT-006 — Agents integrate their own green changes
+
+- Agents work on a branch named `agent/<short-topic>`, never directly on the default branch.
+- Open a pull request and merge it with a merge commit, deleting the branch, once all repository checks are green.
+- Agents may also review and merge dependency-update, other-agent, and owner pull requests once reviewed and green.
+- Never weaken, skip, or delete a failing check to reach green.
+- Exception: a repository's `AGENTS.md` may require human approval before merge.
+
+## GIT-007 — Commit in small, focused steps
+
+- Each commit makes one coherent change and has a message that states that change.
+- Separate formatting-only commits from behavior commits.

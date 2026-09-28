@@ -18,6 +18,7 @@
 - Keep the changed source graph as small as the architecture permits and make each repository's responsibility independently explainable and verifiable.
 - If implementation starts recursively pulling in unrelated transitive repositories, release work, or opportunistic cleanup, stop the expansion and treat the newly discovered boundary as separate architecture, migration, or follow-up work.
 - Do not impose an arbitrary repository-count limit when a coherent change genuinely spans more owners, and do not use a broad task as permission to repair unrelated dependencies.
+- When a defect or missing capability belongs to a dependency the workspace owns, fix it in the owning repository and advance the consumer's pin in the same task instead of working around it locally.
 
 ## DEP-004 — Require a reason for a new independently versioned package
 

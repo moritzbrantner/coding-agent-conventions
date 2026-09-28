@@ -87,3 +87,12 @@ These are repository-layout defaults, not requirements that every repository cre
 - Consumer repositories select applicable `coding-agent-conventions` modules but do not pin the shared convention repository to a commit, tag, or historical snapshot.
 - Resolve selected modules from the current shared convention authority before implementation and validation. Local managed files may be used as a cache, but they must not make an older policy revision authoritative.
 - If a current convention exposes an incompatibility or validation failure, repair the consumer or record a narrow repository-local exception with the reason; do not freeze the consumer on an older convention revision.
+
+## REPO-019 — Update documentation with the behavior it describes
+
+- A change that alters documented behavior, commands, boundaries, or vocabulary updates the affected `README.md`, `CONTEXT.md`, `AGENTS.md`, or `docs/` in the same change.
+
+## REPO-020 — Record consequential decisions with the change
+
+- Implementation does not require a separate planning issue first.
+- When a change makes a consequential architectural decision (new boundary, dependency, persistence or protocol shape, or a trade-off that is hard to reverse), add an ADR under `docs/adr/` in the same change.
