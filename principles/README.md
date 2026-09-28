@@ -64,3 +64,10 @@
 - Prefer direct access to the actual choices, content, and controls over an introductory block, section preamble, badge row, or call to action that only restates or points at content already visible on the same screen.
 - Remove redundant visible hierarchy when the content names itself. Preserve required accessibility semantics without forcing explanatory chrome into the visual layout.
 - Keep explanatory material in onboarding, help, documentation, about surfaces, or a deliberate details affordance when users may need it.
+
+## PRINCIPLE-010 — Prove optimized mechanics against simple semantics
+
+- When owned behavior has a simple, independently understandable reference formulation, keep it as a development/test oracle when production mechanics become retained, incremental, cached, indexed, reordered, parallel, or otherwise harder to reason about directly.
+- Compare production mechanics with the reference over representative deterministic inputs and state transitions, including mutations that exercise invalidation and reuse; matching one steady-state output is not sufficient evidence for an incremental architecture.
+- Treat the reference as semantic authority, not as the required runtime architecture. Production code may use a substantially different execution strategy once equivalence is established.
+- Keep semantic equivalence and execution cost as separate claims: reference parity proves correctness, while cost models, deterministic work counters, and representative benchmarks prove that the production architecture avoids unintended recomputation or materialization.

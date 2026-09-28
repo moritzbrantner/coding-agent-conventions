@@ -105,3 +105,11 @@
 - A browser failure that crosses a mocked or stubbed network boundary is not sufficient evidence of a product defect until the double preserves the production protocol semantics that materially affect the behavior.
 - Match relevant request methods, statuses, headers, bodies, and stateful or streaming behavior such as redirects, cookies or authentication, CORS or cache handling, byte ranges and partial-content responses, downloads, SSE, or WebSockets.
 - Prefer a deterministic real local service when it is cheap; otherwise use the smallest protocol-faithful double. Do not change product code merely to compensate for an unrealistic browser fixture.
+
+## TEST-022 — Differentially verify alternative execution mechanics
+
+- Apply `PRINCIPLE-010` for the semantic-equivalence and state-transition requirements when production mechanics differ from a simple reference.
+- Use one deterministic differential/property/sequence harness to exercise both paths through comparable stable seams; compare observable results rather than private implementation structure.
+- Keep the oracle independent enough that it does not reuse the optimization machinery whose correctness it is intended to check.
+- Keep cheap differential/oracle cases in the ordinary deterministic test gate; place larger generated, stress, or exhaustive cases in an explicitly broader tier rather than omitting the evidence.
+- Do not create a duplicate implementation merely for test symmetry when the semantics are trivial, the repository does not own them, or a trusted external/reference contract already provides a suitable oracle.
