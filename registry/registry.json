@@ -36,10 +36,7 @@
     },
     "git": {
       "description": "Git conventions.",
-      "sources": [
-        "conventions/git/README.md",
-        "conventions/git/GIT-004.json"
-      ],
+      "sources": ["conventions/git/README.md"],
       "dependencies": ["base"]
     },
     "security": {
