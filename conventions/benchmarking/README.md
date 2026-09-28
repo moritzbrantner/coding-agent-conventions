@@ -97,9 +97,10 @@
 
 ## BENCH-014 — Separate reference semantics from production mechanics
 
-- Keep simple all-pairs, pair-major, wide-arithmetic, or otherwise obviously-correct implementations as development/test oracles when they are useful for proving equivalence.
-- Production implementations may use retained indexes, shared sampling, reordered traversal, bounded common-case arithmetic, incremental updates, or other optimizations when equivalence is established by the oracle and representative evidence.
-- Do not preserve an expensive reference execution strategy merely because it was the easiest version to prove initially.
+- Apply `PRINCIPLE-010` and `TEST-022` when a performance-sensitive production path differs from a simple semantic reference.
+- Production implementations may use retained indexes, shared sampling, reordered traversal, bounded common-case arithmetic, incremental updates, or other optimizations once differential evidence establishes semantic equivalence.
+- Keep the reference outside production boundaries under `BENCH-005`; do not preserve an expensive reference execution strategy merely because it was the easiest version to prove initially.
+- Pair equivalence evidence with `BENCH-011` cost models and `BENCH-012` deterministic work counters so a semantically correct optimization cannot silently regress into whole-input recomputation, copying, or materialization.
 
 ## BENCH-015 — Make exact common cases cheap
 
