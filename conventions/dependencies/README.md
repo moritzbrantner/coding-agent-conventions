@@ -3,7 +3,7 @@
 ## DEP-001 — Keep publication out of ordinary development
 
 - Develop cross-repository changes against source revisions rather than publishing packages to unblock feature work.
-- Prefer the repository's declared source-development mechanism and pin exact revisions.
+- Prefer the repository's declared source-development mechanism. Use a specific revision only when coordinating an unpublished change or reproducing a failure.
 - Do not start a crates.io, npm, or other registry release train unless the task is explicitly a release task.
 
 ## DEP-002 — Version bumps belong to release work
@@ -71,15 +71,15 @@
 - Do not use source patches to normalize permanent sideways dependencies, duplicate ownership, or consumer knowledge of implementation internals.
 - Repeated feature work that requires coordinated source heads across several sibling repositories is an architecture signal: introduce or improve a contract, capability surface, adapter, or ownership boundary before expanding the patch graph further.
 
-## DEP-012 — Declare dependency versions according to the consumer contract
+## DEP-012 — Let maintained dependencies advance
 
-- Applications, internal tooling, and other leaf deliverables prefer exact dependency versions for predictable resolution.
+- Applications, internal tooling, and other leaf deliverables may follow current compatible releases without exact version pins. Do not add a fleet-wide exact-version requirement.
 - Published libraries declare the narrowest semver-compatible range that truthfully describes the versions consumers may use.
-- Lockfiles remain the reproducible resolution record; do not use `latest`, wildcard ranges, or similarly floating declarations for leaf repositories.
+- Repositories may retain lockfiles for repeatable builds, but should update dependencies through their ordinary maintenance path. A lockfile is not a reason to add repeated runner, revision, or dependency-identity verification to every check.
 
 ## DEP-013 — Make dependency changes explicit transactions
 
-- Ordinary install and verification commands use the committed lockfile without modifying it.
+- Install and verification commands follow the repository's declared dependency strategy. When it uses a committed lockfile, ordinary checks should not silently rewrite it.
 - A dependency-manifest change includes the corresponding lockfile change; unexplained lockfile-only changes are not normal feature-work noise.
 - Dependency updates use an explicit update command or workflow. Do not run a generic update merely to make dependency resolution or a build start passing.
 - Verification should use the ecosystem's frozen/locked mode where available.
