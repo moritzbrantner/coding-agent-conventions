@@ -16,6 +16,7 @@
 ## TEST-005 — Behavior changes require executable evidence
 
 - Add or update the smallest automated test that would fail without a behavior change or bug fix.
+- For a bug fix, first add the test that reproduces the bug and fails, then fix it.
 
 ## TEST-006 — Prefer stable public behavior seams
 
