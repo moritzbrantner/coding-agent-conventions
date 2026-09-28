@@ -108,8 +108,8 @@
 
 ## TEST-022 — Differentially verify alternative execution mechanics
 
-- Apply `PRINCIPLE-010` when an optimized or incremental production path computes semantics that can also be expressed by a simple reference implementation.
-- Drive the reference and production paths from the same deterministic inputs and operation sequences, then compare their observable results. Include mutations that exercise cache/index invalidation, retained state, removals, reordering, and idle/no-op behavior when those mechanics exist.
+- Apply `PRINCIPLE-010` for the semantic-equivalence and state-transition requirements when production mechanics differ from a simple reference.
+- Use one deterministic differential/property/sequence harness to exercise both paths through comparable stable seams; compare observable results rather than private implementation structure.
 - Keep the oracle independent enough that it does not reuse the optimization machinery whose correctness it is intended to check.
 - Keep cheap differential/oracle cases in the ordinary deterministic test gate; place larger generated, stress, or exhaustive cases in an explicitly broader tier rather than omitting the evidence.
 - Do not create a duplicate implementation merely for test symmetry when the semantics are trivial, the repository does not own them, or a trusted external/reference contract already provides a suitable oracle.
