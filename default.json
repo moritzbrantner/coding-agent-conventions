@@ -4,7 +4,9 @@
   "extends": ["config:best-practices", "schedule:weekly"],
   "timezone": "Europe/Berlin",
   "prConcurrentLimit": 3,
-  "automerge": false,
+  "automerge": true,
+  "automergeType": "pr",
+  "platformAutomerge": false,
   "major": {
     "dependencyDashboardApproval": true
   },
