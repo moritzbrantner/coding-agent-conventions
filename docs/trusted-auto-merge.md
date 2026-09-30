@@ -6,7 +6,9 @@ Automated merging is the payoff for deterministic verification. A repository may
 
 A pull request may be merged without a redundant human verification pass when the repository is in the **trusted auto-merge** tier and the pull request satisfies every current merge gate.
 
-Green CI by itself is not sufficient. A repository must first earn the trusted tier.
+Green CI by itself is not sufficient for general pull requests. A repository must first earn the trusted tier.
+
+Renovate dependency-update pull requests are a narrow exception: the shared Renovate policy may automerge them after Renovate observes successful repository checks. This exception does not graduate the repository to trusted auto-merge for human- or agent-authored pull requests.
 
 ## Trusted repository bar
 
@@ -36,6 +38,6 @@ The goal is not to replace verification with optimism. The goal is to make verif
 
 ## Rollout
 
-Repositories graduate individually. Foundation/validation rollout can happen broadly, but unattended auto-merge is enabled only after the repository satisfies the trusted bar. Critical infrastructure and repositories with unusual release, hardware, local-source, or stacked-PR boundaries may deliberately remain on guarded/manual integration even when ordinary repositories have graduated.
+Repositories graduate individually for general unattended pull-request merging. Foundation/validation rollout can happen broadly, but general auto-merge is enabled only after the repository satisfies the trusted bar. Critical infrastructure and repositories with unusual release, hardware, local-source, or stacked-PR boundaries may deliberately remain on guarded/manual integration even when ordinary repositories have graduated.
 
-Dependency bots are not globally auto-merged by default. Their changes become eligible only under the same trusted repository and pull-request gates, with any dependency-specific qualification required by that repository.
+Renovate is governed separately by the shared dependency-update policy. With tests required and platform-native automerge disabled, Renovate may merge its dependency-update pull requests only after it observes successful repository checks; major updates still require the configured explicit approval.
