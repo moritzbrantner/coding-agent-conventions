@@ -12,15 +12,7 @@ This convention introduces no additional execution-layer policy. Its purpose is 
 
 ## Agent behavior
 
-When an agent-facing procedure needs to decide whether a higher execution layer is warranted, follow `PRINCIPLE-006` directly.
-
-In particular:
-
-- gather cheap deterministic evidence before spending a coding-model invocation when the evidence can materially narrow the task;
-- preserve relevant failure evidence between attempts instead of asking later attempts to rediscover it;
-- use focused validation while iterating and rely on the coordinating harness for the independently repeated completion gate;
-- escalate when the current layer stops producing useful information or the problem inherently requires runtime/environment feedback;
-- do not repeatedly invoke the same expensive worker on materially unchanged evidence merely because a retry budget remains.
+Apply `PRINCIPLE-006` through the reusable [execution/escalation procedure in coding-agent-skills](https://github.com/moritzbrantner/coding-agent-skills/blob/main/docs/execution-escalation.md). Evidence collection and recording mechanics belong in `coding-tooling`; durable history belongs to the caller or orchestrator. This pointer does not require either machinery for direct work.
 
 ## Automatable check
 
