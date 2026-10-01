@@ -144,7 +144,7 @@ installed specific convention
 installed broader convention
 ```
 
-An explicit local exception should state which shared rule it overrides and why. Unrelated shared rules continue to apply.
+See [REPO-002](conventions/repository/README.md#repo-002--more-specific-conventions-override-broader-conventions) for convention precedence and repository-local exceptions.
 
 ## What belongs here
 

@@ -40,7 +40,7 @@ Use these terms consistently when reasoning about code structure. They describe 
 
 ## DESIGN-005 — Resolve contradictory structural rules at the correct level
 
-- Apply `REPO-002` to convention precedence. A deliberate repository-local exception names the overridden shared rule and explains why; it does not require a shared-policy change before local work can proceed.
+- Apply `REPO-002` to convention precedence and repository-local exceptions.
 - Reorganizing implementation files must preserve the declared architectural invariants. A smaller code module is not permission to introduce an undocumented ownership or dependency exception.
 - When evidence shows that a shared rule is generally too absolute, qualify it at its owning scope rather than accumulating contradictory copies. Keep genuinely repository-specific exceptions local.
 
