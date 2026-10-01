@@ -100,8 +100,8 @@ These are repository-layout defaults, not requirements that every repository cre
 
 ## REPO-021 — Converge maintained repositories on canonical workflow profiles
 
-- Maintained repositories select a canonical GitHub workflow profile from the shared `reusable-workflows` profile catalog rather than independently inventing top-level workflow topology.
-- Enable only the profile roles the repository actually needs; prefer jobs and matrices inside canonical caller workflows over adding another top-level workflow file.
+- Maintained repositories that use GitHub Actions select a canonical workflow profile from the shared `reusable-workflows` profile catalog rather than independently inventing top-level GitHub workflow topology.
+- For those GitHub Actions repositories, enable only the profile roles the repository actually needs; prefer jobs and matrices inside canonical caller workflows over adding another top-level workflow file.
 - Any workflow outside the selected profile is an explicit repository-local exception with a concrete reason.
 - Repository-owned commands and deterministic tooling continue to own validation semantics; the shared workflow profile owns only GitHub workflow topology, canonical caller roles, and reusable hosted mechanics.
 
