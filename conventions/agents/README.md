@@ -27,7 +27,7 @@
 ## AGENT-010 — Apply progressive composition to agent execution
 
 - Resolve execution-layer choices to `PRINCIPLE-006` and progressive verification to `PRINCIPLE-003`; AGENT-010 is the agent-category pointer and adds no second copy of those policies.
-- Gather deterministic evidence first, preserve it across attempts, use focused validation while iterating, and escalate only when cheaper execution stops producing useful information or runtime/environment feedback is inherently required.
+- Apply the reusable execution/escalation procedure in `coding-agent-skills`; deterministic mechanics remain owned by `coding-tooling` and durable history by the caller.
 
 ## AGENT-011 — Classify failures before repairing them
 
