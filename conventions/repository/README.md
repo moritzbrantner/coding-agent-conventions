@@ -8,6 +8,7 @@
 
 - On conflict, use the narrowest applicable rule; non-conflicting broader rules remain in force.
 - Precedence: repository rule → deepest technology scope → parent scopes → general convention → principle.
+- A deliberate repository-local exception names the overridden shared rule and explains why; it does not require a shared-policy change before local work can proceed.
 
 ## REPO-009 — Use conventional roots for durable agent-authored project knowledge
 
