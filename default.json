@@ -12,5 +12,16 @@
   },
   "vulnerabilityAlerts": {
     "enabled": true
-  }
+  },
+  "packageRules": [
+    {
+      "description": "Packages pinned to commits on their dist/<package> branches: digest updates follow the default branch, whose commits are not installable packages.",
+      "matchDepNames": [
+        "/^@moritzbrantner/input-bindings(-.+)?$/",
+        "@moritzbrantner/settings-browser"
+      ],
+      "matchUpdateTypes": ["digest"],
+      "enabled": false
+    }
+  ]
 }
