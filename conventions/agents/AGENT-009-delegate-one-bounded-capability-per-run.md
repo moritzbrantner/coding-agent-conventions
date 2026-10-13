@@ -8,7 +8,7 @@
 
 Each delegated implementation run owns exactly one independently verifiable capability slice.
 
-Only one active implementation run may own a path or behavioral scope. Potentially overlapping slices must execute sequentially even when separate worktrees would make concurrent writes mechanically possible.
+Repository ownership and checkout selection follow [AGENT-009 in the agent conventions](README.md#agent-009--delegate-one-bounded-capability-per-implementation-run): one active implementation worker per repository, using its ordinary checkout by default. Disjoint scopes or separate worktrees do not permit additional implementation writers.
 
 Slice completion and convention satisfaction are different claims. A foundation or adoption slice may finish while the capability remains `partial`; only an explicit completion audit may mark the referenced convention `satisfied`.
 
@@ -34,4 +34,4 @@ Bounded capability ownership makes delegation reviewable, keeps completion falsi
 6. Produce the smallest executable evidence required by the primary convention and repository harness.
 7. Return the candidate and its evidence. Do not integrate, publish, or mark the broader convention satisfied unless the caller explicitly grants that authority.
 
-Read-only discovery, dependency analysis, test planning, and review agents may overlap an implementation run. An implementation worker must not create additional writers for an overlapping scope.
+Read-only discovery, dependency analysis, test planning, and review agents may overlap an implementation run. Acceptance authorship and production implementation use distinct contexts sequentially; the acceptance writer hands off before production edits begin. A replacement implementation worker takes over only after its predecessor stops and hands off the exact branch/PR.

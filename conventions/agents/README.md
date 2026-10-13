@@ -20,7 +20,8 @@
 
 - Give each delegated implementation run one independently verifiable capability slice.
 - Do not invent missing task data or widen the assigned scope.
-- Only one active implementation run may own an overlapping path or behavioral scope.
+- At most one active implementation worker owns a repository, including disjoint scopes and separate worktrees. Hand off its exact branch/PR before another worker takes over.
+- Use the repository's ordinary checkout on a task branch by default. Worktrees are exceptions for a concrete isolation need or to protect unrelated checkout changes; record the reason and preserve those changes.
 - Report undeclared prerequisites, drift, overlap, or inconsistent delegated inputs to the delegating caller for replanning.
 - Distinguish completing a partial slice from satisfying the broader convention.
 
