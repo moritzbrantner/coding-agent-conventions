@@ -48,14 +48,15 @@ The shared `default.json` uses `platformAutomerge: false`. Renovate merges eligi
 
 Prefer a **per-repository GitHub-native pilot**, not a fleet-wide switch or another merge service. Before changing that repository's Renovate configuration:
 
-1. A repository administrator verifies that the target branch has active branch protection or a ruleset with **named, meaningful required CI checks**. All required checks must run for PRs and block on missing, pending, or failing results. Seeing successful optional checks in the PR is not proof that GitHub requires them. Preserve review protections and never configure a bypass.
+1. A repository administrator verifies that the target branch has active branch protection or a ruleset with **named, meaningful required CI checks**. All required checks must run for PRs and block on missing, pending, or failing results. Require branches to be **up to date before merging**, so passing checks cannot be reused against an older base. Seeing successful optional checks in the PR is not proof that GitHub requires them. Preserve review protections and never configure a bypass.
 2. The administrator enables **Settings → General → Pull Requests → Allow auto-merge** for the pilot repository.
 3. Only after those gates are verified, override the shared setting in that repository's existing `renovate.json`:
 
    ```json
    {
      "extends": ["github>moritzbrantner/coding-agent-conventions"],
-     "platformAutomerge": true
+     "platformAutomerge": true,
+     "rebaseWhen": "behind-base-branch"
    }
    ```
 
