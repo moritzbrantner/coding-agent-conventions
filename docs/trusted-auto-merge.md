@@ -42,26 +42,14 @@ Repositories graduate individually for general unattended pull-request merging. 
 
 Renovate is governed separately by the shared dependency-update policy. With tests required and platform-native automerge disabled, Renovate may merge its dependency-update pull requests only after it observes successful repository checks; major updates still require the configured explicit approval.
 
-## Renovate merge latency and GitHub-native pilot
+## GitHub-native dependency-update auto-merge
 
-The shared `default.json` uses `platformAutomerge: false`. Renovate merges eligible PRs on a subsequent bot run; the inherited weekly schedule restricts **branch creation**, not automerging. The Mend-hosted app typically revisits inactive repositories roughly every three hours, and Renovate normally merges only one PR per base branch per run. See [issue #96](https://github.com/moritzbrantner/coding-agent-conventions/issues/96) for measured final-head CI-completion-to-merge delays across patch and digest updates. A PR's creation-to-merge time is not a measure of the post-CI delay.
+A repository must not override the [shared Renovate policy](../default.json) to use platform-native auto-merge unless its target branch has effective protection that:
 
-Prefer a **per-repository GitHub-native pilot**, not a fleet-wide switch or another merge service. Before changing that repository's Renovate configuration:
+- Requires named, meaningful CI checks on pull requests and blocks missing, pending, or failing evidence.
+- Enforces mandatory reviews and prevents administrative bypass.
+- Prevents unvalidated stale-base merges (through an up-to-date branch requirement and rebasing, or an enforced merge queue that validates the integrated result).
 
-1. A repository administrator verifies that the target branch has active branch protection or a ruleset with **named, meaningful required CI checks**. All required checks must run for PRs and block on missing, pending, or failing results. Require branches to be **up to date before merging**, so passing checks cannot be reused against an older base. Seeing successful optional checks in the PR is not proof that GitHub requires them. Preserve review protections and never configure a bypass.
-2. The administrator enables **Settings → General → Pull Requests → Allow auto-merge** for the pilot repository.
-3. Only after those gates are verified, override the shared setting in that repository's existing `renovate.json`:
+The repository must also enable GitHub's native auto-merge capability. Local overrides must not weaken the shared approval, concurrency, vulnerability, or repository-specific dependency safeguards. If any protection cannot be verified, retain the shared non-native behavior.
 
-   ```json
-   {
-     "extends": ["github>moritzbrantner/coding-agent-conventions"],
-     "platformAutomerge": true,
-     "rebaseWhen": "behind-base-branch"
-   }
-   ```
-
-   Keep the inherited `prConcurrentLimit: 3` and `major.dependencyDashboardApproval: true`; do not enable `ignoreTests`, weaken branch protection, or override a repository-specific restriction. The shared default remains `platformAutomerge: false` for repositories not individually verified.
-
-Validate the pilot on a **new** eligible patch or digest PR: record its final head, required-check completion time, auto-merge enrollment, and actual merge time. Also verify that a major without Dependency Dashboard approval, a failed or missing required check, and a review-blocked PR remain unmerged. Inability to observe any of those gates is a failed pilot, not evidence of safety. If the expected improvement is not measured, keep the issue open and revert that repository's override.
-
-GitHub's required-check configuration is a repository-administrator responsibility when the connected integration cannot read branch-protection details. Changing `schedule` or `automergeSchedule` cannot make a completed PR merge between Renovate's own runs when `platformAutomerge` is disabled.
+Measured delays and pilot evidence are tracked in [issue #96](https://github.com/moritzbrantner/coding-agent-conventions/issues/96).
