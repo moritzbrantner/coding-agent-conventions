@@ -41,3 +41,15 @@ The goal is not to replace verification with optimism. The goal is to make verif
 Repositories graduate individually for general unattended pull-request merging. Foundation/validation rollout can happen broadly, but general auto-merge is enabled only after the repository satisfies the trusted bar. Critical infrastructure and repositories with unusual release, hardware, local-source, or stacked-PR boundaries may deliberately remain on guarded/manual integration even when ordinary repositories have graduated.
 
 Renovate is governed separately by the shared dependency-update policy. With tests required and platform-native automerge disabled, Renovate may merge its dependency-update pull requests only after it observes successful repository checks; major updates still require the configured explicit approval.
+
+## GitHub-native dependency-update auto-merge
+
+A repository must not override the [shared Renovate policy](../default.json) to use platform-native auto-merge unless its target branch has effective protection that:
+
+- Requires named, meaningful CI checks on pull requests and blocks missing, pending, or failing evidence.
+- Enforces mandatory reviews and prevents administrative bypass.
+- Prevents unvalidated stale-base merges (through an up-to-date branch requirement and rebasing, or an enforced merge queue that validates the integrated result).
+
+The repository must also enable GitHub's native auto-merge capability. Local overrides must not weaken the shared approval, concurrency, vulnerability, or repository-specific dependency safeguards. If any protection cannot be verified, retain the shared non-native behavior.
+
+Measured delays and pilot evidence are tracked in [issue #96](https://github.com/moritzbrantner/coding-agent-conventions/issues/96).
