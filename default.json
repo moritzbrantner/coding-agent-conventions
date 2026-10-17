@@ -17,25 +17,27 @@
   },
   "packageRules": [
     {
-      "description": "Group routine npm and Bun patch upgrades into a single bounded check",
+      "description": "Group routine npm and Bun minor and patch upgrades into a single bounded check",
       "matchManagers": [
         "npm",
         "bun"
       ],
       "matchUpdateTypes": [
+        "minor",
         "patch"
       ],
-      "groupName": "JavaScript patch dependencies"
+      "groupName": "JavaScript minor and patch dependencies"
     },
     {
-      "description": "Group routine Cargo patch upgrades without coupling them to JavaScript validation",
+      "description": "Group routine Cargo minor and patch upgrades without coupling them to JavaScript validation",
       "matchManagers": [
         "cargo"
       ],
       "matchUpdateTypes": [
+        "minor",
         "patch"
       ],
-      "groupName": "Rust patch dependencies"
+      "groupName": "Rust minor and patch dependencies"
     },
     {
       "description": "Packages consumed as commit pins on publish branches (input-bindings dist/<package>, the settings browser distribution): digest updates follow the default branch, whose commits are not installable packages.",
@@ -51,5 +53,8 @@
   ],
   "schedule": [
     "* 0-6 * * *"
-  ]
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  }
 }
