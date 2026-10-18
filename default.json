@@ -10,7 +10,7 @@
   "automergeType": "pr",
   "platformAutomerge": false,
   "major": {
-    "dependencyDashboardApproval": true
+    "dependencyDashboardApproval": false
   },
   "vulnerabilityAlerts": {
     "enabled": true
@@ -49,17 +49,6 @@
         "digest"
       ],
       "enabled": false
-    },
-    {
-      "description": "GitHub Actions major upgrades automerge after green checks without Dependency Dashboard approval (owner decision, coding-tooling#330)",
-      "matchManagers": [
-        "github-actions"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "dependencyDashboardApproval": false,
-      "automerge": true
     }
   ],
   "schedule": [
