@@ -1,16 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Shared Renovate policy for repositories adopting the coding-agent conventions.",
-  "extends": [
-    "config:best-practices"
-  ],
+  "extends": ["config:best-practices"],
   "timezone": "Europe/Berlin",
   "prConcurrentLimit": 3,
   "automerge": true,
   "automergeType": "pr",
   "platformAutomerge": false,
   "major": {
-    "dependencyDashboardApproval": true
+    "dependencyDashboardApproval": true,
+    "automerge": false
   },
   "vulnerabilityAlerts": {
     "enabled": true
@@ -18,25 +17,14 @@
   "packageRules": [
     {
       "description": "Group routine npm and Bun minor and patch upgrades into a single bounded check",
-      "matchManagers": [
-        "npm",
-        "bun"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchManagers": ["npm", "bun"],
+      "matchUpdateTypes": ["minor", "patch"],
       "groupName": "JavaScript minor and patch dependencies"
     },
     {
       "description": "Group routine Cargo minor and patch upgrades without coupling them to JavaScript validation",
-      "matchManagers": [
-        "cargo"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchManagers": ["cargo"],
+      "matchUpdateTypes": ["minor", "patch"],
       "groupName": "Rust minor and patch dependencies"
     },
     {
@@ -45,15 +33,11 @@
         "/^@moritzbrantner/input-bindings(-.+)?$/",
         "@moritzbrantner/settings-browser"
       ],
-      "matchUpdateTypes": [
-        "digest"
-      ],
+      "matchUpdateTypes": ["digest"],
       "enabled": false
     }
   ],
-  "schedule": [
-    "* 0-6 * * *"
-  ],
+  "schedule": ["* 0-6 * * *"],
   "lockFileMaintenance": {
     "enabled": true
   }
