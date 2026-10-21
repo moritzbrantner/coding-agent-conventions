@@ -28,6 +28,11 @@
       "groupName": "Rust minor and patch dependencies"
     },
     {
+      "description": "Group all digest updates into one PR. Crates and packages from one git repository must move together: one PR per crate split a repository across two revisions and broke builds (owner decision 2026-10-21).",
+      "matchUpdateTypes": ["digest"],
+      "groupName": "digest updates"
+    },
+    {
       "description": "Packages consumed as commit pins on publish branches (input-bindings dist/<package>, the settings browser distribution): digest updates follow the default branch, whose commits are not installable packages.",
       "matchDepNames": [
         "/^@moritzbrantner/input-bindings(-.+)?$/",
