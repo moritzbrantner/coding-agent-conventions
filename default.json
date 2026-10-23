@@ -28,6 +28,18 @@
       "groupName": "Rust minor and patch dependencies"
     },
     {
+      "description": "web-sys and js-sys require the exact wasm-bindgen release they were published with; bumping them separately breaks the build, so the wasm-bindgen crate family and CLI always move together.",
+      "matchPackageNames": [
+        "wasm-bindgen",
+        "wasm-bindgen-futures",
+        "wasm-bindgen-test",
+        "wasm-bindgen-cli",
+        "js-sys",
+        "web-sys"
+      ],
+      "groupName": "wasm-bindgen"
+    },
+    {
       "description": "Group all digest updates into one PR. Crates and packages from one git repository must move together: one PR per crate split a repository across two revisions and broke builds (owner decision 2026-10-21).",
       "matchUpdateTypes": ["digest"],
       "groupName": "digest updates"
