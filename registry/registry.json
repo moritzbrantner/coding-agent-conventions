@@ -156,7 +156,10 @@
     },
     "moritzbrantner-ui": {
       "description": "Shared @moritzbrantner/ui consumption conventions.",
-      "sources": ["technologies/typescript/react/moritzbrantner-ui/README.md"],
+      "sources": [
+        "technologies/typescript/react/moritzbrantner-ui/README.md",
+        "technologies/typescript/react/moritzbrantner-ui/UI-PREFERENCES.md"
+      ],
       "dependencies": ["react", "ui"]
     },
     "react-hook-form": {
