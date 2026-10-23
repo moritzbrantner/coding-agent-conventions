@@ -75,3 +75,26 @@
 - Compare production mechanics with the reference over representative deterministic inputs and state transitions, including mutations that exercise invalidation and reuse; matching one steady-state output is not sufficient evidence for an incremental architecture.
 - Treat the reference as semantic authority, not as the required runtime architecture. Production code may use a substantially different execution strategy once equivalence is established.
 - Keep semantic equivalence and execution cost as separate claims: reference parity proves correctness, while cost models, deterministic work counters, and representative benchmarks prove that the production architecture avoids unintended recomputation or materialization.
+
+## PRINCIPLE-011 — Replace, don't preserve, while experimental
+
+- While a repository is experimental (the default for owner projects unless its `AGENTS.md` says otherwise), choose the cleanest design and change APIs, schemas, save formats and names in place.
+- Do not add compatibility shims, deprecated aliases, parallel old/new functions, deprecation windows or migration notes. Update all callers in the same change.
+- A repository opts out by declaring a stable public contract in its `AGENTS.md`.
+
+## PRINCIPLE-012 — Verify in proportion to consequence
+
+- Do not add attestation, signature or fingerprint matching, byte-exact rebuild gates, provenance receipts that are checked, security-approval gates or "inactive until approved" rollouts unless an issue states the concrete risk they address.
+- Record plain metadata (versions, sources, hashes) when it is cheap and useful; do not build workflows that re-verify it.
+- Start a new mechanism active and in one repository; generalize after it works there.
+
+## PRINCIPLE-013 — Setup converges idempotently
+
+- Setup, acquisition and environment scripts bring managed state to the declared state: running them again on a correct environment is a no-op, and on a drifted managed environment it repairs only managed state.
+- Fetch large inputs (model weights, toolchains, assets) on first need into a managed cache; do not require a separate manual download step when a stable source exists.
+- Never modify unmanaged user state.
+
+## PRINCIPLE-014 — No temporary substitutes for specified inputs
+
+- When the owner specified a real input (assets, models, data sources, services), do not ship placeholders, primitives, mock data or stand-in names as a step toward it. Block the issue on the real input and work elsewhere.
+- Groundwork that survives unchanged once the real input arrives is fine; a substitute that must later be removed is not.
