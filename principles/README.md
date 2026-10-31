@@ -98,3 +98,10 @@
 
 - When the owner specified a real input (assets, models, data sources, services), do not ship placeholders, primitives, mock data or stand-in names as a step toward it. Block the issue on the real input and work elsewhere.
 - Groundwork that survives unchanged once the real input arrives is fine; a substitute that must later be removed is not.
+
+## PRINCIPLE-015 — Make it work, make it right, make it fast
+
+- In experimental repositories, size and performance ceilings never block a working feature. Get the functionality right first; loading strategies and optimization come after.
+- Keep measuring: report size and performance on every change. When a feature regresses them, land the feature and file a focused optimization issue with the measurements, instead of shrinking the feature or holding it.
+- Correctness gates stay blocking. Oracle parity checks (e.g. physics-engine vs Rapier, render-engine vs Bevy) define correctness, not speed; they keep failing a change that diverges.
+- Owner decision 2026-10-31 (maps#268), approved for all experimental repositories.
