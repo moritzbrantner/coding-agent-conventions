@@ -25,7 +25,7 @@ jobs:
   findings:
     permissions:
       contents: read
-    uses: moritzbrantner/reusable-workflows/.github/workflows/coding-tooling-validation.yml@6ff3b97a91cfc1feda73dc0ac59c3b284483f123 # main
+    uses: moritzbrantner/reusable-workflows/.github/workflows/coding-tooling-validation.yml@7fcd7308686c77559dd343d5e7639afb5a1646af # main
     with:
       operation: findings
       report_path: .artifacts/coding-tooling/findings.json
@@ -33,7 +33,7 @@ jobs:
   tooling-fast:
     permissions:
       contents: read
-    uses: moritzbrantner/reusable-workflows/.github/workflows/coding-tooling-validation.yml@6ff3b97a91cfc1feda73dc0ac59c3b284483f123 # main
+    uses: moritzbrantner/reusable-workflows/.github/workflows/coding-tooling-validation.yml@7fcd7308686c77559dd343d5e7639afb5a1646af # main
     with:
       operation: run
       tier: fast
