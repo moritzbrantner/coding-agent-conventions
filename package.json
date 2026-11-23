@@ -11,7 +11,8 @@
     "lint": "bunx oxlint@1.80.0 --format=github",
     "test:unit": "vitest run",
     "typecheck": "tsc --noEmit",
-    "check": "bun run lint && bun run typecheck && bun run test:unit && bun run build"
+    "check:sources": "node scripts/check-module-sources.mjs",
+    "check": "bun run lint && bun run check:sources && bun run typecheck && bun run test:unit && bun run build"
   },
   "dependencies": {
     "marked": "latest",
