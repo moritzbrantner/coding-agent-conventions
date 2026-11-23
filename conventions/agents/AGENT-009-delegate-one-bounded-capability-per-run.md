@@ -1,7 +1,7 @@
 # AGENT-009 — Delegate one bounded capability per implementation run
 
-**Status:** Accepted  
-**Category:** Agents  
+**Status:** Accepted\
+**Category:** Agents\
 **Derived from:** `PRINCIPLE-001`, `PRINCIPLE-002`, `PRINCIPLE-004`, `PRINCIPLE-006`
 
 ## Rule
