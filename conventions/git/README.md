@@ -41,3 +41,10 @@
 
 - Each commit makes one coherent change and has a message that states that change.
 - Separate formatting-only commits from behavior commits.
+
+## GIT-008 — Keep active task branches current without rewriting shared work
+
+- Refresh the integration target before starting or resuming work. Rebase an agent-owned task branch onto its actual current integration target when behind and before final integration validation, unless the repository or a dependent branch requires another integration strategy.
+- Preserve stacked pull-request dependencies; do not blindly rebase a dependent branch onto the default branch. Never rewrite another worker's branch, a shared history, or a protected branch without explicit authorization.
+- If publishing a rewritten task branch is necessary, use a lease against the previously observed remote head; stop on an unexpected remote change or unresolved conflict.
+- Recheck integration and validation against the resulting head under GIT-005 and GIT-006. Follow REPO-023 for completed-branch and workspace cleanup.
