@@ -104,3 +104,19 @@ These are repository-layout defaults, not requirements that every repository cre
 - For those GitHub Actions repositories, enable only the profile roles the repository actually needs; prefer jobs and matrices inside canonical caller workflows over adding another top-level workflow file.
 - Any workflow outside the selected profile is an explicit repository-local exception with a concrete reason.
 - Repository-owned commands and deterministic tooling continue to own validation semantics; the shared workflow profile owns only GitHub workflow topology, canonical caller roles, and reusable hosted mechanics.
+
+## REPO-022 — Scope agent instructions by repository hierarchy
+
+- Keep root `AGENTS.md` concise: repository-wide invariants, ownership boundaries, entry points, validation gates, and links to canonical context.
+- At meaningful subsystem, package, or domain boundaries, use nested `AGENTS.md` for local architecture, contracts, and verification that do not apply elsewhere. Do not create instruction files for every directory or duplicate inherited rules.
+- Before changing a path, read its applicable root-to-directory instruction chain; for cross-boundary changes, resolve the chains for every affected scope. Apply REPO-002, preserving broader invariants unless a deliberate local exception explicitly overrides them.
+- Keep detailed domain knowledge, architectural decisions, and procedures in their canonical sources; link to them from the narrowest relevant instruction file.
+- Where Claude Code guidance is provided, use a colocated `CLAUDE.md` containing only `@AGENTS.md` at each applicable scope. `AGENTS.md` is the single instruction authority; do not maintain parallel policy text.
+
+## REPO-023 — Keep repository workspaces bounded and reclaimable
+
+- At task completion and during routine local maintenance, remove verified disposable worktrees and task-owned generated artifacts no longer needed. Do not leave a completed task's workspace behind without a reason.
+- Fetch and prune obsolete remote-tracking references; delete merged task branches only when their current tips are verified integrated and no remaining work, active pull request, dependent branch, or persistent branch purpose requires them.
+- Preserve dirty, locked, shared, or otherwise active worktrees, unmerged commits, untracked user data, and protected or persistent release, distribution, and deployment branches. Age or a closed pull request alone does not authorize deletion.
+- Identify reclaimable space by worktree, Git object store, generated build output, and dependency cache. Report ambiguous candidates instead of deleting them; use normal Git maintenance without aggressive pruning or reflog expiration.
+- Use the repository's existing tooling for maintenance, and prefer centrally owned deterministic inspection and cleanup over per-repository scripts. Cleanup must not bypass ownership boundaries, follow external symlinks, or discard other users' work.
